@@ -1,0 +1,224 @@
+{
+  "campaign": {
+    "title": "Günün Kampanyası",
+    "description": "İki Türk kahvesi alan misafirlerimize bir adet su ikram."
+  },
+  "categories": [
+    {
+      "id": "kahvalti",
+      "name": "Kahvaltı",
+      "items": [
+        {
+          "name": "Gurme Kahvaltı",
+          "price": 480,
+          "description": "Sucuklu yumurta veya menemen, gözleme, peynir tabağı, reçel çeşitleri, bal-tereyağı, zeytin, salam, sosis, dana jambon, söğüş tabağı, patates kızartması ve termos çay.",
+          "image": "assets/foods/gurme-kahvalti.jpg"
+        },
+        {
+          "name": "Huzur Kahvaltı Tabağı",
+          "price": 400,
+          "description": "Bal-tereyağı, beyaz peynir, kaşar peyniri, söğüş tabağı, zeytin, patates kızartması, haşlanmış yumurta ve iki bardak çay.",
+          "image": "assets/foods/huzur-kahvalti.jpg"
+        },
+        {
+          "name": "Kampüs Kahvaltısı",
+          "price": 320,
+          "description": "Patates kızartması, zeytin, reçel, peynir, haşlanmış yumurta ve çay.",
+          "image": "assets/foods/kampus-kahvalti.jpg"
+        }
+      ]
+    },
+    {
+      "id": "ana-yemek",
+      "name": "Ana Yemek",
+      "items": [
+        {
+          "name": "İzmir Kumru",
+          "price": 300,
+          "description": "",
+          "image": "assets/foods/kumru.jpg"
+        },
+        {
+          "name": "Ekmek Arası Köfte",
+          "price": 450,
+          "description": "Domates, soğan, biber, maydanoz ve tablacalı salata ile servis edilir.",
+          "image": "assets/foods/ekmek-arasi-kofte.jpg"
+        },
+        {
+          "name": "Izgara Köfte",
+          "price": 500,
+          "description": "Domates, soğan, biber, maydanoz ve tablacalı salata ile servis edilir.",
+          "image": "assets/foods/izgara-kofte.jpg"
+        },
+        {
+          "name": "Tavuk Sote",
+          "price": 400,
+          "description": "",
+          "image": "assets/foods/tavuk-sote.jpg"
+        },
+        {
+          "name": "Tavuk Çökertme",
+          "price": 450,
+          "description": "",
+          "image": "assets/foods/tavuk-cokertme.jpg"
+        }
+      ]
+    },
+    {
+      "id": "makarna",
+      "name": "Makarnalar",
+      "items": [
+        {
+          "name": "Penne Makarna",
+          "price": 290,
+          "description": "Krema, tavuk ve baharat eşliğinde.",
+          "image": "assets/foods/penne.jpg"
+        },
+        {
+          "name": "Anne Eli Makarna",
+          "price": 300,
+          "description": "Naneli yoğurt ve salçalı sos ile.",
+          "image": "assets/foods/anneeli.jpg"
+        },
+        {
+          "name": "Pesto Soslu Penne",
+          "price": 310,
+          "description": "",
+          "image": "assets/foods/pesto.jpg"
+        }
+      ]
+    },
+    {
+      "id": "salata",
+      "name": "Salatalar",
+      "items": [
+        {
+          "name": "Akdeniz Salata",
+          "price": 280,
+          "description": "",
+          "image": "assets/foods/akdeniz.jpg"
+        },
+        {
+          "name": "Ton Balıklı Salata",
+          "price": 290,
+          "description": "",
+          "image": "assets/foods/ton.jpg"
+        },
+        {
+          "name": "Sezar Salata",
+          "price": 310,
+          "description": "",
+          "image": "assets/foods/sezar.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tatli",
+      "name": "Tatlılar",
+      "items": [
+        {
+          "name": "Sütlaç",
+          "price": 190,
+          "description": "",
+          "image": "assets/foods/sutlac.jpg"
+        },
+        {
+          "name": "Fıstık Rüyası",
+          "price": 220,
+          "description": "",
+          "image": "assets/foods/fistik-ruyasi.jpg"
+        },
+        {
+          "name": "Tiramisu",
+          "price": 210,
+          "description": "",
+          "image": "assets/foods/tiramisu.jpg"
+        },
+        {
+          "name": "San Sebastian",
+          "price": 250,
+          "description": "",
+          "image": "assets/foods/sansebastian.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kahve",
+      "name": "Kahveler",
+      "items": [
+        {
+          "name": "Türk Kahvesi",
+          "price": 110,
+          "description": "",
+          "image": "assets/foods/turk-kahvesi.jpg"
+        },
+        {
+          "name": "Espresso",
+          "price": 140,
+          "description": "",
+          "image": "assets/foods/espresso.jpg"
+        },
+        {
+          "name": "Latte",
+          "price": 160,
+          "description": "",
+          "image": "assets/foods/latte.jpg"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 170,
+          "description": "",
+          "image": "assets/foods/cappuccino.jpg"
+        }
+      ]
+    },
+    {
+      "id": "icecek",
+      "name": "İçecekler",
+      "items": [
+        {
+          "name": "Çay",
+          "price": 50,
+          "description": "",
+          "image": "assets/foods/cay.jpg"
+        },
+        {
+          "name": "Fincan Çay",
+          "price": 60,
+          "description": "",
+          "image": "assets/foods/fincan-cay.jpg"
+        },
+        {
+          "name": "Limonata",
+          "price": 160,
+          "description": "",
+          "image": "assets/foods/limonata.jpg"
+        },
+        {
+          "name": "Portakal Suyu",
+          "price": 200,
+          "description": "",
+          "image": "assets/foods/portakal.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nargile",
+      "name": "Nargile",
+      "items": [
+        {
+          "name": "Adalya Love 66",
+          "price": 0,
+          "description": "Nargile aroması",
+          "image": "assets/foods/nargile.jpg"
+        },
+        {
+          "name": "Adalya Lady Killer",
+          "price": 0,
+          "description": "Nargile aroması",
+          "image": "assets/foods/nargile.jpg"
+        }
+      ]
+    }
+  ]
+}
