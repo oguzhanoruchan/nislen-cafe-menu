@@ -13,6 +13,8 @@ import {
   X
 } from 'lucide-react'
 import type { Category, Product } from './types'
+import { useLocalStorageState } from './hooks/useLocalStorageState'
+import { formatCurrency } from './utils/formatters'
 
 type Language = 'en' | 'tr' | 'ru'
 const copy = {
@@ -108,18 +110,13 @@ const name = (p: Product, lang: Language) =>
 const description = (p: Product, lang: Language) =>
   p.descriptionTranslations?.[lang] || p.description
 const price = (value: number, lang: Language) =>
-  new Intl.NumberFormat(
-    lang === 'tr' ? 'tr-TR' : lang === 'ru' ? 'ru-RU' : 'en-US',
-    { style: 'currency', currency: 'USD' }
-  ).format(value)
+  formatCurrency(value, lang === 'tr' ? 'tr-TR' : lang === 'ru' ? 'ru-RU' : 'en-US')
 function useFavorites() {
-  const [favorites, setFavorites] = useState<string[]>(() =>
-    JSON.parse(localStorage.getItem('nislen-favorites') || '[]')
+  const [favorites, setFavorites] = useLocalStorageState<string[]>(
+    'nislen-favorites',
+    []
   )
-  useEffect(
-    () => localStorage.setItem('nislen-favorites', JSON.stringify(favorites)),
-    [favorites]
-  )
+
   return [
     favorites,
     (id: string) =>
@@ -137,12 +134,9 @@ function CustomerHeader({
   setLang: (v: Language) => void
   favorites: number
 }) {
-  const [dark, setDark] = useState(
-    () => localStorage.getItem('nislen-theme') === 'dark'
-  )
+  const [dark, setDark] = useLocalStorageState<boolean>('nislen-theme', false)
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark)
-    localStorage.setItem('nislen-theme', dark ? 'dark' : 'light')
   }, [dark])
   return (
     <header className="customer-header" role="banner">
@@ -257,9 +251,7 @@ export function CustomerMenu({
   loading: boolean
   error?: string
 }) {
-  const [lang, setLang] = useState<Language>(
-    () => (localStorage.getItem('nislen-language') as Language) || 'en'
-  )
+  const [lang, setLang] = useLocalStorageState<Language>('nislen-language', 'en')
   const [term, setTerm] = useState('')
   const [active, setActive] = useState('all')
   const [onlyFavorites, setOnlyFavorites] = useState(false)
@@ -267,7 +259,6 @@ export function CustomerMenu({
   const [online, setOnline] = useState(navigator.onLine)
   const [favorites, toggle] = useFavorites()
   const t = copy[lang]
-  useEffect(() => localStorage.setItem('nislen-language', lang), [lang])
   useEffect(() => {
     const next = () => setSlide((x) => (x + 1) % campaigns.length)
     const id = window.setInterval(next, 5200)
@@ -507,9 +498,7 @@ export function CustomerDetail({
 }) {
   const { id } = useParams()
   const navigate = useNavigate()
-  const [lang, setLang] = useState<Language>(
-    () => (localStorage.getItem('nislen-language') as Language) || 'en'
-  )
+  const [lang, setLang] = useLocalStorageState<Language>('nislen-language', 'en')
   const [favorites, toggle] = useFavorites()
   const p = products.find((x) => x.id === id)
   const [selected, setSelected] = useState(0)
