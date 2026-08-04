@@ -1,74 +1,185 @@
 {
   "categories": [
     {
-      "id": "coffee",
-      "name": "Coffee",
-      "description": "",
-      "order": 1
+      "id": "kahvalti",
+      "name": "Kahvaltı",
+      "sortOrder": 1,
+      "products": [
+        {
+          "name": "Gurme Kahvaltı",
+          "price": 480,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Huzur Kahvaltı Tabağı",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Kampüs Kahvaltısı",
+          "price": 320,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Kaşarlı Omlet",
+          "price": 210,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Sucuklu Omlet",
+          "price": 220,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Pastırmalı Omlet",
+          "price": 230,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Menemen",
+          "price": 220,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Kaşarlı Menemen",
+          "price": 230,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Sucuklu Menemen",
+          "price": 240,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
     },
     {
-      "id": "breakfast",
-      "name": "Breakfast",
-      "description": "",
-      "order": 2
+      "id": "tostlar",
+      "name": "Tostlar",
+      "sortOrder": 2,
+      "products": [
+        {
+          "name": "Beyaz Peynirli Tost",
+          "price": 230,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Kaşarlı Tost",
+          "price": 240,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Karışık Tost",
+          "price": 280,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Ayvalık Tost",
+          "price": 270,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "3 Peynirli Tost",
+          "price": 280,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
     },
     {
-      "id": "sweets",
-      "name": "Sweets",
-      "description": "",
-      "order": 3
-    }
-  ],
-  "products": [
-    {
-      "id": "flat-white",
-      "name": "Flat White",
-      "description": "",
-      "price": 4.5,
-      "categoryId": "coffee",
-      "image": "",
-      "featured": false,
-      "available": true
-    },
-    {
-      "id": "cold-brew",
-      "name": "Cold Brew",
-      "description": "",
-      "price": 5,
-      "categoryId": "coffee",
-      "image": "",
-      "featured": false,
-      "available": true
-    },
-    {
-      "id": "avocado-toast",
-      "name": "Avocado Toast",
-      "description": "",
-      "price": 9.5,
-      "categoryId": "breakfast",
-      "image": "",
-      "featured": false,
-      "available": true
-    },
-    {
-      "id": "granola-bowl",
-      "name": "Granola Bowl",
-      "description": "",
-      "price": 8,
-      "categoryId": "breakfast",
-      "image": "",
-      "featured": false,
-      "available": true
-    },
-    {
-      "id": "lemon-cake",
-      "name": "Lemon Olive Oil Cake",
-      "description": "",
-      "price": 5.5,
-      "categoryId": "sweets",
-      "image": "",
-      "featured": false,
-      "available": true
+      "id": "gozlemeler",
+      "name": "Gözlemeler",
+      "sortOrder": 3,
+      "products": [
+        {
+          "name": "Kaşarlı",
+          "price": 250,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Ispanaklı",
+          "price": 260,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Mantar Kaşar",
+          "price": 260,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Kaşar Tulum",
+          "price": 270,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Karışık",
+          "price": 280,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Patatesli",
+          "price": 270,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
     }
   ]
 }
