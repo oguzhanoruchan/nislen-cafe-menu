@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import {
   Link,
   Navigate,
@@ -39,15 +39,16 @@ import {
 } from './menuService'
 import type { Category, Product } from './types'
 import { CustomerDetail, CustomerMenu } from './customer'
-import AdvancedAdmin from './adminAdvanced'
-import {
-  ContactPage,
-  FeedbackPage,
-  OperationsPage,
-  ReservationPage,
-  RestaurantAdminPanel,
-  TablePage
-} from './restaurantPages'
+import { ErrorBoundary } from './errorBoundary'
+import { buildStructuredData, siteMetadata } from './seo'
+
+const AdvancedAdmin = lazy(() => import('./adminAdvanced'))
+const ContactPage = lazy(() => import('./restaurantPages').then((module) => ({ default: module.ContactPage })))
+const FeedbackPage = lazy(() => import('./restaurantPages').then((module) => ({ default: module.FeedbackPage })))
+const OperationsPage = lazy(() => import('./restaurantPages').then((module) => ({ default: module.OperationsPage })))
+const ReservationPage = lazy(() => import('./restaurantPages').then((module) => ({ default: module.ReservationPage })))
+const RestaurantAdminPanel = lazy(() => import('./restaurantPages').then((module) => ({ default: module.RestaurantAdminPanel })))
+const TablePage = lazy(() => import('./restaurantPages').then((module) => ({ default: module.TablePage })))
 
 const money = (n: number) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
@@ -614,8 +615,29 @@ export default function App() {
   const [products, setProducts] = useState<Product[]>([])
   const [error, setError] = useState<string>()
   useEffect(() => subscribeMenu(setCategories, setProducts, setError), [])
+
+  useEffect(() => {
+    document.title = siteMetadata.title
+    let description = document.querySelector('meta[name="description"]')
+    if (!description) {
+      description = document.createElement('meta')
+      description.setAttribute('name', 'description')
+      document.head.appendChild(description)
+    }
+    description.setAttribute('content', siteMetadata.description)
+
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.textContent = JSON.stringify(buildStructuredData())
+    document.head.appendChild(script)
+    return () => {
+      script.remove()
+    }
+  }, [])
+
   return (
-    <Routes>
+    <ErrorBoundary>
+      <Routes>
       <Route
         path="/"
         element={
@@ -640,13 +662,14 @@ export default function App() {
         path="/admin"
         element={<AdvancedAdmin categories={categories} products={products} />}
       />
-      <Route path="/tables" element={<TablePage />} />
-      <Route path="/reservations" element={<ReservationPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/feedback" element={<FeedbackPage />} />
-      <Route path="/operations" element={<OperationsPage />} />
-      <Route path="/restaurant-admin" element={<RestaurantAdminPanel />} />
+      <Route path="/tables" element={<Suspense fallback={<div className="p-10 text-center">Loading restaurant tools…</div>}><TablePage /></Suspense>} />
+      <Route path="/reservations" element={<Suspense fallback={<div className="p-10 text-center">Loading reservations…</div>}><ReservationPage /></Suspense>} />
+      <Route path="/contact" element={<Suspense fallback={<div className="p-10 text-center">Loading contact details…</div>}><ContactPage /></Suspense>} />
+      <Route path="/feedback" element={<Suspense fallback={<div className="p-10 text-center">Loading feedback…</div>}><FeedbackPage /></Suspense>} />
+      <Route path="/operations" element={<Suspense fallback={<div className="p-10 text-center">Loading operations blueprint…</div>}><OperationsPage /></Suspense>} />
+      <Route path="/restaurant-admin" element={<Suspense fallback={<div className="p-10 text-center">Loading admin console…</div>}><RestaurantAdminPanel /></Suspense>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </ErrorBoundary>
   )
 }

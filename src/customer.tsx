@@ -145,7 +145,7 @@ function CustomerHeader({
     localStorage.setItem('nislen-theme', dark ? 'dark' : 'light')
   }, [dark])
   return (
-    <header className="customer-header">
+    <header className="customer-header" role="banner">
       <Link to="/" className="brand">
         nislen<span>.</span>
       </Link>
@@ -163,6 +163,7 @@ function CustomerHeader({
         <button
           className="customer-icon"
           aria-label="Toggle color scheme"
+          aria-pressed={dark}
           onClick={() => setDark(!dark)}
         >
           {dark ? <Sun size={18} /> : <Moon size={18} />}
@@ -170,6 +171,7 @@ function CustomerHeader({
         <button
           className="favorite-count"
           aria-label={`${favorites} favorites`}
+          aria-live="polite"
         >
           <Heart size={17} />
           <i>{favorites}</i>

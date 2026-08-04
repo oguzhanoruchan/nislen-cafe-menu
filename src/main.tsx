@@ -4,7 +4,16 @@ import { BrowserRouter } from 'react-router-dom'
 import { registerSW } from 'virtual:pwa-register'
 import App from './App'
 import './styles.css'
-registerSW({ immediate: true })
+
+registerSW({
+  immediate: true,
+  onNeedRefresh() {
+    if (window.confirm('A newer version is available. Refresh to update now?')) {
+      window.location.reload()
+    }
+  }
+})
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
