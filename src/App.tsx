@@ -39,6 +39,15 @@ import {
 } from './menuService'
 import type { Category, Product } from './types'
 import { CustomerDetail, CustomerMenu } from './customer'
+import AdvancedAdmin from './adminAdvanced'
+import {
+  ContactPage,
+  FeedbackPage,
+  OperationsPage,
+  ReservationPage,
+  RestaurantAdminPanel,
+  TablePage
+} from './restaurantPages'
 
 const money = (n: number) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
@@ -281,6 +290,7 @@ function Login({ onDone }: { onDone: () => void }) {
     </main>
   )
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Admin({
   categories,
   products
@@ -628,8 +638,14 @@ export default function App() {
       />
       <Route
         path="/admin"
-        element={<Admin categories={categories} products={products} />}
+        element={<AdvancedAdmin categories={categories} products={products} />}
       />
+      <Route path="/tables" element={<TablePage />} />
+      <Route path="/reservations" element={<ReservationPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/feedback" element={<FeedbackPage />} />
+      <Route path="/operations" element={<OperationsPage />} />
+      <Route path="/restaurant-admin" element={<RestaurantAdminPanel />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

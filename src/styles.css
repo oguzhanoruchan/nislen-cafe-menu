@@ -414,4 +414,316 @@
   .error-page a {
     @apply mt-7 rounded-full bg-forest px-5 py-3 font-bold text-white;
   }
+  .admin-app {
+    @apply min-h-screen bg-[#f6f7f5] text-[#17231d] dark:bg-zinc-950 dark:text-stone-100 md:grid md:grid-cols-[248px_1fr];
+  }
+  .admin-sidebar {
+    @apply flex min-h-screen flex-col border-r border-stone-200 bg-white px-4 py-6 dark:border-white/10 dark:bg-zinc-900;
+  }
+  .admin-logo {
+    @apply mb-8 flex items-center gap-2 px-3 font-display text-3xl font-bold text-forest dark:text-emerald-300;
+  }
+  .admin-logo img {
+    @apply h-8 w-8 rounded-full object-cover;
+  }
+  .admin-logo span {
+    @apply text-terracotta;
+  }
+  .admin-sidebar nav {
+    @apply grid gap-1;
+  }
+  .admin-sidebar nav button {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-stone-500 hover:bg-stone-100 hover:text-forest dark:text-stone-400 dark:hover:bg-white/10;
+  }
+  .admin-sidebar nav button.active {
+    @apply bg-forest text-white;
+  }
+  .admin-view-menu {
+    @apply mt-auto rounded-xl border border-stone-200 px-3 py-2 text-center text-sm font-bold text-stone-600 dark:border-white/10 dark:text-stone-300;
+  }
+  .admin-main {
+    @apply min-w-0 px-5 py-7 sm:px-8 lg:px-12;
+  }
+  .admin-topbar {
+    @apply mb-8 flex flex-wrap items-end justify-between gap-5;
+  }
+  .admin-topbar p,
+  .insight-card p {
+    @apply text-[10px] font-bold tracking-[.18em] text-terracotta;
+  }
+  .admin-topbar h1 {
+    @apply mt-1 font-display text-4xl;
+  }
+  .admin-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-forest/15 hover:bg-forest/90 disabled:opacity-50;
+  }
+  .admin-section-bar {
+    @apply mb-5 flex flex-wrap items-end justify-between gap-3;
+  }
+  .admin-section-bar h2,
+  .settings-card h2,
+  .qr-admin h2,
+  .quick-start h2 {
+    @apply font-display text-2xl;
+  }
+  .admin-section-bar span,
+  .settings-card > p,
+  .qr-admin p {
+    @apply mt-1 block text-sm text-stone-500 dark:text-stone-400;
+  }
+  .admin-actions {
+    @apply flex flex-wrap gap-2;
+  }
+  .admin-actions button,
+  .admin-actions label,
+  .admin-section-bar > button,
+  .admin-actions a {
+    @apply inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-bold text-stone-600 shadow-sm hover:border-forest/30 dark:border-white/10 dark:bg-white/5 dark:text-stone-200;
+  }
+  .admin-actions input {
+    @apply hidden;
+  }
+  .stat-grid {
+    @apply grid gap-4 sm:grid-cols-2 xl:grid-cols-4;
+  }
+  .stat-grid > div,
+  .quick-start,
+  .settings-card {
+    @apply rounded-2xl bg-white p-5 shadow-sm dark:bg-white/5;
+  }
+  .stat-grid svg {
+    @apply mb-5 text-terracotta;
+  }
+  .stat-grid span,
+  .stat-grid small {
+    @apply block text-xs text-stone-500 dark:text-stone-400;
+  }
+  .stat-grid strong {
+    @apply my-1 block font-display text-4xl;
+  }
+  .insight-card {
+    @apply mt-6 flex items-center justify-between overflow-hidden rounded-3xl bg-forest p-7 text-white sm:p-10;
+  }
+  .insight-card h2 {
+    @apply mt-2 max-w-md font-display text-3xl;
+  }
+  .insight-card span {
+    @apply mt-3 block max-w-md text-sm text-emerald-100;
+  }
+  .health-ring {
+    @apply grid h-24 w-24 shrink-0 place-items-center rounded-full border-[10px] border-emerald-300 font-display text-3xl;
+  }
+  .health-ring small {
+    @apply text-xs text-emerald-100;
+  }
+  .quick-start {
+    @apply mt-6;
+  }
+  .quick-start > div {
+    @apply mt-4 grid gap-3 sm:grid-cols-3;
+  }
+  .quick-start p {
+    @apply flex items-center gap-2 text-sm font-medium;
+  }
+  .quick-start svg {
+    @apply text-emerald-500;
+  }
+  .admin-table {
+    @apply overflow-hidden rounded-2xl border border-stone-200 bg-white dark:border-white/10 dark:bg-white/5;
+  }
+  .admin-table > div {
+    @apply grid grid-cols-[46px_1fr_auto_auto_auto_auto] items-center gap-3 border-b border-stone-100 p-3 last:border-0 dark:border-white/10;
+  }
+  .admin-table img {
+    @apply h-10 w-10 rounded-lg object-cover;
+  }
+  .admin-table span b,
+  .admin-table span small {
+    @apply block;
+  }
+  .admin-table span small {
+    @apply mt-0.5 text-xs text-stone-500;
+  }
+  .admin-table i {
+    @apply rounded-full px-2 py-1 text-[10px] font-bold not-italic;
+  }
+  .status-on {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+  .status-off {
+    @apply bg-stone-100 text-stone-500;
+  }
+  .admin-table strong {
+    @apply text-sm text-terracotta;
+  }
+  .admin-table button,
+  .category-manager button,
+  .campaign-edit button {
+    @apply rounded-lg px-2 py-1.5 text-xs font-bold text-stone-600 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-white/10;
+  }
+  .delete {
+    color: #ef4444 !important;
+  }
+  .category-manager,
+  .campaign-manager,
+  .users-list,
+  .activity-list {
+    @apply grid gap-3;
+  }
+  .category-manager > div {
+    @apply flex cursor-grab items-center gap-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-white/5;
+  }
+  .drag-handle {
+    @apply text-xl text-stone-400;
+  }
+  .category-manager b,
+  .category-manager small {
+    @apply block;
+  }
+  .category-manager small {
+    @apply mt-1 text-xs text-stone-500;
+  }
+  .category-manager button {
+    @apply ml-auto;
+  }
+  .campaign-edit {
+    @apply grid grid-cols-1 gap-3 rounded-2xl p-5 sm:grid-cols-[1fr_1fr_auto_auto];
+  }
+  .tone-amber {
+    @apply bg-amber-100;
+  }
+  .tone-forest {
+    @apply bg-emerald-100;
+  }
+  .campaign-edit input {
+    @apply border-0 bg-white/70;
+  }
+  .switch {
+    @apply flex items-center gap-2 text-xs font-bold;
+  }
+  .switch input {
+    @apply hidden;
+  }
+  .switch span {
+    @apply h-5 w-9 rounded-full bg-stone-300;
+  }
+  .switch input:checked + span {
+    @apply bg-forest;
+  }
+  .settings-card {
+    @apply max-w-2xl p-6;
+  }
+  .settings-card > p {
+    @apply mb-6;
+  }
+  .settings-card label {
+    @apply mb-4 block text-sm font-bold;
+  }
+  .settings-card label input {
+    @apply mt-1.5;
+  }
+  .settings-card input[type='color'] {
+    @apply h-12 p-1;
+  }
+  .upload-drop {
+    display: flex !important;
+    @apply cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-stone-300 p-4 text-sm text-stone-600 dark:border-white/15 dark:text-stone-300;
+  }
+  .upload-drop input {
+    @apply hidden;
+  }
+  .qr-admin {
+    @apply flex max-w-2xl flex-col items-center gap-8 rounded-2xl bg-white p-8 text-center shadow-sm dark:bg-white/5 sm:flex-row sm:text-left;
+  }
+  .users-list > div {
+    @apply grid grid-cols-[42px_1fr_auto_auto] items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-white/5;
+  }
+  .users-list span {
+    @apply grid h-10 w-10 place-items-center rounded-full bg-forest text-xs font-bold text-white;
+  }
+  .users-list small {
+    @apply text-xs text-stone-500;
+  }
+  .users-list svg {
+    @apply text-emerald-500;
+  }
+  .activity-list p {
+    @apply flex items-center gap-3 rounded-xl border border-stone-200 bg-white p-4 text-sm dark:border-white/10 dark:bg-white/5;
+  }
+  .activity-list svg {
+    @apply text-terracotta;
+  }
+  .admin-dialog {
+    @apply fixed inset-0 z-50 grid place-items-center bg-zinc-950/45 p-4 backdrop-blur-sm;
+  }
+  .admin-dialog-card {
+    @apply relative max-h-[92vh] w-full max-w-lg overflow-auto rounded-3xl bg-cream p-6 shadow-2xl dark:bg-zinc-900;
+  }
+  .admin-dialog-card h2 {
+    @apply font-display text-3xl;
+  }
+  .form-lead {
+    @apply mt-2 text-sm text-stone-500;
+  }
+  .admin-close {
+    @apply absolute right-5 top-5 text-stone-500;
+  }
+  .admin-form {
+    @apply mt-6 grid gap-4;
+  }
+  .admin-form label {
+    @apply text-sm font-bold;
+  }
+  .admin-form label > input,
+  .admin-form label > textarea,
+  .admin-form label > select {
+    @apply mt-1.5;
+  }
+  .form-grid {
+    @apply grid gap-4 sm:grid-cols-2;
+  }
+  .check-label {
+    @apply flex items-center gap-2 self-end pb-3;
+  }
+  .check-label input {
+    @apply h-4 w-4;
+  }
+  .form-error {
+    @apply text-sm font-semibold text-red-600;
+  }
+  .toast {
+    @apply fixed bottom-5 right-5 z-[60] flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-3 text-sm font-bold text-white shadow-2xl;
+  }
+  .toast.error {
+    @apply bg-red-700;
+  }
+  @media (max-width: 767px) {
+    .admin-sidebar {
+      @apply sticky top-0 z-40 min-h-0 flex-row items-center gap-2 overflow-x-auto border-b px-4 py-3;
+    }
+    .admin-logo {
+      @apply mb-0 mr-2 whitespace-nowrap text-2xl;
+    }
+    .admin-sidebar nav {
+      @apply flex gap-1;
+    }
+    .admin-sidebar nav button {
+      @apply shrink-0 px-2.5 py-2 text-xs;
+    }
+    .admin-sidebar nav button svg {
+      @apply hidden;
+    }
+    .admin-view-menu {
+      @apply mt-0 ml-auto shrink-0 border-0 p-1 text-[10px];
+    }
+    .admin-main {
+      @apply px-4 py-6;
+    }
+    .admin-table {
+      @apply overflow-x-auto;
+    }
+    .admin-table > div {
+      @apply min-w-[640px];
+    }
+  }
 }
