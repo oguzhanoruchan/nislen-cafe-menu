@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply bg-cream text-stone-900 antialiased transition-colors dark:bg-zinc-950 dark:text-stone-100;
+  }
+  button {
+    @apply transition;
+  }
+  input,
+  textarea,
+  select {
+    @apply w-full rounded-xl border border-stone-200 bg-white px-4 py-3 outline-none focus:border-forest focus:ring-2 focus:ring-forest/20 dark:border-zinc-700 dark:bg-zinc-900;
+  }
+  textarea {
+    @apply min-h-24;
+  }
+}
+@layer components {
+  .icon-button {
+    @apply grid h-10 w-10 place-items-center rounded-full bg-white text-stone-700 shadow-sm hover:bg-stone-100 dark:bg-zinc-800 dark:text-stone-100 dark:hover:bg-zinc-700;
+  }
+  .primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-4 py-2.5 font-semibold text-white hover:bg-forest/90 disabled:opacity-50;
+  }
+  .secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-2.5 font-semibold capitalize shadow-sm hover:bg-stone-100 dark:bg-zinc-800 dark:hover:bg-zinc-700;
+  }
+  .hero {
+    @apply py-14 sm:py-20;
+  }
+  .hero h1 {
+    @apply mt-2 font-display text-5xl leading-[.95] sm:text-7xl;
+  }
+  .hero em {
+    @apply text-terracotta;
+  }
+  .eyebrow {
+    @apply text-xs font-bold tracking-[.17em] text-terracotta;
+  }
+  .campaign {
+    @apply mb-7 flex flex-col gap-1 rounded-2xl bg-forest p-5 text-white shadow-lg;
+  }
+  .campaign span {
+    @apply text-xs font-bold tracking-wider text-emerald-200;
+  }
+  .campaign strong {
+    @apply text-lg;
+  }
+  .campaign small {
+    @apply text-emerald-100;
+  }
+  .search {
+    @apply mb-4 flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-4 dark:border-zinc-700 dark:bg-zinc-900;
+  }
+  .search input {
+    @apply border-0 bg-transparent px-0 ring-0 focus:ring-0;
+  }
+  .tabs {
+    @apply mb-5 flex gap-2 overflow-x-auto pb-1;
+  }
+  .tabs button {
+    @apply whitespace-nowrap rounded-full bg-stone-200 px-4 py-2 text-sm font-semibold dark:bg-zinc-800;
+  }
+  .tabs .active {
+    @apply bg-forest text-white;
+  }
+  .product-card {
+    @apply flex items-center gap-3 rounded-2xl bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:bg-zinc-900;
+  }
+  .product-card b,
+  .product-card small {
+    @apply block;
+  }
+  .product-card small {
+    @apply mt-1 line-clamp-2 text-sm text-stone-500 dark:text-stone-400;
+  }
+  .product-card strong {
+    @apply self-start whitespace-nowrap text-terracotta;
+  }
+  .back {
+    @apply inline-flex items-center gap-1 text-sm font-semibold text-forest dark:text-emerald-300;
+  }
+  .detail {
+    @apply mt-4 overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-zinc-900;
+  }
+  .tag {
+    @apply mr-2 inline-block rounded-full bg-stone-100 px-3 py-1 text-sm dark:bg-zinc-800;
+  }
+  .notice {
+    @apply mt-6 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950 dark:text-amber-100;
+  }
+  .admin-section {
+    @apply mt-8;
+  }
+  .admin-list {
+    @apply mt-4 space-y-2;
+  }
+  .admin-list > div {
+    @apply flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm dark:bg-zinc-900;
+  }
+  .admin-list span:nth-child(2) {
+    @apply mr-auto;
+  }
+  .admin-list small {
+    @apply block text-sm text-stone-500;
+  }
+  .category-dot {
+    @apply grid h-16 w-16 place-items-center rounded-2xl bg-forest/10 text-2xl;
+  }
+  .qr-panel {
+    @apply mx-auto mt-10 flex max-w-sm flex-col items-center rounded-2xl bg-white p-8 text-center shadow-sm dark:bg-zinc-900;
+  }
+  .qr-panel p {
+    @apply my-3 text-stone-500;
+  }
+  .modal {
+    @apply fixed inset-0 z-50 grid place-items-center bg-black/50 p-4;
+  }
+  .modal-card {
+    @apply relative max-h-[90vh] w-full max-w-md overflow-auto rounded-2xl bg-cream p-6 shadow-xl dark:bg-zinc-950;
+  }
+  .upload {
+    @apply flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-stone-300 px-4 py-3 text-sm font-semibold dark:border-zinc-600;
+  }
+  .upload input {
+    @apply hidden;
+  }
+}
