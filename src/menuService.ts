@@ -14,20 +14,27 @@ import { categories as demoCategories, products as demoProducts } from './data'
 import type { Category, Product } from './types'
 export function subscribeMenu(
   setCategories: (v: Category[]) => void,
-  setProducts: (v: Product[]) => void
+  setProducts: (v: Product[]) => void,
+  setError?: (message: string) => void
 ) {
   if (!firebaseEnabled || !db) {
     setCategories(demoCategories)
     setProducts(demoProducts)
     return () => undefined
   }
+  const onError = () =>
+    setError?.('Please check your connection and try again.')
   const stopCategories = onSnapshot(
     query(collection(db, 'categories'), orderBy('order')),
     (s) =>
-      setCategories(s.docs.map((d) => ({ id: d.id, ...d.data() }) as Category))
+      setCategories(s.docs.map((d) => ({ id: d.id, ...d.data() }) as Category)),
+    onError
   )
-  const stopProducts = onSnapshot(collection(db, 'products'), (s) =>
-    setProducts(s.docs.map((d) => ({ id: d.id, ...d.data() }) as Product))
+  const stopProducts = onSnapshot(
+    collection(db, 'products'),
+    (s) =>
+      setProducts(s.docs.map((d) => ({ id: d.id, ...d.data() }) as Product)),
+    onError
   )
   return () => {
     stopCategories()

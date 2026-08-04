@@ -38,6 +38,7 @@ import {
   uploadImage
 } from './menuService'
 import type { Category, Product } from './types'
+import { CustomerDetail, CustomerMenu } from './customer'
 
 const money = (n: number) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
@@ -101,6 +102,8 @@ function Header({ admin = false }: { admin?: boolean }) {
     </header>
   )
 }
+// Kept for the compact admin preview fallback; public routes use CustomerMenu.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Menu({
   categories,
   products
@@ -188,6 +191,7 @@ function Menu({
     </>
   )
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Detail({ products }: { products: Product[] }) {
   const { id } = useParams()
   const p = products.find((x) => x.id === id)
@@ -598,14 +602,30 @@ function CategoryEditor({
 export default function App() {
   const [categories, setCategories] = useState<Category[]>([])
   const [products, setProducts] = useState<Product[]>([])
-  useEffect(() => subscribeMenu(setCategories, setProducts), [])
+  const [error, setError] = useState<string>()
+  useEffect(() => subscribeMenu(setCategories, setProducts, setError), [])
   return (
     <Routes>
       <Route
         path="/"
-        element={<Menu categories={categories} products={products} />}
+        element={
+          <CustomerMenu
+            categories={categories}
+            products={products}
+            loading={!products.length && !error}
+            error={error}
+          />
+        }
       />
-      <Route path="/product/:id" element={<Detail products={products} />} />
+      <Route
+        path="/product/:id"
+        element={
+          <CustomerDetail
+            products={products}
+            loading={!products.length && !error}
+          />
+        }
+      />
       <Route
         path="/admin"
         element={<Admin categories={categories} products={products} />}
