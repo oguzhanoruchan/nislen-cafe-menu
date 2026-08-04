@@ -180,6 +180,325 @@
           "featured": false
         }
       ]
+    },
+    {
+      "id": "aperatif-sicak",
+      "name": "Aperatifler (Sıcak)",
+      "sortOrder": 4,
+      "products": [
+        {
+          "name": "İzmir Kumru",
+          "price": 300,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Ekmek Arası Köfte",
+          "price": 450,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Izgara Köfte Servis",
+          "price": 500,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "aperatif-soguk",
+      "name": "Aperatifler (Soğuk)",
+      "sortOrder": 5,
+      "products": [
+        {
+          "name": "Ekmek Arası Kaşar Salam",
+          "price": 250,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Ekmek Arası Ton Balığı",
+          "price": 280,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "tantuni",
+      "name": "Tantuni",
+      "sortOrder": 6,
+      "products": [
+        {
+          "name": "Tantuni Somun",
+          "price": 340,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Tantuni Lavaş",
+          "price": 350,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "special",
+      "name": "Special",
+      "sortOrder": 7,
+      "products": [
+        {
+          "name": "Chicken Mushroom",
+          "price": 380,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Yoğurtlu Akdeniz Kebabı",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Kayseri Mantısı",
+          "price": 320,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Kiremitte Mantar",
+          "price": 240,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "beyaz-et",
+      "name": "Beyaz Et",
+      "sortOrder": 8,
+      "products": [
+        {
+          "name": "Tavuk Sote",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Köri Soslu Piliç",
+          "price": 425,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Mexican Soslu Piliç",
+          "price": 425,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Barbekü Soslu Piliç",
+          "price": 425,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Tavuk Çökertme",
+          "price": 450,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "wraplar",
+      "name": "Wraplar",
+      "sortOrder": 9,
+      "products": [
+        {
+          "name": "Vejetaryen Wrap",
+          "price": 280,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Tavuk Wrap",
+          "price": 340,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Sosisli Wrap",
+          "price": 300,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "makarnalar",
+      "name": "Makarnalar",
+      "sortOrder": 10,
+      "products": [
+        {
+          "name": "Penne Makarna",
+          "price": 290,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Anne Eli Makarna",
+          "price": 300,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Pesto Soslu Penne",
+          "price": 310,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Köri Soslu Makarna",
+          "price": 320,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "İtalyan Makarna",
+          "price": 320,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "ara-sicak",
+      "name": "Ara Sıcaklar",
+      "sortOrder": 11,
+      "products": [
+        {
+          "name": "Patates Tava",
+          "price": 230,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Cheddarlı Patates Kızartması",
+          "price": 280,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Mix Tabak",
+          "price": 300,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "salatalar",
+      "name": "Salatalar",
+      "sortOrder": 12,
+      "products": [
+        {
+          "name": "Akdeniz Salata",
+          "price": 280,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Ton Balıklı Salata",
+          "price": 290,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Şinitzel Salatası",
+          "price": 300,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Sezar Salata",
+          "price": 310,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Tavuklu Şefin Salatası",
+          "price": 320,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
     }
   ]
 }
