@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { CampaignSlider } from './components/CampaignSlider'
 import { CategoryFilter } from './components/CategoryFilter'
 import { Header } from './components/Header'
-import { Hero } from './components/Hero'
 import { ProductCard } from './components/ProductCard'
 import { ProductModal } from './components/ProductModal'
 import { SearchBar } from './components/SearchBar'
@@ -58,8 +57,6 @@ export default function App() {
         onToggleTheme={() => setDarkMode((current) => !current)}
       />
       <main className="container app-main">
-        <Hero />
-        <CampaignSlider />
         <SearchBar
           value={search}
           onChange={setSearch}
@@ -85,6 +82,8 @@ export default function App() {
         {filteredProducts.length === 0 ? (
           <p className="empty-state">{TEXTS.emptyTitle}</p>
         ) : null}
+
+        <CampaignSlider />
       </main>
       <ProductModal
         product={selectedProduct}
