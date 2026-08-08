@@ -208,8 +208,5 @@ export const products: Product[] = productsSeed.map((product, index) => ({
   id: `${product.categoryId}-${index + 1}`,
   category: product.categoryId,
   name: product.name,
-  description: '',
-  price: product.price,
-  image: '',
-  featured: false
+  price: product.price
 }))

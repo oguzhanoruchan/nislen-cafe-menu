@@ -1,19 +1,17 @@
-import type { UiText } from '../App'
-
 type SearchBarProps = {
   value: string
   onChange: (value: string) => void
-  text: UiText
+  placeholder: string
 }
 
-export function SearchBar({ value, onChange, text }: SearchBarProps) {
+export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
   return (
     <label className="search-bar">
       <span>Arama</span>
       <input
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder={text.searchPlaceholder}
+        placeholder={placeholder}
       />
     </label>
   )

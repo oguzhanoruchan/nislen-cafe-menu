@@ -1,18 +1,17 @@
 import type { Category } from '../data/menu'
-import type { UiText } from '../App'
 
 type CategoryFilterProps = {
   categories: Category[]
   activeCategory: string
   onChange: (categoryId: string) => void
-  text: UiText
+  allLabel: string
 }
 
 export function CategoryFilter({
   categories,
   activeCategory,
   onChange,
-  text
+  allLabel
 }: CategoryFilterProps) {
   return (
     <nav className="category-filter" aria-label="Kategoriler">
@@ -20,7 +19,7 @@ export function CategoryFilter({
         className={activeCategory === 'all' ? 'is-active' : ''}
         onClick={() => onChange('all')}
       >
-        {text.allCategories}
+        {allLabel}
       </button>
       {categories.map((category) => (
         <button

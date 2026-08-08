@@ -1,19 +1,11 @@
-import type { Language, UiText } from '../App'
-
 type HeaderProps = {
-  language: Language
-  text: UiText
   darkMode: boolean
   onToggleTheme: () => void
-  onCycleLanguage: () => void
 }
 
 export function Header({
-  language,
-  text,
   darkMode,
-  onToggleTheme,
-  onCycleLanguage
+  onToggleTheme
 }: HeaderProps) {
   return (
     <header className="header">
@@ -24,11 +16,8 @@ export function Header({
           alt="Nislen Cafe"
         />
         <div className="header-actions">
-          <button className="pill-button" onClick={onCycleLanguage}>
-            {language.toUpperCase()}
-          </button>
           <button className="pill-button" onClick={onToggleTheme}>
-            {darkMode ? text.light : text.dark}
+            {darkMode ? 'Açık Tema' : 'Koyu Tema'}
           </button>
         </div>
       </div>
