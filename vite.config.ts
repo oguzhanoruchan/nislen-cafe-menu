@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/nislen-cafe-menu/',
+  base: '/',
   build: {
     sourcemap: true,
     chunkSizeWarningLimit: 900,
