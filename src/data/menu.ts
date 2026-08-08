@@ -1,6 +1,20 @@
-import type { Category, Product } from './types'
+export type Category = {
+  id: string
+  name: string
+  order: number
+}
 
-const categoriesSeed: Array<Omit<Category, 'order'> & { sortOrder: number }> = [
+export type Product = {
+  id: string
+  category: string
+  name: string
+  description?: string
+  price: number
+  image?: string
+  featured?: boolean
+}
+
+const categoriesSeed = [
   {
     id: 'kahvalti',
     name: 'Kahvaltı',
@@ -93,7 +107,6 @@ const categoriesSeed: Array<Omit<Category, 'order'> & { sortOrder: number }> = [
   }
 ]
 
-// TODO: verify any ambiguous printed-menu names or prices against the physical menu and replace as needed.
 const productsSeed = [
   { name: 'Gurme Kahvaltı', price: 480, categoryId: 'kahvalti' },
   { name: 'Huzur Kahvaltı Tabağı', price: 400, categoryId: 'kahvalti' },
@@ -186,18 +199,17 @@ const productsSeed = [
 ] as const
 
 export const categories: Category[] = categoriesSeed.map((category, index) => ({
-  ...category,
-  description: '',
+  id: category.id,
+  name: category.name,
   order: index + 1
 }))
 
 export const products: Product[] = productsSeed.map((product, index) => ({
   id: `${product.categoryId}-${index + 1}`,
+  category: product.categoryId,
   name: product.name,
   description: '',
   price: product.price,
-  categoryId: product.categoryId,
   image: '',
-  featured: false,
-  available: true
+  featured: false
 }))
