@@ -37,11 +37,38 @@ import {
 } from './restaurant'
 import logo from '/images/nislen-logo.png'
 
+function isCompatibleStoredValue<T>(value: unknown, fallback: T): value is T {
+  if (value === null || value === undefined) {
+    return false
+  }
+
+  if (typeof fallback === 'string') {
+    return typeof value === 'string'
+  }
+
+  if (typeof fallback === 'number') {
+    return typeof value === 'number'
+  }
+
+  if (typeof fallback === 'boolean') {
+    return typeof value === 'boolean'
+  }
+
+  if (Array.isArray(fallback)) {
+    return Array.isArray(value)
+  }
+
+  return typeof value === 'object'
+}
+
 function usePersistentState<T>(key: string, fallback: T) {
   const [value, setValue] = useState<T>(() => {
     if (typeof window === 'undefined') return fallback
     try {
-      return JSON.parse(window.localStorage.getItem(key) || 'null') ?? fallback
+      const stored = window.localStorage.getItem(key)
+      if (!stored) return fallback
+      const parsed = JSON.parse(stored) as T
+      return isCompatibleStoredValue(parsed, fallback) ? parsed : fallback
     } catch {
       return fallback
     }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { categories, products } from './data'
+import { normalizeStoredArray } from './menuService'
 
 describe('demo menu', () => {
   it('assigns each product to a category', () => {
@@ -18,5 +19,9 @@ describe('demo menu', () => {
     expect(kahvaltiProducts.every((product) => product.image === '')).toBe(true)
     expect(kahvaltiProducts.every((product) => product.available === true)).toBe(true)
     expect(kahvaltiProducts.every((product) => product.featured === false)).toBe(true)
+  })
+
+  it('falls back to the demo menu when stored data is malformed', () => {
+    expect(normalizeStoredArray({} as never)).toEqual([])
   })
 })

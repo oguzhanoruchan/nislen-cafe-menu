@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   base: '/nislen-cafe-menu/',
   build: {
-    sourcemap: false,
+    sourcemap: true,
     chunkSizeWarningLimit: 900,
     rollupOptions: {
       output: {

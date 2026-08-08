@@ -40,6 +40,10 @@ function writeStored<T>(key: string, value: T) {
   window.localStorage.setItem(key, JSON.stringify(value))
 }
 
+export function normalizeStoredArray<T>(value: unknown, fallback: T[] = []): T[] {
+  return Array.isArray(value) ? (value as T[]) : fallback
+}
+
 function slugify(value: string) {
   return value
     .toLowerCase()
@@ -68,11 +72,13 @@ function normalizeProduct(value: Product): Product {
 
 function loadLocalCategories(): Category[] {
   const stored = readStored<Category[]>(CATEGORY_STORAGE_KEY, demoCategories)
-  return stored.map(normalizeCategory).sort((a, b) => a.order - b.order)
+  return normalizeStoredArray(stored, demoCategories)
+    .map(normalizeCategory)
+    .sort((a, b) => a.order - b.order)
 }
 
 function loadLocalProducts(): Product[] {
-  return readStored<Product[]>(PRODUCT_STORAGE_KEY, demoProducts).map(normalizeProduct)
+  return normalizeStoredArray(readStored<Product[]>(PRODUCT_STORAGE_KEY, demoProducts), demoProducts).map(normalizeProduct)
 }
 
 function saveLocalCategories(categories: Category[]) {
