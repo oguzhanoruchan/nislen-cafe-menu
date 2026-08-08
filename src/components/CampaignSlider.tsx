@@ -40,14 +40,14 @@ export function CampaignSlider() {
         <p>{current.detail}</p>
       </div>
       <div className="campaign-controls">
-        <button onClick={showPrev} aria-label="Önceki kampanya">
-          Geri
+        <button className="campaign-arrow" onClick={showPrev} aria-label="Önceki kampanya">
+          ‹
         </button>
-        <span>
+        <span className="campaign-counter">
           {index + 1} / {campaigns.length}
         </span>
-        <button onClick={showNext} aria-label="Sonraki kampanya">
-          İleri
+        <button className="campaign-arrow" onClick={showNext} aria-label="Sonraki kampanya">
+          ›
         </button>
       </div>
     </section>

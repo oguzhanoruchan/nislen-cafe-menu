@@ -13,12 +13,16 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
   return (
     <div className="product-modal" role="dialog" aria-modal="true">
       <div className="product-modal-card">
-        <button className="modal-close" onClick={onClose} aria-label="Kapat">
-          Kapat
-        </button>
+        <div className="modal-head">
+          <button className="modal-close" onClick={onClose} aria-label="Kapat">
+            ×
+          </button>
+        </div>
         {product.image ? (
           <img src={product.image} alt={product.name} className="product-modal-image" />
-        ) : null}
+        ) : (
+          <div className="product-modal-image product-modal-image-placeholder">Nislen Cafe</div>
+        )}
         <h2>{product.name}</h2>
         {product.description ? <p>{product.description}</p> : null}
         <strong>{formatPrice(product.price)}</strong>
