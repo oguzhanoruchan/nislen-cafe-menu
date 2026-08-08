@@ -12,7 +12,7 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
         {product.image ? (
           <img src={product.image} alt={product.name} className="product-image" />
         ) : (
-          <div className="product-image product-image-placeholder">Nislen</div>
+          <div className="product-image product-image-placeholder">Fotoğraf Yok</div>
         )}
       </div>
       <div className="product-copy">
