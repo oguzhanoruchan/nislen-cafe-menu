@@ -5,11 +5,7 @@ import { Header } from './components/Header'
 import { ProductCard } from './components/ProductCard'
 import { ProductModal } from './components/ProductModal'
 import { SearchBar } from './components/SearchBar'
-import {
-  categories,
-  products,
-  type Product
-} from './data/menu'
+import { categories, products, type Product } from './data/menu'
 
 const TEXTS = {
   allCategories: 'Tüm Kategoriler',
@@ -40,7 +36,8 @@ export default function App() {
   const filteredProducts = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
     return products.filter((item) => {
-      const categoryMatches = activeCategory === 'all' || item.category === activeCategory
+      const categoryMatches =
+        activeCategory === 'all' || item.category === activeCategory
       if (!categoryMatches) return false
       if (!normalizedSearch) return true
 

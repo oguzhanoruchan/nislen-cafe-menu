@@ -17,7 +17,11 @@
 body {
   margin: 0;
   font-family: 'Avenir Next', 'Segoe UI', Tahoma, sans-serif;
-  background: radial-gradient(circle at top right, #f3e6cc 0%, var(--color-bg) 42%);
+  background: radial-gradient(
+    circle at top right,
+    #f3e6cc 0%,
+    var(--color-bg) 42%
+  );
   color: var(--color-text);
 }
 
@@ -39,7 +43,8 @@ body {
   top: 0;
   z-index: 30;
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-border) 65%, transparent);
   background: color-mix(in srgb, var(--color-bg) 92%, transparent);
 }
 
@@ -131,7 +136,11 @@ body {
   border-radius: 50%;
   top: -72px;
   right: -72px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0)
+  );
   pointer-events: none;
 }
 

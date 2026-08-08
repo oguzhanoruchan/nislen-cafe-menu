@@ -3,10 +3,7 @@ type HeaderProps = {
   onToggleTheme: () => void
 }
 
-export function Header({
-  darkMode,
-  onToggleTheme
-}: HeaderProps) {
+export function Header({ darkMode, onToggleTheme }: HeaderProps) {
   const label = darkMode ? 'Açık temaya geç' : 'Koyu temaya geç'
 
   return (

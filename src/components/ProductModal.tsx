@@ -19,9 +19,15 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
           </button>
         </div>
         {product.image ? (
-          <img src={product.image} alt={product.name} className="product-modal-image" />
+          <img
+            src={product.image}
+            alt={product.name}
+            className="product-modal-image"
+          />
         ) : (
-          <div className="product-modal-image product-modal-image-placeholder">Fotoğraf Yok</div>
+          <div className="product-modal-image product-modal-image-placeholder">
+            Fotoğraf Yok
+          </div>
         )}
         <h2>{product.name}</h2>
         {product.description ? <p>{product.description}</p> : null}

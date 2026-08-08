@@ -13,7 +13,11 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
     >
       {product.image ? (
         <div className="product-image-wrap">
-          <img src={product.image} alt={product.name} className="product-image" />
+          <img
+            src={product.image}
+            alt={product.name}
+            className="product-image"
+          />
         </div>
       ) : null}
       <div className="product-copy">

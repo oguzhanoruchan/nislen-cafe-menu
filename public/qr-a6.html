@@ -5,18 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nislen A6 QR Page</title>
     <style>
-      body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; }
-      .page { width: 148mm; height: 105mm; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-      img { width: 70mm; height: 70mm; }
-      h1 { font-size: 18px; margin: 0; }
-      p { font-size: 12px; margin: 0; }
-      @media print { body { margin: 0; } .page { page-break-after: always; } }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fff;
+        color: #111;
+      }
+      .page {
+        width: 148mm;
+        height: 105mm;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      img {
+        width: 70mm;
+        height: 70mm;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0;
+      }
+      p {
+        font-size: 12px;
+        margin: 0;
+      }
+      @media print {
+        body {
+          margin: 0;
+        }
+        .page {
+          page-break-after: always;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="page">
       <h1>Nislen Café</h1>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&data=https%3A%2F%2Foguzhanoruchan.github.io%2Fnislen-cafe-menu%2F" alt="Nislen QR" />
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&data=https%3A%2F%2Foguzhanoruchan.github.io%2Fnislen-cafe-menu%2F"
+        alt="Nislen QR"
+      />
       <p>Scan to open the menu</p>
     </div>
   </body>
