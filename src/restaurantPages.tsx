@@ -35,6 +35,7 @@ import {
   type TableStatus,
   type WaiterCall
 } from './restaurant'
+import logo from '/images/nislen-logo.png'
 
 function usePersistentState<T>(key: string, fallback: T) {
   const [value, setValue] = useState<T>(() => {
@@ -60,8 +61,8 @@ function Shell({ children, title, subtitle }: { children: React.ReactNode; title
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.08),_transparent_55%)] bg-cream text-stone-900 dark:bg-zinc-950 dark:text-stone-100">
       <header className="border-b border-stone-200/80 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-zinc-950/70">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-          <Link to="/" className="font-display text-2xl font-bold text-forest dark:text-emerald-300">
-            nislen<span className="text-terracotta">.</span>
+          <Link to="/" className="inline-flex items-center">
+            <img src={logo} alt="Nislen Cafe" className="h-[60px] w-auto sm:h-[66px]" />
           </Link>
           <nav className="flex flex-wrap items-center gap-2 text-sm font-semibold text-stone-600 dark:text-stone-300">
             <Link className="rounded-full px-3 py-2 hover:bg-stone-100 dark:hover:bg-white/10" to="/tables">

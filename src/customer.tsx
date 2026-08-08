@@ -15,6 +15,7 @@ import {
 import type { Category, Product } from './types'
 import { useLocalStorageState } from './hooks/useLocalStorageState'
 import { formatCurrency } from './utils/formatters'
+import logo from '/images/nislen-logo.png'
 
 type Language = 'en' | 'tr' | 'ru'
 const copy = {
@@ -85,21 +86,21 @@ const categoryNames: Record<string, Record<Language, string>> = {
 }
 const campaigns = [
   {
-    eyebrow: 'MORNING RITUAL',
-    title: 'Two coffees, one pastry on us.',
-    detail: 'Until 11:00 every weekday',
+    eyebrow: 'KAMPANYA 01',
+    title: '2 Türk Kahvesi + Tavla',
+    detail: 'Keyifli sohbetlerin vazgeçilmezi.',
     color: 'from-amber-300 to-orange-400'
   },
   {
-    eyebrow: 'SEASONAL POUR',
-    title: 'Discover our citrus cold brew.',
-    detail: 'Bright, floral, and limited',
+    eyebrow: 'KAMPANYA 02',
+    title: 'Magnolya Günleri',
+    detail: 'Taptaze magnolyalarımızı deneyin.',
     color: 'from-sky-300 to-cyan-500'
   },
   {
-    eyebrow: 'SLOW WEEKEND',
-    title: 'Brunch made for lingering.',
-    detail: 'Saturday & Sunday, 09:00–15:00',
+    eyebrow: 'KAMPANYA 03',
+    title: 'Soğuk İçecekler',
+    detail: 'Yaz sıcaklarında ferahlayın.',
     color: 'from-rose-300 to-pink-500'
   }
 ]
@@ -141,7 +142,7 @@ function CustomerHeader({
   return (
     <header className="customer-header" role="banner">
       <Link to="/" className="brand">
-        nislen<span>.</span>
+        <img src={logo} alt="Nislen Cafe" className="h-[60px] w-auto sm:h-[66px]" />
       </Link>
       <div className="header-actions">
         <div className="language-picker">
@@ -251,7 +252,7 @@ export function CustomerMenu({
   loading: boolean
   error?: string
 }) {
-  const [lang, setLang] = useLocalStorageState<Language>('nislen-language', 'en')
+  const [lang, setLang] = useLocalStorageState<Language>('nislen-language', 'tr')
   const [term, setTerm] = useState('')
   const [active, setActive] = useState('all')
   const [onlyFavorites, setOnlyFavorites] = useState(false)
@@ -300,7 +301,7 @@ export function CustomerMenu({
     return (
       <CustomerError
         lang={lang}
-        title="We could not refresh the menu"
+        title="Menü güncellenemedi"
         detail={error}
       />
     )
@@ -322,13 +323,13 @@ export function CustomerMenu({
       )}
       <main className="customer-shell">
         <section className="premium-hero">
-          <p>NEIGHBORHOOD CAFÉ · EST. 2014</p>
+          <p>NEIGHBORHOOD CAFÉ • EST. 2014</p>
           <h1>
-            Take a slow sip
+            Nislen'e Hoş Geldiniz
             <br />
-            <em>of something good.</em>
+            <em>Kahve • Tatlı • Nargile</em>
           </h1>
-          <span>Seasonal food, thoughtful coffee, all day.</span>
+          <span>Günün her saati keyif, lezzet ve kaliteli kahve.</span>
         </section>
         <section
           className={`campaign-slider bg-gradient-to-br ${campaign.color}`}
@@ -343,7 +344,7 @@ export function CustomerMenu({
               onClick={() =>
                 setSlide((slide + campaigns.length - 1) % campaigns.length)
               }
-              aria-label="Previous campaign"
+              aria-label="Önceki kampanya"
             >
               <ChevronLeft />
             </button>
@@ -352,7 +353,7 @@ export function CustomerMenu({
             </i>
             <button
               onClick={() => setSlide((slide + 1) % campaigns.length)}
-              aria-label="Next campaign"
+              aria-label="Sonraki kampanya"
             >
               <ChevronRight />
             </button>
@@ -368,7 +369,7 @@ export function CustomerMenu({
               placeholder={t.search}
             />
             {term && (
-              <button aria-label="Clear search" onClick={() => setTerm('')}>
+              <button aria-label="Aramayı temizle" onClick={() => setTerm('')}>
                 <X size={17} />
               </button>
             )}
@@ -402,10 +403,10 @@ export function CustomerMenu({
           <section className="showcase">
             <div className="section-head">
               <div>
-                <p>HANDPICKED FOR YOU</p>
+                <p>SİZİN İÇİN SEÇİLDİ</p>
                 <h2>{t.featured}</h2>
               </div>
-              <span>{featured.length} picks</span>
+              <span>{featured.length} seçim</span>
             </div>
             <div className="featured-rail">
               {featured.map((p) => (
@@ -425,7 +426,7 @@ export function CustomerMenu({
           <section className="showcase">
             <div className="section-head">
               <div>
-                <p>THE CROWD FAVOURITES</p>
+                <p>EN ÇOK TERCİH EDİLENLER</p>
                 <h2>{t.best}</h2>
               </div>
               <span>♥ {best.length}</span>
@@ -452,10 +453,10 @@ export function CustomerMenu({
                   : categoryNames[active]?.[lang]?.toUpperCase()}
               </p>
               <h2>
-                {term ? `“${term}”` : onlyFavorites ? 'Favorites' : t.menu}
+                {term ? `“${term}”` : onlyFavorites ? 'Favoriler' : t.menu}
               </h2>
             </div>
-            <span>{visible.length} items</span>
+            <span>{visible.length} ürün</span>
           </div>
           <div className="menu-grid">
             {visible.map((p) => (
@@ -498,7 +499,7 @@ export function CustomerDetail({
 }) {
   const { id } = useParams()
   const navigate = useNavigate()
-  const [lang, setLang] = useLocalStorageState<Language>('nislen-language', 'en')
+  const [lang, setLang] = useLocalStorageState<Language>('nislen-language', 'tr')
   const [favorites, toggle] = useFavorites()
   const p = products.find((x) => x.id === id)
   const [selected, setSelected] = useState(0)
@@ -517,8 +518,8 @@ export function CustomerDetail({
     return (
       <CustomerError
         lang={lang}
-        title="That menu item has wandered off"
-        detail="The item may no longer be available."
+        title="Bu ürün artık menüde olmayabilir"
+        detail="Aradığınız ürün şu anda görüntülenemiyor."
       />
     )
   const t = copy[lang]
@@ -604,7 +605,7 @@ export function CustomerDetail({
           <section className="showcase related">
             <div className="section-head">
               <div>
-                <p>MORE TO DISCOVER</p>
+                <p>DAHA FAZLASI</p>
                 <h2>{t.related}</h2>
               </div>
             </div>
@@ -627,7 +628,7 @@ export function CustomerDetail({
   )
 }
 export function CustomerError({
-  lang = 'en',
+  lang = 'tr',
   title,
   detail
 }: {
@@ -638,7 +639,7 @@ export function CustomerError({
   return (
     <main className="error-page">
       <div className="error-orb">✦</div>
-      <p>nislen.</p>
+      <img src={logo} alt="Nislen Cafe" style={{ height: 60 }} />
       <h1>{title}</h1>
       <span>{detail}</span>
       <Link to="/">{copy[lang].back}</Link>

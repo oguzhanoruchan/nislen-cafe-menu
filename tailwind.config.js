@@ -4,7 +4,7 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      colors: { forest: '#15452f', cream: '#f8f7f2', terracotta: '#d96d49' },
+      colors: { forest: '#1f4d3a', cream: '#faf8f5', terracotta: '#d8b36a' },
       fontFamily: { display: ['Georgia', 'serif'] }
     }
   },

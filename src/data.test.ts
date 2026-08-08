@@ -10,6 +10,7 @@ describe('demo menu', () => {
   it('includes the full Turkish breakfast menu structure', () => {
     const categoryIds = categories.map((category) => category.id)
     expect(categoryIds).toEqual(expect.arrayContaining(['kahvalti', 'tostlar', 'gozlemeler']))
+    expect(categoryIds).toEqual(expect.arrayContaining(['limonatalar', 'milkshake', 'frozen', 'mojito', 'kutu-icecekler', 'nargile']))
 
     const kahvaltiProducts = products.filter((product) => product.categoryId === 'kahvalti')
     expect(kahvaltiProducts.length).toBeGreaterThan(0)

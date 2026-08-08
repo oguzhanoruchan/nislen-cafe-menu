@@ -34,6 +34,7 @@ import type { Category, Product } from './types'
 import { AppRoutes } from './routes'
 import { formatCurrency } from './utils/formatters'
 import { buildStructuredData, siteMetadata } from './seo'
+import logo from '/images/nislen-logo.png'
 
 const money = (n: number) => formatCurrency(n)
 function ProductImage({
@@ -70,9 +71,9 @@ function Header({ admin = false }: { admin?: boolean }) {
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <Link
           to="/"
-          className="font-display text-2xl font-bold text-forest dark:text-emerald-300"
+          className="font-display font-bold text-forest dark:text-emerald-300"
         >
-          nislen<span className="text-terracotta">.</span>
+          <img src={logo} alt="Nislen Cafe" className="h-16 w-auto" />
         </Link>
         <div className="flex items-center gap-2">
           <button
@@ -243,11 +244,8 @@ function Login({ onDone }: { onDone: () => void }) {
   }
   return (
     <main className="mx-auto max-w-sm px-4 py-16">
-      <Link
-        to="/"
-        className="font-display text-3xl text-forest dark:text-emerald-300"
-      >
-        nislen.
+      <Link to="/" className="inline-block">
+        <img src={logo} alt="Nislen Cafe" className="h-16 w-auto" />
       </Link>
       <h1 className="mt-10 font-display text-4xl">Admin sign in</h1>
       <form onSubmit={submit} className="mt-6 space-y-3">
@@ -509,19 +507,16 @@ function ProductEditor({
       </h2>
       <form onSubmit={submit} className="mt-5 space-y-3">
         <input
-          required
           value={value.name}
           onChange={(e) => setValue({ ...value, name: e.target.value })}
           placeholder="Name"
         />
         <textarea
-          required
           value={value.description}
           onChange={(e) => setValue({ ...value, description: e.target.value })}
           placeholder="Description"
         />
         <input
-          required
           min="0"
           step="0.01"
           type="number"
@@ -570,7 +565,6 @@ function CategoryEditor({
       </h2>
       <form onSubmit={submit} className="mt-5 space-y-3">
         <input
-          required
           value={value.name}
           onChange={(e) => setValue({ ...value, name: e.target.value })}
           placeholder="Name"
@@ -581,7 +575,6 @@ function CategoryEditor({
           placeholder="Description"
         />
         <input
-          required
           type="number"
           value={value.order}
           onChange={(e) => setValue({ ...value, order: +e.target.value })}

@@ -3,7 +3,7 @@ export const siteMetadata = {
   description:
     'A polished QR menu and restaurant management experience for cafés with table service, reservations, and guest feedback.',
   url: 'https://nislen.cafe',
-  image: 'https://nislen.cafe/og-image.png',
+  image: 'https://nislen.cafe/images/nislen-logo.png',
   organization: 'Nislen Café'
 }
 

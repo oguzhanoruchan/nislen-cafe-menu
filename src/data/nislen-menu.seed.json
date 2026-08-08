@@ -499,6 +499,335 @@
           "featured": false
         }
       ]
+    },
+    {
+      "id": "limonatalar",
+      "name": "Limonatalar",
+      "sortOrder": 21,
+      "products": [
+        {
+          "name": "Klasik Limonata",
+          "price": 150,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Çilekli Limonata",
+          "price": 160,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Naneli Limonata",
+          "price": 160,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Karpuzlu Limonata",
+          "price": 165,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "milkshake",
+      "name": "Milkshake",
+      "sortOrder": 22,
+      "products": [
+        {
+          "name": "Çikolata",
+          "price": 180,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Çilek",
+          "price": 180,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Muz",
+          "price": 180,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Karamel",
+          "price": 185,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Oreo",
+          "price": 190,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "frozen",
+      "name": "Frozen",
+      "sortOrder": 23,
+      "products": [
+        {
+          "name": "Çilek",
+          "price": 170,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Mango",
+          "price": 170,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Karpuz",
+          "price": 170,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Yeşil Elma",
+          "price": 170,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "mojito",
+      "name": "Mojito",
+      "sortOrder": 24,
+      "products": [
+        {
+          "name": "Classic Mojito",
+          "price": 180,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Strawberry Mojito",
+          "price": 190,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Green Apple Mojito",
+          "price": 190,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Passion Mojito",
+          "price": 190,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "kutu-icecekler",
+      "name": "Kutu İçecekler",
+      "sortOrder": 25,
+      "products": [
+        {
+          "name": "Coca Cola",
+          "price": 90,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Coca Cola Zero",
+          "price": 90,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Fanta",
+          "price": 90,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Sprite",
+          "price": 90,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Fuse Tea",
+          "price": 90,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Ayran",
+          "price": 70,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Şalgam",
+          "price": 80,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Meyve Suyu",
+          "price": 80,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Soda",
+          "price": 45,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Maden Suyu",
+          "price": 45,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Su (0.5L)",
+          "price": 20,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "nargile",
+      "name": "Nargile",
+      "sortOrder": 26,
+      "products": [
+        {
+          "name": "Tek Elma",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Çift Elma",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Lady Killer",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Love 66",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Blue Mist",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Hawaii",
+          "price": 400,
+          "description": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Frozen",
+          "price": 400,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        },
+        {
+          "name": "Özel Karışım",
+          "price": 450,
+          "description": "",
+          "image": "",
+          "available": true,
+          "featured": false
+        }
+      ]
     }
   ]
 }

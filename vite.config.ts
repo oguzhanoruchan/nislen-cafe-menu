@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base: '/nislen-cafe-menu/',
   build: {
     sourcemap: false,
     chunkSizeWarningLimit: 900,
@@ -49,8 +50,8 @@ export default defineConfig({
         theme_color: '#15452f',
         background_color: '#f8f7f2',
         display: 'standalone',
-        start_url: '/',
-        scope: '/',
+        start_url: '/nislen-cafe-menu/',
+        scope: '/nislen-cafe-menu/',
         icons: [
           { src: 'pwa-192.svg', sizes: '192x192', type: 'image/svg+xml' },
           { src: 'pwa-512.svg', sizes: '512x512', type: 'image/svg+xml' }

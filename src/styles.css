@@ -131,7 +131,7 @@
     @apply sticky top-0 z-30 mx-auto flex h-[76px] max-w-6xl items-center justify-between border-b border-stone-900/5 bg-cream/70 px-5 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/70 sm:px-8;
   }
   .brand {
-    @apply font-display text-3xl font-bold tracking-tight text-forest dark:text-emerald-300;
+    @apply inline-flex items-center;
   }
   .brand span {
     @apply text-terracotta;

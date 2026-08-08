@@ -60,9 +60,40 @@ const categoriesSeed: Array<Omit<Category, 'order'> & { sortOrder: number }> = [
     id: 'salatalar',
     name: 'Salatalar',
     sortOrder: 12
+  },
+  {
+    id: 'limonatalar',
+    name: 'Limonatalar',
+    sortOrder: 21
+  },
+  {
+    id: 'milkshake',
+    name: 'Milkshake',
+    sortOrder: 22
+  },
+  {
+    id: 'frozen',
+    name: 'Frozen',
+    sortOrder: 23
+  },
+  {
+    id: 'mojito',
+    name: 'Mojito',
+    sortOrder: 24
+  },
+  {
+    id: 'kutu-icecekler',
+    name: 'Kutu İçecekler',
+    sortOrder: 25
+  },
+  {
+    id: 'nargile',
+    name: 'Nargile',
+    sortOrder: 26
   }
 ]
 
+// TODO: verify any ambiguous printed-menu names or prices against the physical menu and replace as needed.
 const productsSeed = [
   { name: 'Gurme Kahvaltı', price: 480, categoryId: 'kahvalti' },
   { name: 'Huzur Kahvaltı Tabağı', price: 400, categoryId: 'kahvalti' },
@@ -115,7 +146,43 @@ const productsSeed = [
   { name: 'Ton Balıklı Salata', price: 290, categoryId: 'salatalar' },
   { name: 'Şinitzel Salatası', price: 300, categoryId: 'salatalar' },
   { name: 'Sezar Salata', price: 310, categoryId: 'salatalar' },
-  { name: 'Tavuklu Şefin Salatası', price: 320, categoryId: 'salatalar' }
+  { name: 'Tavuklu Şefin Salatası', price: 320, categoryId: 'salatalar' },
+  { name: 'Klasik Limonata', price: 150, categoryId: 'limonatalar' },
+  { name: 'Çilekli Limonata', price: 160, categoryId: 'limonatalar' },
+  { name: 'Naneli Limonata', price: 160, categoryId: 'limonatalar' },
+  { name: 'Karpuzlu Limonata', price: 165, categoryId: 'limonatalar' },
+  { name: 'Çikolata', price: 180, categoryId: 'milkshake' },
+  { name: 'Çilek', price: 180, categoryId: 'milkshake' },
+  { name: 'Muz', price: 180, categoryId: 'milkshake' },
+  { name: 'Karamel', price: 185, categoryId: 'milkshake' },
+  { name: 'Oreo', price: 190, categoryId: 'milkshake' },
+  { name: 'Çilek', price: 170, categoryId: 'frozen' },
+  { name: 'Mango', price: 170, categoryId: 'frozen' },
+  { name: 'Karpuz', price: 170, categoryId: 'frozen' },
+  { name: 'Yeşil Elma', price: 170, categoryId: 'frozen' },
+  { name: 'Classic Mojito', price: 180, categoryId: 'mojito' },
+  { name: 'Strawberry Mojito', price: 190, categoryId: 'mojito' },
+  { name: 'Green Apple Mojito', price: 190, categoryId: 'mojito' },
+  { name: 'Passion Mojito', price: 190, categoryId: 'mojito' },
+  { name: 'Coca Cola', price: 90, categoryId: 'kutu-icecekler' },
+  { name: 'Coca Cola Zero', price: 90, categoryId: 'kutu-icecekler' },
+  { name: 'Fanta', price: 90, categoryId: 'kutu-icecekler' },
+  { name: 'Sprite', price: 90, categoryId: 'kutu-icecekler' },
+  { name: 'Fuse Tea', price: 90, categoryId: 'kutu-icecekler' },
+  { name: 'Ayran', price: 70, categoryId: 'kutu-icecekler' },
+  { name: 'Şalgam', price: 80, categoryId: 'kutu-icecekler' },
+  { name: 'Meyve Suyu', price: 80, categoryId: 'kutu-icecekler' },
+  { name: 'Soda', price: 45, categoryId: 'kutu-icecekler' },
+  { name: 'Maden Suyu', price: 45, categoryId: 'kutu-icecekler' },
+  { name: 'Su (0.5L)', price: 20, categoryId: 'kutu-icecekler' },
+  { name: 'Tek Elma', price: 400, categoryId: 'nargile' },
+  { name: 'Çift Elma', price: 400, categoryId: 'nargile' },
+  { name: 'Lady Killer', price: 400, categoryId: 'nargile' },
+  { name: 'Love 66', price: 400, categoryId: 'nargile' },
+  { name: 'Blue Mist', price: 400, categoryId: 'nargile' },
+  { name: 'Hawaii', price: 400, categoryId: 'nargile' },
+  { name: 'Frozen', price: 400, categoryId: 'nargile' },
+  { name: 'Özel Karışım', price: 450, categoryId: 'nargile' }
 ] as const
 
 export const categories: Category[] = categoriesSeed.map((category, index) => ({

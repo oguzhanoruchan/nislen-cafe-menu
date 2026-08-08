@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nislen A5 QR Page</title>
+    <style>
+      body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; }
+      .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+      img { width: 110mm; height: 110mm; }
+      h1 { font-size: 24px; margin: 0; }
+      p { font-size: 14px; margin: 0; }
+      @media print { body { margin: 0; } .page { page-break-after: always; } }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Nislen Café</h1>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=https%3A%2F%2Foguzhanoruchan.github.io%2Fnislen-cafe-menu%2F" alt="Nislen QR" />
+      <p>Scan to open the menu</p>
+    </div>
+  </body>
+</html>
