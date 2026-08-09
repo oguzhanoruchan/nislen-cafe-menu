@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
+import { Header } from './components/Header'
 import { ProductCard } from './components/ProductCard'
 import { ProductModal } from './components/ProductModal'
 import { SearchBar } from './components/SearchBar'
@@ -32,6 +33,25 @@ export default function App() {
 
   return (
     <>
+      <section className="top-shell">
+        <Header>
+          <SearchBar
+            value={search}
+            onChange={setSearch}
+            placeholder={TEXTS.searchPlaceholder}
+          />
+        </Header>
+
+        <div className="container category-shell">
+          <CategoryFilter
+            categories={categories}
+            activeCategory={activeCategory}
+            onChange={setActiveCategory}
+            allLabel={TEXTS.allCategories}
+          />
+        </div>
+      </section>
+
       <section className="mural-stage" aria-label="Nislen mural duvarı">
         <img
           className="mural-image"
@@ -42,18 +62,6 @@ export default function App() {
 
       <section className="menu-surface">
         <main className="container app-main">
-          <SearchBar
-            value={search}
-            onChange={setSearch}
-            placeholder={TEXTS.searchPlaceholder}
-          />
-          <CategoryFilter
-            categories={categories}
-            activeCategory={activeCategory}
-            onChange={setActiveCategory}
-            allLabel={TEXTS.allCategories}
-          />
-
           <section className="product-grid">
             {filteredProducts.map((product) => (
               <ProductCard
