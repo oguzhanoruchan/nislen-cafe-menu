@@ -22,7 +22,6 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
       </div>
       <div className="product-copy">
         <h3>{product.name}</h3>
-        {product.description ? <p>{product.description}</p> : null}
       </div>
       <strong>{formatPrice(product.price)}</strong>
     </button>

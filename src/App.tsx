@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
-import { CampaignSlider } from './components/CampaignSlider'
+import { useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { Header } from './components/Header'
 import { ProductCard } from './components/ProductCard'
@@ -13,25 +12,10 @@ const TEXTS = {
   emptyTitle: 'Filtreye uygun ürün bulunamadı.'
 }
 
-const THEME_KEY = 'nislen-theme'
-
 export default function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem(THEME_KEY)
-    if (storedTheme === 'dark') {
-      setDarkMode(true)
-    }
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode)
-    window.localStorage.setItem(THEME_KEY, darkMode ? 'dark' : 'light')
-  }, [darkMode])
 
   const filteredProducts = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
@@ -49,10 +33,7 @@ export default function App() {
 
   return (
     <>
-      <Header
-        darkMode={darkMode}
-        onToggleTheme={() => setDarkMode((current) => !current)}
-      />
+      <Header />
       <main className="container app-main">
         <SearchBar
           value={search}
@@ -79,8 +60,6 @@ export default function App() {
         {filteredProducts.length === 0 ? (
           <p className="empty-state">{TEXTS.emptyTitle}</p>
         ) : null}
-
-        <CampaignSlider />
       </main>
       <ProductModal
         product={selectedProduct}
