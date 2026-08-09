@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
+import { FooterLinks } from './components/FooterLinks'
 import { Header } from './components/Header'
 import { ProductCard } from './components/ProductCard'
 import { ProductModal } from './components/ProductModal'
@@ -144,6 +145,7 @@ export default function App() {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
       />
+      <FooterLinks />
     </>
   )
 }
