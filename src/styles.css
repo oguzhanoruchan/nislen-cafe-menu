@@ -38,6 +38,8 @@ body {
   font-family: 'Avenir Next', 'Trebuchet MS', 'Segoe UI', sans-serif;
   color: var(--text-main);
   background: var(--page-bg);
+  /* room for fixed footer bar */
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
 }
 
 .container {
@@ -346,9 +348,14 @@ body {
 
 /* ── Footer links ── */
 .footer-links {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
   background: var(--surface-strong);
   border-top: 1px solid var(--panel-border);
-  padding: 18px 16px 32px;
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
 }
 
 .footer-links-inner {
@@ -365,8 +372,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7px;
-  padding: 14px 8px;
+  gap: 5px;
+  padding: 10px 8px;
   border: none;
   background: none;
   color: var(--nislen-green);
