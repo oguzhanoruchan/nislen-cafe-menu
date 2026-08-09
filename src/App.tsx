@@ -33,34 +33,44 @@ export default function App() {
 
   return (
     <>
-      <Header />
-      <main className="container app-main">
-        <SearchBar
-          value={search}
-          onChange={setSearch}
-          placeholder={TEXTS.searchPlaceholder}
+      <section className="mural-stage" aria-label="Nislen mural duvarı">
+        <img
+          className="mural-image"
+          src="/images/nislen-mural-wall.webp"
+          alt="Nislen Cafe mural duvarı"
         />
-        <CategoryFilter
-          categories={categories}
-          activeCategory={activeCategory}
-          onChange={setActiveCategory}
-          allLabel={TEXTS.allCategories}
-        />
+      </section>
 
-        <section className="product-grid">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onSelect={setSelectedProduct}
-            />
-          ))}
-        </section>
+      <section className="menu-surface">
+        <Header />
+        <main className="container app-main">
+          <SearchBar
+            value={search}
+            onChange={setSearch}
+            placeholder={TEXTS.searchPlaceholder}
+          />
+          <CategoryFilter
+            categories={categories}
+            activeCategory={activeCategory}
+            onChange={setActiveCategory}
+            allLabel={TEXTS.allCategories}
+          />
 
-        {filteredProducts.length === 0 ? (
-          <p className="empty-state">{TEXTS.emptyTitle}</p>
-        ) : null}
-      </main>
+          <section className="product-grid">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onSelect={setSelectedProduct}
+              />
+            ))}
+          </section>
+
+          {filteredProducts.length === 0 ? (
+            <p className="empty-state">{TEXTS.emptyTitle}</p>
+          ) : null}
+        </main>
+      </section>
       <ProductModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}

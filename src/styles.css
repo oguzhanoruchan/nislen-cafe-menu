@@ -1,11 +1,13 @@
 :root {
   --nislen-green: #1f4d3a;
-  --text-main: #1f2a24;
-  --text-soft: #52615a;
-  --surface: rgba(255, 255, 255, 0.9);
-  --surface-strong: rgba(255, 255, 255, 0.96);
-  --surface-border: rgba(255, 255, 255, 0.72);
-  --shadow-soft: 0 6px 20px rgba(18, 31, 25, 0.14);
+  --text-main: #18231d;
+  --text-soft: #55615b;
+  --surface: #f7f5ef;
+  --surface-strong: #fffdf9;
+  --surface-border: rgba(255, 253, 249, 0.88);
+  --panel-bg: #101111;
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.26);
 }
 
 * {
@@ -22,34 +24,7 @@ body {
   margin: 0;
   font-family: 'Avenir Next', 'Trebuchet MS', 'Segoe UI', sans-serif;
   color: var(--text-main);
-  background-color: #1e2521;
-  position: relative;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background-image: url('/images/interior/nislen-interior-01.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(to bottom, rgba(12, 18, 15, 0.22), rgba(12, 18, 15, 0.36)),
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(255, 255, 255, 0.12),
-      transparent 55%
-    );
-  pointer-events: none;
+  background: #0f1010;
 }
 
 .container {
@@ -57,40 +32,48 @@ body::after {
   margin-inline: auto;
 }
 
+.mural-stage {
+  width: 100%;
+  background: #000;
+}
+
+.mural-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.menu-surface {
+  background: var(--panel-bg);
+  border-top: 1px solid var(--panel-border);
+}
+
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.26),
-    rgba(255, 255, 255, 0.08)
-  );
-  backdrop-filter: blur(1.5px);
+  background: transparent;
 }
 
 .header-inner {
-  min-height: 84px;
+  min-height: 76px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 6px 0 4px;
+  justify-content: center;
+  padding: 8px 0 6px;
 }
 
 .header-logo {
-  height: 74px;
+  height: 62px;
   width: auto;
   display: block;
   object-fit: contain;
 }
 
 .app-main {
-  padding: 6px 0 26px;
+  padding: 4px 0 26px;
 }
 
 .search-bar {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .search-bar input {
@@ -98,8 +81,8 @@ body::after {
   border: 1px solid var(--surface-border);
   background: var(--surface-strong);
   color: var(--text-main);
-  border-radius: 14px;
-  padding: 12px 14px;
+  border-radius: 13px;
+  padding: 12px 15px;
   font-size: 14px;
   outline: none;
   box-shadow: var(--shadow-soft);
@@ -112,7 +95,7 @@ body::after {
 .search-bar input:focus {
   border-color: rgba(31, 77, 58, 0.55);
   box-shadow:
-    0 0 0 3px rgba(31, 77, 58, 0.16),
+    0 0 0 3px rgba(31, 77, 58, 0.2),
     var(--shadow-soft);
 }
 
@@ -131,8 +114,8 @@ body::after {
 }
 
 .category-filter button {
-  border: 1px solid rgba(255, 255, 255, 0.76);
-  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 253, 249, 0.9);
+  background: var(--surface);
   color: var(--text-main);
   border-radius: 999px;
   padding: 8px 13px;
@@ -158,8 +141,8 @@ body::after {
 
 .product-card {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-strong);
   border-radius: 15px;
   padding: 9px 10px;
   display: grid;
@@ -181,8 +164,8 @@ body::after {
   height: 74px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(248, 244, 236, 0.85);
+  border: 1px solid rgba(228, 220, 204, 0.9);
+  background: rgba(245, 239, 228, 0.95);
 }
 
 .product-image {
@@ -225,9 +208,9 @@ body::after {
   padding: 12px;
   border-radius: 12px;
   text-align: center;
-  color: #f8f9f8;
-  background: rgba(14, 24, 20, 0.38);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #edf2ef;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .product-modal {
@@ -244,7 +227,7 @@ body::after {
   width: min(560px, 100%);
   border-radius: 18px;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 253, 249, 0.8);
   background: var(--surface-strong);
   box-shadow: 0 10px 36px rgba(10, 16, 14, 0.34);
 }
@@ -314,12 +297,12 @@ body::after {
   }
 
   .header-inner {
-    min-height: 72px;
-    padding-top: 4px;
+    min-height: 68px;
+    padding-top: 6px;
   }
 
   .header-logo {
-    height: 60px;
+    height: 52px;
   }
 
   .product-card {
