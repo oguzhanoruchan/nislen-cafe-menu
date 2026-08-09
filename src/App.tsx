@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { Header } from './components/Header'
 import { ProductCard } from './components/ProductCard'
@@ -12,10 +12,61 @@ const TEXTS = {
   emptyTitle: 'Filtreye uygun ürün bulunamadı.'
 }
 
+const THEME_KEY = 'nislen-theme'
+
+type ThemePreference = 'light' | 'dark' | 'system'
+
 export default function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [themePreference, setThemePreference] =
+    useState<ThemePreference>('system')
+  const [darkMode, setDarkMode] = useState(false)
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem(THEME_KEY)
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      setThemePreference(storedTheme)
+    } else {
+      setThemePreference('system')
+    }
+  }, [])
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+    const applyTheme = () => {
+      if (themePreference === 'system') {
+        setDarkMode(media.matches)
+        return
+      }
+
+      setDarkMode(themePreference === 'dark')
+    }
+
+    applyTheme()
+
+    if (themePreference !== 'system') {
+      return
+    }
+
+    media.addEventListener('change', applyTheme)
+    return () => media.removeEventListener('change', applyTheme)
+  }, [themePreference])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode)
+  }, [darkMode])
+
+  useEffect(() => {
+    if (themePreference === 'system') {
+      window.localStorage.removeItem(THEME_KEY)
+      return
+    }
+
+    window.localStorage.setItem(THEME_KEY, themePreference)
+  }, [themePreference])
 
   const filteredProducts = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
@@ -31,10 +82,24 @@ export default function App() {
     })
   }, [activeCategory, search])
 
+  const handleToggleTheme = () => {
+    setThemePreference((current) => {
+      if (current === 'dark') {
+        return 'light'
+      }
+
+      if (current === 'light') {
+        return 'dark'
+      }
+
+      return darkMode ? 'light' : 'dark'
+    })
+  }
+
   return (
     <>
       <section className="top-shell">
-        <Header>
+        <Header darkMode={darkMode} onToggleTheme={handleToggleTheme}>
           <SearchBar
             value={search}
             onChange={setSearch}

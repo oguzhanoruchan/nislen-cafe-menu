@@ -1,4 +1,4 @@
-import { useRef, type PointerEvent, type WheelEvent } from 'react'
+import { useRef, type WheelEvent } from 'react'
 import type { Category } from '../data/menu'
 
 type CategoryFilterProps = {
@@ -15,11 +15,6 @@ export function CategoryFilter({
   allLabel
 }: CategoryFilterProps) {
   const navRef = useRef<HTMLElement | null>(null)
-  const dragState = useRef({
-    isPointerDown: false,
-    startX: 0,
-    startScrollLeft: 0
-  })
 
   const handleWheel = (event: WheelEvent<HTMLElement>) => {
     const target = navRef.current
@@ -31,47 +26,12 @@ export function CategoryFilter({
     }
   }
 
-  const handlePointerDown = (event: PointerEvent<HTMLElement>) => {
-    const target = navRef.current
-    if (!target) return
-
-    dragState.current = {
-      isPointerDown: true,
-      startX: event.clientX,
-      startScrollLeft: target.scrollLeft
-    }
-
-    target.setPointerCapture(event.pointerId)
-  }
-
-  const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
-    const target = navRef.current
-    if (!target || !dragState.current.isPointerDown) return
-
-    const delta = event.clientX - dragState.current.startX
-    target.scrollLeft = dragState.current.startScrollLeft - delta
-  }
-
-  const stopPointerDrag = (event: PointerEvent<HTMLElement>) => {
-    const target = navRef.current
-    if (!target) return
-
-    dragState.current.isPointerDown = false
-    if (target.hasPointerCapture(event.pointerId)) {
-      target.releasePointerCapture(event.pointerId)
-    }
-  }
-
   return (
     <nav
       ref={navRef}
       className="category-filter"
       aria-label="Kategoriler"
       onWheel={handleWheel}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={stopPointerDrag}
-      onPointerCancel={stopPointerDrag}
     >
       <button
         className={activeCategory === 'all' ? 'is-active' : ''}
