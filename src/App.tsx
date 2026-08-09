@@ -41,15 +41,6 @@ export default function App() {
             placeholder={TEXTS.searchPlaceholder}
           />
         </Header>
-
-        <div className="container category-shell">
-          <CategoryFilter
-            categories={categories}
-            activeCategory={activeCategory}
-            onChange={setActiveCategory}
-            allLabel={TEXTS.allCategories}
-          />
-        </div>
       </section>
 
       <section className="mural-stage" aria-label="Nislen mural duvarı">
@@ -62,6 +53,13 @@ export default function App() {
 
       <section className="menu-surface">
         <main className="container app-main">
+          <CategoryFilter
+            categories={categories}
+            activeCategory={activeCategory}
+            onChange={setActiveCategory}
+            allLabel={TEXTS.allCategories}
+          />
+
           <section className="product-grid">
             {filteredProducts.map((product) => (
               <ProductCard
