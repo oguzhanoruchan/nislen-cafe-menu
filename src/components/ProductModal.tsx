@@ -23,11 +23,13 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
             src={product.image}
             alt={product.name}
             className="product-modal-image"
+            loading="lazy"
           />
         ) : (
-          <div className="product-modal-image product-modal-image-placeholder">
-            Fotoğraf Yok
-          </div>
+          <div
+            className="product-modal-image product-modal-image-placeholder"
+            aria-hidden="true"
+          />
         )}
         <h2>{product.name}</h2>
         {product.description ? <p>{product.description}</p> : null}

@@ -7,19 +7,19 @@ type ProductCardProps = {
 
 export function ProductCard({ product, onSelect }: ProductCardProps) {
   return (
-    <button
-      className={`product-card ${product.image ? 'has-image' : 'is-compact'}`}
-      onClick={() => onSelect(product)}
-    >
-      {product.image ? (
-        <div className="product-image-wrap">
+    <button className="product-card" onClick={() => onSelect(product)}>
+      <div className="product-image-wrap">
+        {product.image ? (
           <img
             src={product.image}
             alt={product.name}
             className="product-image"
+            loading="lazy"
           />
-        </div>
-      ) : null}
+        ) : (
+          <div className="product-image-fallback" aria-hidden="true" />
+        )}
+      </div>
       <div className="product-copy">
         <h3>{product.name}</h3>
         {product.description ? <p>{product.description}</p> : null}
