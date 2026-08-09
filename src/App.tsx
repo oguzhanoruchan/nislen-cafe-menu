@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
-import { Header } from './components/Header'
 import { ProductCard } from './components/ProductCard'
 import { ProductModal } from './components/ProductModal'
 import { SearchBar } from './components/SearchBar'
@@ -42,7 +41,6 @@ export default function App() {
       </section>
 
       <section className="menu-surface">
-        <Header />
         <main className="container app-main">
           <SearchBar
             value={search}
