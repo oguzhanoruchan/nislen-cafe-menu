@@ -282,6 +282,10 @@ const menuImagesSeed: MenuImage[] = [
 
 export const menuImages = menuImagesSeed.sort((a, b) => a.order - b.order)
 
+const sectionImageByTitle = Object.fromEntries(
+  menuImages.map((item) => [item.title, item.src])
+) as Record<string, string>
+
 type LegacyCategoryId =
   | 'kahvalti'
   | 'tostlar'
@@ -490,7 +494,8 @@ export const products: Product[] = productsSeed.map((product, index) => {
       section: breakfastSection.section,
       sectionOrder: breakfastSection.sectionOrder,
       name: product.name,
-      price: product.price
+      price: product.price,
+      image: sectionImageByTitle[breakfastSection.section]
     }
   }
 
@@ -501,6 +506,7 @@ export const products: Product[] = productsSeed.map((product, index) => {
     section: mapping.section,
     sectionOrder: mapping.sectionOrder,
     name: product.name,
-    price: product.price
+    price: product.price,
+    image: sectionImageByTitle[mapping.section]
   }
 })
