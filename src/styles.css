@@ -210,7 +210,7 @@ body {
   background: var(--surface-strong);
   box-shadow: 0 4px 14px rgba(15, 24, 21, 0.14);
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
+  grid-template-columns: 96px minmax(0, 1fr);
   align-items: center;
   gap: 12px;
   text-align: left;
@@ -222,8 +222,8 @@ body {
 }
 
 .menu-image-thumb-wrap {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid rgba(225, 216, 198, 0.95);
@@ -350,6 +350,7 @@ body {
 
 .menu-image-modal-card {
   width: min(980px, 100%);
+  max-height: calc(100dvh - 32px);
 }
 
 .modal-head {
@@ -373,7 +374,7 @@ body {
 .product-modal-image {
   width: 100%;
   height: auto;
-  max-height: 72vh;
+  max-height: calc(100dvh - 88px);
   object-fit: contain;
   border-radius: 12px;
   margin-top: 4px;
@@ -570,19 +571,15 @@ body {
     font-size: 14px;
   }
 
-  .product-modal-image {
-    height: 184px;
-  }
-
   .menu-image-card {
-    grid-template-columns: 64px minmax(0, 1fr);
+    grid-template-columns: 112px minmax(0, 1fr);
     gap: 10px;
-    padding: 9px;
+    padding: 8px;
   }
 
   .menu-image-thumb-wrap {
-    width: 64px;
-    height: 64px;
+    width: 112px;
+    height: 112px;
   }
 
   .menu-image-title {
