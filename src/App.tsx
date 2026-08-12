@@ -2,15 +2,12 @@ import { useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { FooterLinks } from './components/FooterLinks'
 import { Header } from './components/Header'
-import { ProductCard } from './components/ProductCard'
-import { ProductModal } from './components/ProductModal'
 import { SearchBar } from './components/SearchBar'
-import { categories, products, type Product } from './data/menu'
+import { categories, menuImages, type MenuImage } from './data/menu'
 
 const TEXTS = {
   allCategories: 'Tümü',
-  searchPlaceholder: 'Yemek, içecek veya ürün ara',
-  emptyTitle: 'Filtreye uygun ürün bulunamadı.'
+  searchPlaceholder: 'Menü bölümü ara'
 }
 
 const THEME_KEY = 'nislen-theme'
@@ -20,7 +17,9 @@ type ThemePreference = 'light' | 'dark' | 'system'
 export default function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [selectedMenuImage, setSelectedMenuImage] = useState<MenuImage | null>(
+    null
+  )
   const [themePreference, setThemePreference] =
     useState<ThemePreference>('system')
   const [darkMode, setDarkMode] = useState(false)
@@ -69,17 +68,15 @@ export default function App() {
     window.localStorage.setItem(THEME_KEY, themePreference)
   }, [themePreference])
 
-  const filteredProducts = useMemo(() => {
+  const filteredMenuImages = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
-    return products.filter((item) => {
+    return menuImages.filter((item) => {
       const categoryMatches =
         activeCategory === 'all' || item.category === activeCategory
       if (!categoryMatches) return false
       if (!normalizedSearch) return true
 
-      return `${item.name} ${item.description || ''}`
-        .toLowerCase()
-        .includes(normalizedSearch)
+      return item.title.toLowerCase().includes(normalizedSearch)
     })
   }, [activeCategory, search])
 
@@ -126,25 +123,55 @@ export default function App() {
             allLabel={TEXTS.allCategories}
           />
 
-          <section className="product-grid">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onSelect={setSelectedProduct}
-              />
+          <section className="menu-image-grid" aria-label="Menü görselleri">
+            {filteredMenuImages.map((menuImage) => (
+              <button
+                key={menuImage.id}
+                className="menu-image-card"
+                onClick={() => setSelectedMenuImage(menuImage)}
+              >
+                <img
+                  src={menuImage.src}
+                  alt={menuImage.title}
+                  className="menu-image"
+                  loading="lazy"
+                />
+              </button>
             ))}
           </section>
-
-          {filteredProducts.length === 0 ? (
-            <p className="empty-state">{TEXTS.emptyTitle}</p>
-          ) : null}
         </main>
       </section>
-      <ProductModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-      />
+
+      {selectedMenuImage ? (
+        <div
+          className="product-modal"
+          role="dialog"
+          aria-modal="true"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setSelectedMenuImage(null)
+            }
+          }}
+        >
+          <div className="product-modal-card menu-image-modal-card">
+            <div className="modal-head">
+              <button
+                className="modal-close"
+                onClick={() => setSelectedMenuImage(null)}
+                aria-label="Kapat"
+              >
+                ×
+              </button>
+            </div>
+            <img
+              src={selectedMenuImage.src}
+              alt={selectedMenuImage.title}
+              className="product-modal-image"
+            />
+          </div>
+        </div>
+      ) : null}
+
       <FooterLinks />
     </>
   )
