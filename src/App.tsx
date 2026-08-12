@@ -2,8 +2,10 @@ import { useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { FooterLinks } from './components/FooterLinks'
 import { Header } from './components/Header'
+import { ProductCard } from './components/ProductCard'
+import { ProductModal } from './components/ProductModal'
 import { SearchBar } from './components/SearchBar'
-import { categories, menuImages } from './data/menu'
+import { categories, products, type Product } from './data/menu'
 
 const TEXTS = {
   allCategories: 'Tümü',
@@ -18,6 +20,7 @@ type ThemePreference = 'light' | 'dark' | 'system'
 export default function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [themePreference, setThemePreference] =
     useState<ThemePreference>('system')
   const [darkMode, setDarkMode] = useState(false)
@@ -66,15 +69,17 @@ export default function App() {
     window.localStorage.setItem(THEME_KEY, themePreference)
   }, [themePreference])
 
-  const filteredMenuImages = useMemo(() => {
+  const filteredProducts = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
-    return menuImages.filter((item) => {
+    return products.filter((item) => {
       const categoryMatches =
         activeCategory === 'all' || item.category === activeCategory
       if (!categoryMatches) return false
       if (!normalizedSearch) return true
 
-      return item.title.toLowerCase().includes(normalizedSearch)
+      return `${item.name} ${item.description || ''}`
+        .toLowerCase()
+        .includes(normalizedSearch)
     })
   }, [activeCategory, search])
 
@@ -121,24 +126,25 @@ export default function App() {
             allLabel={TEXTS.allCategories}
           />
 
-          <section className="menu-image-grid" aria-label="Menü görselleri">
-            {filteredMenuImages.map((menuImage) => (
-              <article key={menuImage.id} className="menu-image-card">
-                <img
-                  src={menuImage.src}
-                  alt={menuImage.title}
-                  className="menu-image"
-                  loading="lazy"
-                />
-              </article>
+          <section className="product-grid">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onSelect={setSelectedProduct}
+              />
             ))}
           </section>
 
-          {filteredMenuImages.length === 0 ? (
+          {filteredProducts.length === 0 ? (
             <p className="empty-state">{TEXTS.emptyTitle}</p>
           ) : null}
         </main>
       </section>
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
       <FooterLinks />
     </>
   )
