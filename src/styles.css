@@ -194,6 +194,20 @@ body {
   gap: 12px;
 }
 
+.menu-section {
+  margin-top: 14px;
+}
+
+.menu-section:first-of-type {
+  margin-top: 10px;
+}
+
+.menu-section-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: var(--text-main);
+}
+
 .product-card {
   width: 100%;
   border: 1px solid var(--surface-border);

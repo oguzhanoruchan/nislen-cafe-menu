@@ -4,9 +4,18 @@ export type Category = {
   order: number
 }
 
+export type MenuSection = {
+  id: string
+  name: string
+  order: number
+}
+
 export type Product = {
   id: string
   category: string
+  categoryOrder: number
+  section: string
+  sectionOrder: number
   name: string
   description?: string
   price: number
@@ -14,98 +23,89 @@ export type Product = {
   featured?: boolean
 }
 
-const categoriesSeed = [
-  {
-    id: 'kahvalti',
-    name: 'Kahvaltı',
-    sortOrder: 1
-  },
-  {
-    id: 'tostlar',
-    name: 'Tostlar',
-    sortOrder: 2
-  },
-  {
-    id: 'gozlemeler',
-    name: 'Gözlemeler',
-    sortOrder: 3
-  },
-  {
-    id: 'aperatif-sicak',
-    name: 'Aperatifler (Sıcak)',
-    sortOrder: 4
-  },
-  {
-    id: 'aperatif-soguk',
-    name: 'Aperatifler (Soğuk)',
-    sortOrder: 5
-  },
-  {
-    id: 'tantuni',
-    name: 'Tantuni',
-    sortOrder: 6
-  },
-  {
-    id: 'special',
-    name: 'Special',
-    sortOrder: 7
-  },
-  {
-    id: 'beyaz-et',
-    name: 'Beyaz Et',
-    sortOrder: 8
-  },
-  {
-    id: 'wraplar',
-    name: 'Wraplar',
-    sortOrder: 9
-  },
-  {
-    id: 'makarnalar',
-    name: 'Makarnalar',
-    sortOrder: 10
-  },
-  {
-    id: 'ara-sicak',
-    name: 'Ara Sıcaklar',
-    sortOrder: 11
-  },
-  {
-    id: 'salatalar',
-    name: 'Salatalar',
-    sortOrder: 12
-  },
-  {
-    id: 'limonatalar',
-    name: 'Limonatalar',
-    sortOrder: 21
-  },
-  {
-    id: 'milkshake',
-    name: 'Milkshake',
-    sortOrder: 22
-  },
-  {
-    id: 'frozen',
-    name: 'Frozen',
-    sortOrder: 23
-  },
-  {
-    id: 'mojito',
-    name: 'Mojito',
-    sortOrder: 24
-  },
-  {
-    id: 'kutu-icecekler',
-    name: 'Kutu İçecekler',
-    sortOrder: 25
-  },
-  {
-    id: 'nargile',
-    name: 'Nargile',
-    sortOrder: 26
-  }
-]
+const mainCategoriesSeed = [
+  { id: 'kahvalti', name: 'Kahvaltı', order: 1 },
+  { id: 'yemek', name: 'Yemek', order: 2 },
+  { id: 'kahveler', name: 'Kahveler', order: 3 },
+  { id: 'tatli', name: 'Tatlı', order: 4 },
+  { id: 'icecek', name: 'İçecek', order: 5 },
+  { id: 'nargile', name: 'Nargile', order: 6 }
+] as const
+
+export const categories: Category[] = mainCategoriesSeed.map((category) => ({
+  id: category.id,
+  name: category.name,
+  order: category.order
+}))
+
+export const menuSections: Record<string, MenuSection[]> = {
+  kahvalti: [
+    { id: 'gurme-kahvalti', name: 'Gurme Kahvaltı', order: 1 },
+    { id: 'huzur-kahvalti-tabagi', name: 'Huzur Kahvaltı Tabağı', order: 2 },
+    { id: 'kahvalti-tabagi', name: 'Kahvaltı Tabağı', order: 3 },
+    { id: 'omlet-cesitleri', name: 'Omlet Çeşitleri', order: 4 },
+    { id: 'menemen-cesitleri', name: 'Menemen Çeşitleri', order: 5 }
+  ],
+  yemek: [
+    { id: 'tost-cesitleri', name: 'Tost Çeşitleri', order: 1 },
+    { id: 'gozleme-cesitleri', name: 'Gözleme Çeşitleri', order: 2 },
+    { id: 'aperatif-sicak', name: 'Aperatifler (Sıcak)', order: 3 },
+    { id: 'aperatif-soguk', name: 'Aperatifler (Soğuk)', order: 4 },
+    { id: 'tantuni', name: 'Tantuni', order: 5 },
+    { id: 'special', name: 'Special', order: 6 },
+    { id: 'beyaz-et', name: 'Beyaz Et', order: 7 },
+    { id: 'wraplar', name: 'Wraplar', order: 8 },
+    { id: 'makarnalar', name: 'Makarnalar', order: 9 },
+    { id: 'ara-sicaklar', name: 'Ara Sıcaklar', order: 10 },
+    { id: 'salatalar', name: 'Salatalar', order: 11 }
+  ],
+  kahveler: [
+    { id: 'turk-kahveleri', name: 'Türk Kahveleri', order: 1 },
+    { id: 'filtre-kahveler', name: 'Filtre Kahveler', order: 2 },
+    {
+      id: 'espresso-bazli-kahveler',
+      name: 'Espresso Bazlı Kahveler',
+      order: 3
+    },
+    { id: 'soguk-icilen-kahveler', name: 'Soğuk İçilen Kahveler', order: 4 }
+  ],
+  tatli: [
+    { id: 'tatlilar', name: 'Tatlılar', order: 1 },
+    { id: 'esintili-tatlar', name: 'Esintili Tatlar', order: 2 }
+  ],
+  icecek: [
+    { id: 'kutu-icecekler', name: 'Kutu İçecekler', order: 1 },
+    { id: 'kokteyller', name: 'Kokteyller', order: 2 }
+  ],
+  nargile: [
+    { id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 },
+    {
+      id: 'darleaf-nargile-cesitleri',
+      name: 'Darleaf Nargile Çeşitleri',
+      order: 2
+    }
+  ]
+}
+
+type LegacyCategoryId =
+  | 'kahvalti'
+  | 'tostlar'
+  | 'gozlemeler'
+  | 'aperatif-sicak'
+  | 'aperatif-soguk'
+  | 'tantuni'
+  | 'special'
+  | 'beyaz-et'
+  | 'wraplar'
+  | 'makarnalar'
+  | 'ara-sicak'
+  | 'salatalar'
+  | 'limonatalar'
+  | 'milkshake'
+  | 'frozen'
+  | 'mojito'
+  | 'kutu-icecekler'
+  | 'nargile'
 
 const productsSeed = [
   { name: 'Gurme Kahvaltı', price: 480, categoryId: 'kahvalti' },
@@ -198,15 +198,114 @@ const productsSeed = [
   { name: 'Özel Karışım', price: 450, categoryId: 'nargile' }
 ] as const
 
-export const categories: Category[] = categoriesSeed.map((category, index) => ({
-  id: category.id,
-  name: category.name,
-  order: index + 1
-}))
+const mainCategoryOrder = Object.fromEntries(
+  mainCategoriesSeed.map((category) => [category.id, category.order])
+) as Record<string, number>
 
-export const products: Product[] = productsSeed.map((product, index) => ({
-  id: `${product.categoryId}-${index + 1}`,
-  category: product.categoryId,
-  name: product.name,
-  price: product.price
-}))
+const legacyCategoryMappings: Record<
+  LegacyCategoryId,
+  { mainCategory: string; section: string; sectionOrder: number }
+> = {
+  kahvalti: {
+    mainCategory: 'kahvalti',
+    section: 'Kahvaltı Tabağı',
+    sectionOrder: 3
+  },
+  tostlar: {
+    mainCategory: 'yemek',
+    section: 'Tost Çeşitleri',
+    sectionOrder: 1
+  },
+  gozlemeler: {
+    mainCategory: 'yemek',
+    section: 'Gözleme Çeşitleri',
+    sectionOrder: 2
+  },
+  'aperatif-sicak': {
+    mainCategory: 'yemek',
+    section: 'Aperatifler (Sıcak)',
+    sectionOrder: 3
+  },
+  'aperatif-soguk': {
+    mainCategory: 'yemek',
+    section: 'Aperatifler (Soğuk)',
+    sectionOrder: 4
+  },
+  tantuni: { mainCategory: 'yemek', section: 'Tantuni', sectionOrder: 5 },
+  special: { mainCategory: 'yemek', section: 'Special', sectionOrder: 6 },
+  'beyaz-et': { mainCategory: 'yemek', section: 'Beyaz Et', sectionOrder: 7 },
+  wraplar: { mainCategory: 'yemek', section: 'Wraplar', sectionOrder: 8 },
+  makarnalar: { mainCategory: 'yemek', section: 'Makarnalar', sectionOrder: 9 },
+  'ara-sicak': {
+    mainCategory: 'yemek',
+    section: 'Ara Sıcaklar',
+    sectionOrder: 10
+  },
+  salatalar: { mainCategory: 'yemek', section: 'Salatalar', sectionOrder: 11 },
+  limonatalar: {
+    mainCategory: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2
+  },
+  milkshake: { mainCategory: 'icecek', section: 'Kokteyller', sectionOrder: 2 },
+  frozen: { mainCategory: 'icecek', section: 'Kokteyller', sectionOrder: 2 },
+  mojito: { mainCategory: 'icecek', section: 'Kokteyller', sectionOrder: 2 },
+  'kutu-icecekler': {
+    mainCategory: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1
+  },
+  nargile: {
+    mainCategory: 'nargile',
+    section: 'Nargile Çeşitleri',
+    sectionOrder: 1
+  }
+}
+
+const resolveBreakfastSection = (productName: string) => {
+  if (productName === 'Gurme Kahvaltı') {
+    return { section: 'Gurme Kahvaltı', sectionOrder: 1 }
+  }
+
+  if (productName === 'Huzur Kahvaltı Tabağı') {
+    return { section: 'Huzur Kahvaltı Tabağı', sectionOrder: 2 }
+  }
+
+  if (productName.includes('Omlet')) {
+    return { section: 'Omlet Çeşitleri', sectionOrder: 4 }
+  }
+
+  if (productName.includes('Menemen')) {
+    return { section: 'Menemen Çeşitleri', sectionOrder: 5 }
+  }
+
+  return { section: 'Kahvaltı Tabağı', sectionOrder: 3 }
+}
+
+export const products: Product[] = productsSeed.map((product, index) => {
+  const mapping = legacyCategoryMappings[product.categoryId]
+
+  if (product.categoryId === 'kahvalti') {
+    const breakfastSection = resolveBreakfastSection(product.name)
+
+    return {
+      id: `${product.categoryId}-${index + 1}`,
+      category: 'kahvalti',
+      categoryOrder: mainCategoryOrder.kahvalti,
+      section: breakfastSection.section,
+      sectionOrder: breakfastSection.sectionOrder,
+      name: product.name,
+      price: product.price
+    }
+  }
+
+  return {
+    id: `${product.categoryId}-${index + 1}`,
+    category: mapping.mainCategory,
+    categoryOrder: mainCategoryOrder[mapping.mainCategory],
+    section: mapping.section,
+    sectionOrder: mapping.sectionOrder,
+    name: product.name,
+    price: product.price
+  }
+})
