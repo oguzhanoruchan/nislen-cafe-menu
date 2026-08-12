@@ -144,13 +144,17 @@ export default function App() {
                 key={menuImage.id}
                 className="menu-image-card"
                 onClick={() => setSelectedMenuImage(menuImage)}
+                aria-label={`${menuImage.title} menü görselini aç`}
               >
-                <img
-                  src={menuImage.src}
-                  alt={menuImage.title}
-                  className="menu-image"
-                  loading="lazy"
-                />
+                <span className="menu-image-thumb-wrap" aria-hidden="true">
+                  <img
+                    src={menuImage.src}
+                    alt=""
+                    className="menu-image"
+                    loading="lazy"
+                  />
+                </span>
+                <span className="menu-image-title">{menuImage.title}</span>
               </button>
             ))}
           </section>
