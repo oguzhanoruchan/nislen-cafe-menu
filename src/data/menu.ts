@@ -10,6 +10,14 @@ export type MenuSection = {
   order: number
 }
 
+export type MenuImage = {
+  id: string
+  category: string
+  title: string
+  src: string
+  order: number
+}
+
 export type Product = {
   id: string
   category: string
@@ -86,6 +94,193 @@ export const menuSections: Record<string, MenuSection[]> = {
     }
   ]
 }
+
+const menuImagesSeed: MenuImage[] = [
+  {
+    id: 'gurme-kahvalti',
+    category: 'kahvalti',
+    title: 'Gurme Kahvaltı',
+    src: '/images/menü/Gurme Kahvaltı.png',
+    order: 1
+  },
+  {
+    id: 'huzur-kahvalti-tabagi',
+    category: 'kahvalti',
+    title: 'Huzur Kahvaltı Tabağı',
+    src: '/images/menü/Huzur Kahvaltı Tabağı.png',
+    order: 2
+  },
+  {
+    id: 'kahvalti-tabagi',
+    category: 'kahvalti',
+    title: 'Kahvaltı Tabağı',
+    src: '/images/menü/Kahvaltı Tabağı.png',
+    order: 3
+  },
+  {
+    id: 'omlet-cesitleri',
+    category: 'kahvalti',
+    title: 'Omlet Çeşitleri',
+    src: '/images/menü/Omlet Çeşitleri.png',
+    order: 4
+  },
+  {
+    id: 'menemen-cesitleri',
+    category: 'kahvalti',
+    title: 'Menemen Çeşitleri',
+    src: '/images/menü/Menemen Çeşitleri.png',
+    order: 5
+  },
+  {
+    id: 'tost-cesitleri',
+    category: 'yemek',
+    title: 'Tost Çeşitleri',
+    src: '/images/menü/Tost Çeşitleri.png',
+    order: 6
+  },
+  {
+    id: 'gozleme-cesitleri',
+    category: 'yemek',
+    title: 'Gözleme Çeşitleri',
+    src: '/images/menü/Gözleme Çeşitleri.png',
+    order: 7
+  },
+  {
+    id: 'aparatif-sicak',
+    category: 'yemek',
+    title: 'Aparatifler (Sıcak)',
+    src: '/images/menü/Aparatifler (Sıcak).png',
+    order: 8
+  },
+  {
+    id: 'aparatif-soguk',
+    category: 'yemek',
+    title: 'Aparatifler (Soğuk)',
+    src: '/images/menü/Aparatifler (Soğuk).png',
+    order: 9
+  },
+  {
+    id: 'tantuni',
+    category: 'yemek',
+    title: 'Tantuni',
+    src: '/images/menü/Tantuni.png',
+    order: 10
+  },
+  {
+    id: 'special',
+    category: 'yemek',
+    title: 'Special',
+    src: '/images/menü/Special.png',
+    order: 11
+  },
+  {
+    id: 'beyaz-et',
+    category: 'yemek',
+    title: 'Beyaz Et',
+    src: '/images/menü/Beyaz Et.png',
+    order: 12
+  },
+  {
+    id: 'wraplar',
+    category: 'yemek',
+    title: 'Wraplar',
+    src: '/images/menü/Wraplar.png',
+    order: 13
+  },
+  {
+    id: 'makarnalar',
+    category: 'yemek',
+    title: 'Makarnalar',
+    src: '/images/menü/Makarnalar.png',
+    order: 14
+  },
+  {
+    id: 'ara-sicaklar',
+    category: 'yemek',
+    title: 'Ara Sıcaklar',
+    src: '/images/menü/Ara Sıcaklar.png',
+    order: 15
+  },
+  {
+    id: 'salatalar',
+    category: 'yemek',
+    title: 'Salatalar',
+    src: '/images/menü/Salatalar.png',
+    order: 16
+  },
+  {
+    id: 'turk-kahveleri',
+    category: 'kahveler',
+    title: 'Türk Kahveleri',
+    src: '/images/menü/Türk Kahveleri.png',
+    order: 17
+  },
+  {
+    id: 'filtre-kahveler',
+    category: 'kahveler',
+    title: 'Filtre kahveler',
+    src: '/images/menü/Filtre kahveler.png',
+    order: 18
+  },
+  {
+    id: 'espresso-bazli-kahveler',
+    category: 'kahveler',
+    title: 'Espresso Bazlı Kahveler',
+    src: '/images/menü/Espresso Bazlı Kahveler.png',
+    order: 19
+  },
+  {
+    id: 'soguk-icilen-kahveler',
+    category: 'kahveler',
+    title: 'Soğuk İçilen Kahveler',
+    src: '/images/menü/Soğuk İçilen Kahveler.png',
+    order: 20
+  },
+  {
+    id: 'tatlilar',
+    category: 'tatli',
+    title: 'Tatlılar',
+    src: '/images/menü/Tatlılar.png',
+    order: 21
+  },
+  {
+    id: 'esintili-tatlar',
+    category: 'tatli',
+    title: 'Esintili Tatlar',
+    src: '/images/menü/Esintili Tatlar.png',
+    order: 22
+  },
+  {
+    id: 'kutu-icecekler',
+    category: 'icecek',
+    title: 'Kutu İçecekler',
+    src: '/images/menü/Kutu İçecekler.png',
+    order: 23
+  },
+  {
+    id: 'kokteyller',
+    category: 'icecek',
+    title: 'Kokteyller',
+    src: '/images/menü/Kokteyller.png',
+    order: 24
+  },
+  {
+    id: 'nargile-cesitleri',
+    category: 'nargile',
+    title: 'Nargile Çeşitleri',
+    src: '/images/menü/Nargile Çeşitleri.png',
+    order: 25
+  },
+  {
+    id: 'darleaf-nargile-cesitleri',
+    category: 'nargile',
+    title: 'Darleaf Nargile Çeşitleri',
+    src: '/images/menü/Darleaf Nargile Çeşitleri.png',
+    order: 26
+  }
+]
+
+export const menuImages = menuImagesSeed.sort((a, b) => a.order - b.order)
 
 type LegacyCategoryId =
   | 'kahvalti'

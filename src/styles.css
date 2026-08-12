@@ -194,18 +194,24 @@ body {
   gap: 12px;
 }
 
-.menu-section {
-  margin-top: 14px;
-}
-
-.menu-section:first-of-type {
+.menu-image-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
   margin-top: 10px;
 }
 
-.menu-section-title {
-  margin: 0 0 10px;
-  font-size: 18px;
-  color: var(--text-main);
+.menu-image-card {
+  border: 1px solid var(--surface-border);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface-strong);
+  box-shadow: 0 4px 14px rgba(15, 24, 21, 0.14);
+}
+
+.menu-image {
+  width: 100%;
+  display: block;
 }
 
 .product-card {

@@ -2,10 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { FooterLinks } from './components/FooterLinks'
 import { Header } from './components/Header'
-import { ProductCard } from './components/ProductCard'
-import { ProductModal } from './components/ProductModal'
 import { SearchBar } from './components/SearchBar'
-import { categories, menuSections, products, type Product } from './data/menu'
+import { categories, menuImages } from './data/menu'
 
 const TEXTS = {
   allCategories: 'Tümü',
@@ -20,7 +18,6 @@ type ThemePreference = 'light' | 'dark' | 'system'
 export default function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [themePreference, setThemePreference] =
     useState<ThemePreference>('system')
   const [darkMode, setDarkMode] = useState(false)
@@ -69,68 +66,17 @@ export default function App() {
     window.localStorage.setItem(THEME_KEY, themePreference)
   }, [themePreference])
 
-  const filteredProducts = useMemo(() => {
+  const filteredMenuImages = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
-    return products.filter((item) => {
+    return menuImages.filter((item) => {
       const categoryMatches =
         activeCategory === 'all' || item.category === activeCategory
       if (!categoryMatches) return false
       if (!normalizedSearch) return true
 
-      return `${item.name} ${item.description || ''}`
-        .toLowerCase()
-        .includes(normalizedSearch)
+      return item.title.toLowerCase().includes(normalizedSearch)
     })
   }, [activeCategory, search])
-
-  const sectionedProducts = useMemo(() => {
-    const sorted = [...filteredProducts].sort((a, b) => {
-      if (a.categoryOrder !== b.categoryOrder) {
-        return a.categoryOrder - b.categoryOrder
-      }
-
-      if (a.sectionOrder !== b.sectionOrder) {
-        return a.sectionOrder - b.sectionOrder
-      }
-
-      return a.name.localeCompare(b.name, 'tr')
-    })
-
-    const groups = new Map<string, { title: string; products: Product[] }>()
-
-    sorted.forEach((product) => {
-      const key = `${product.category}-${product.section}`
-
-      if (!groups.has(key)) {
-        groups.set(key, { title: product.section, products: [] })
-      }
-
-      groups.get(key)?.products.push(product)
-    })
-
-    const preferredOrder =
-      activeCategory === 'all'
-        ? categories.flatMap((category) =>
-            (menuSections[category.id] || []).map(
-              (section) => `${category.id}-${section.name}`
-            )
-          )
-        : (menuSections[activeCategory] || []).map(
-            (section) => `${activeCategory}-${section.name}`
-          )
-
-    const orderedGroups = preferredOrder
-      .map((key) => groups.get(key))
-      .filter((group): group is { title: string; products: Product[] } =>
-        Boolean(group)
-      )
-
-    const remaining = [...groups.entries()]
-      .filter(([key]) => !preferredOrder.includes(key))
-      .map(([, group]) => group)
-
-    return [...orderedGroups, ...remaining]
-  }, [activeCategory, filteredProducts])
 
   const handleToggleTheme = () => {
     setThemePreference((current) => {
@@ -175,30 +121,24 @@ export default function App() {
             allLabel={TEXTS.allCategories}
           />
 
-          {sectionedProducts.map((section) => (
-            <section key={section.title} className="menu-section">
-              <h2 className="menu-section-title">{section.title}</h2>
-              <div className="product-grid">
-                {section.products.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    onSelect={setSelectedProduct}
-                  />
-                ))}
-              </div>
-            </section>
-          ))}
+          <section className="menu-image-grid" aria-label="Menü görselleri">
+            {filteredMenuImages.map((menuImage) => (
+              <article key={menuImage.id} className="menu-image-card">
+                <img
+                  src={menuImage.src}
+                  alt={menuImage.title}
+                  className="menu-image"
+                  loading="lazy"
+                />
+              </article>
+            ))}
+          </section>
 
-          {sectionedProducts.length === 0 ? (
+          {filteredMenuImages.length === 0 ? (
             <p className="empty-state">{TEXTS.emptyTitle}</p>
           ) : null}
         </main>
       </section>
-      <ProductModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-      />
       <FooterLinks />
     </>
   )
