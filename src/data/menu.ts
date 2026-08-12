@@ -49,8 +49,8 @@ export const menuSections: Record<string, MenuSection[]> = {
   yemek: [
     { id: 'tost-cesitleri', name: 'Tost Çeşitleri', order: 1 },
     { id: 'gozleme-cesitleri', name: 'Gözleme Çeşitleri', order: 2 },
-    { id: 'aperatif-sicak', name: 'Aperatifler (Sıcak)', order: 3 },
-    { id: 'aperatif-soguk', name: 'Aperatifler (Soğuk)', order: 4 },
+    { id: 'aperatif-sicak', name: 'Aparatifler (Sıcak)', order: 3 },
+    { id: 'aperatif-soguk', name: 'Aparatifler (Soğuk)', order: 4 },
     { id: 'tantuni', name: 'Tantuni', order: 5 },
     { id: 'special', name: 'Special', order: 6 },
     { id: 'beyaz-et', name: 'Beyaz Et', order: 7 },
@@ -61,7 +61,7 @@ export const menuSections: Record<string, MenuSection[]> = {
   ],
   kahveler: [
     { id: 'turk-kahveleri', name: 'Türk Kahveleri', order: 1 },
-    { id: 'filtre-kahveler', name: 'Filtre Kahveler', order: 2 },
+    { id: 'filtre-kahveler', name: 'Filtre kahveler', order: 2 },
     {
       id: 'espresso-bazli-kahveler',
       name: 'Espresso Bazlı Kahveler',
@@ -223,12 +223,12 @@ const legacyCategoryMappings: Record<
   },
   'aperatif-sicak': {
     mainCategory: 'yemek',
-    section: 'Aperatifler (Sıcak)',
+    section: 'Aparatifler (Sıcak)',
     sectionOrder: 3
   },
   'aperatif-soguk': {
     mainCategory: 'yemek',
-    section: 'Aperatifler (Soğuk)',
+    section: 'Aparatifler (Soğuk)',
     sectionOrder: 4
   },
   tantuni: { mainCategory: 'yemek', section: 'Tantuni', sectionOrder: 5 },
