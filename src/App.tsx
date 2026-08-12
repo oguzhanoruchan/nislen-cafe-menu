@@ -68,6 +68,21 @@ export default function App() {
     window.localStorage.setItem(THEME_KEY, themePreference)
   }, [themePreference])
 
+  useEffect(() => {
+    if (!selectedMenuImage) {
+      return
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedMenuImage(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedMenuImage])
+
   const filteredMenuImages = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
     return menuImages.filter((item) => {
