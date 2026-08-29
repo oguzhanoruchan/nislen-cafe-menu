@@ -467,8 +467,7 @@ body {
     grid-column: 1 / -1;
     grid-row: 1;
     width: 100%;
-    height: auto;
-    aspect-ratio: 1023 / 1537;
+    height: clamp(190px, 19vw, 230px);
     border: 0;
     border-radius: 0;
     border-bottom: 1px solid var(--surface-border);
