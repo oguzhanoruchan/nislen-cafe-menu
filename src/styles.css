@@ -194,20 +194,6 @@ body {
   gap: 12px;
 }
 
-.menu-category {
-  margin-top: 22px;
-}
-
-.menu-category-title {
-  margin: 0;
-  color: var(--nislen-green);
-  font-size: clamp(20px, 2vw, 24px);
-  line-height: 1.15;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
 .menu-section {
   margin-top: 12px;
 }

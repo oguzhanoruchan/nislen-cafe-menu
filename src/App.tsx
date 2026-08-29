@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { FooterLinks } from './components/FooterLinks'
 import { Header } from './components/Header'
@@ -177,15 +177,10 @@ export default function App() {
           />
 
           {categoryMenuGroups.map((category) => (
-            <section
-              key={category.id}
-              className="menu-category"
-              aria-label={category.name}
-            >
-              <h2 className="menu-category-title">{category.name}</h2>
+            <Fragment key={category.id}>
               {category.sections.map((section) => (
                 <section
-                  key={section.title}
+                  key={`${category.id}-${section.title}`}
                   className="menu-section"
                   aria-label={section.title}
                 >
@@ -220,7 +215,7 @@ export default function App() {
                   </div>
                 </section>
               ))}
-            </section>
+            </Fragment>
           ))}
         </main>
       </section>
