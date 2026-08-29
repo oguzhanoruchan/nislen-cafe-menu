@@ -96,7 +96,10 @@ export default function App() {
   }, [activeCategory, search])
 
   const sectionedMenuImages = useMemo(() => {
-    const groups = new Map<string, { title: string; images: MenuImage[] }>()
+    const groups = new Map<
+      string,
+      { category: string; title: string; images: MenuImage[] }
+    >()
 
     filteredMenuImages.forEach((image) => {
       const key = `${image.category}-${image.sectionOrder}`
@@ -107,11 +110,28 @@ export default function App() {
         return
       }
 
-      groups.set(key, { title: image.section, images: [image] })
+      groups.set(key, {
+        category: image.category,
+        title: image.section,
+        images: [image]
+      })
     })
 
     return [...groups.values()]
   }, [filteredMenuImages])
+
+  const categoryMenuGroups = useMemo(
+    () =>
+      categories
+        .map((category) => ({
+          ...category,
+          sections: sectionedMenuImages.filter(
+            (section) => section.category === category.id
+          )
+        }))
+        .filter((category) => category.sections.length > 0),
+    [sectionedMenuImages]
+  )
 
   const handleToggleTheme = () => {
     setThemePreference((current) => {
@@ -156,36 +176,50 @@ export default function App() {
             allLabel={TEXTS.allCategories}
           />
 
-          {sectionedMenuImages.map((section) => (
+          {categoryMenuGroups.map((category) => (
             <section
-              key={section.title}
-              className="menu-section"
-              aria-label={section.title}
+              key={category.id}
+              className="menu-category"
+              aria-label={category.name}
             >
-              <h2 className="menu-section-title">{section.title}</h2>
-              <div className="menu-image-grid">
-                {section.images.map((menuImage) => (
-                  <button
-                    key={menuImage.id}
-                    className="menu-image-card"
-                    onClick={() => setSelectedMenuImage(menuImage)}
-                    aria-label={`${menuImage.title} menü görselini aç`}
-                  >
-                    <span className="menu-image-thumb-wrap" aria-hidden="true">
-                      <img
-                        src={menuImage.src}
-                        alt=""
-                        className="menu-image"
-                        loading="lazy"
-                      />
-                    </span>
-                    <span className="menu-image-title">{menuImage.title}</span>
-                    <span className="menu-image-arrow" aria-hidden="true">
-                      ›
-                    </span>
-                  </button>
-                ))}
-              </div>
+              <h2 className="menu-category-title">{category.name}</h2>
+              {category.sections.map((section) => (
+                <section
+                  key={section.title}
+                  className="menu-section"
+                  aria-label={section.title}
+                >
+                  <h3 className="menu-section-title">{section.title}</h3>
+                  <div className="menu-image-grid">
+                    {section.images.map((menuImage) => (
+                      <button
+                        key={menuImage.id}
+                        className="menu-image-card"
+                        onClick={() => setSelectedMenuImage(menuImage)}
+                        aria-label={`${menuImage.title} menü görselini aç`}
+                      >
+                        <span
+                          className="menu-image-thumb-wrap"
+                          aria-hidden="true"
+                        >
+                          <img
+                            src={menuImage.src}
+                            alt=""
+                            className="menu-image"
+                            loading="lazy"
+                          />
+                        </span>
+                        <span className="menu-image-title">
+                          {menuImage.title}
+                        </span>
+                        <span className="menu-image-arrow" aria-hidden="true">
+                          ›
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              ))}
             </section>
           ))}
         </main>
