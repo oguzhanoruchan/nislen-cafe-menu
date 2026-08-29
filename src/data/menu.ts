@@ -88,14 +88,7 @@ export const menuSections: Record<string, MenuSection[]> = {
     { id: 'kokteyller', name: 'Kokteyller', order: 2 },
     { id: 'ozel-icecekler', name: 'Özel İçecekler', order: 3 }
   ],
-  nargile: [
-    { id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 },
-    {
-      id: 'darleaf-nargile-cesitleri',
-      name: 'Darleaf Nargile Çeşitleri',
-      order: 2
-    }
-  ]
+  nargile: [{ id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 }]
 }
 
 type MenuImageSeed = Omit<MenuImage, 'id' | 'order'>
@@ -901,8 +894,8 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'nargile',
-    section: 'Darleaf Nargile Çeşitleri',
-    sectionOrder: 2,
+    section: 'Nargile Çeşitleri',
+    sectionOrder: 1,
     title: 'Dark Leaf',
     src: '/images/menü/Dark Leaf.png'
   }
