@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/write-version.mjs && tsc -b && vite build",
+    "images:previews": "node scripts/generate-menu-previews.mjs",
     "preview": "vite preview",
     "test": "echo \"No tests configured\"",
     "lint": "eslint .",
@@ -27,6 +28,7 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
+    "sharp": "^0.35.4",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0",
     "vite": "^6.0.3"

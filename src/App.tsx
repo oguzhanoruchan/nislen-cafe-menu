@@ -2,6 +2,7 @@ import { Fragment, useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { FooterLinks } from './components/FooterLinks'
 import { Header } from './components/Header'
+import { MenuImagePreview } from './components/MenuImagePreview'
 import { SearchBar } from './components/SearchBar'
 import { categories, menuImages, type MenuImage } from './data/menu'
 
@@ -133,6 +134,11 @@ export default function App() {
     [sectionedMenuImages]
   )
 
+  const priorityMenuImageIds = useMemo(
+    () => new Set(filteredMenuImages.slice(0, 3).map((image) => image.id)),
+    [filteredMenuImages]
+  )
+
   const handleToggleTheme = () => {
     setThemePreference((current) => {
       if (current === 'dark') {
@@ -197,11 +203,11 @@ export default function App() {
                           className="menu-image-thumb-wrap"
                           aria-hidden="true"
                         >
-                          <img
+                          <MenuImagePreview
                             src={menuImage.src}
+                            previewSrc={menuImage.previewSrc}
                             alt=""
-                            className="menu-image"
-                            loading="lazy"
+                            priority={priorityMenuImageIds.has(menuImage.id)}
                           />
                         </span>
                         <span className="menu-image-title">

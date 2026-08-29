@@ -17,6 +17,7 @@ export type MenuImage = {
   sectionOrder: number
   title: string
   src: string
+  previewSrc: string
   order: number
 }
 
@@ -91,7 +92,7 @@ export const menuSections: Record<string, MenuSection[]> = {
   nargile: [{ id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 }]
 }
 
-type MenuImageSeed = Omit<MenuImage, 'id' | 'order'>
+type MenuImageSeed = Omit<MenuImage, 'id' | 'order' | 'previewSrc'>
 
 const menuImagesSeed: MenuImageSeed[] = [
   {
@@ -903,6 +904,9 @@ const menuImagesSeed: MenuImageSeed[] = [
 
 export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => ({
   ...image,
+  previewSrc: image.src
+    .replace('/images/menü/', '/images/menü/previews/')
+    .replace(/\.png$/, '.webp'),
   id: `${image.category}-${index + 1}`,
   order: index + 1
 }))
