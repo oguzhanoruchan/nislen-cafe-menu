@@ -157,8 +157,12 @@ export default function App() {
           />
 
           {sectionedMenuImages.map((section) => (
-            <section key={section.title} aria-label={section.title}>
-              <h2 className="menu-image-title">{section.title}</h2>
+            <section
+              key={section.title}
+              className="menu-section"
+              aria-label={section.title}
+            >
+              <h2 className="menu-section-title">{section.title}</h2>
               <div className="menu-image-grid">
                 {section.images.map((menuImage) => (
                   <button
@@ -176,6 +180,9 @@ export default function App() {
                       />
                     </span>
                     <span className="menu-image-title">{menuImage.title}</span>
+                    <span className="menu-image-arrow" aria-hidden="true">
+                      ›
+                    </span>
                   </button>
                 ))}
               </div>

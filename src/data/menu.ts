@@ -58,16 +58,15 @@ export const menuSections: Record<string, MenuSection[]> = {
     { id: 'gozleme-cesitleri', name: 'Gözleme Çeşitleri', order: 5 }
   ],
   yemek: [
-    { id: 'izmir-kumru', name: 'İzmir Kumru', order: 1 },
-    { id: 'ekmek-arasi-cesitleri', name: 'Ekmek Arası Çeşitleri', order: 2 },
-    { id: 'izgara', name: 'Izgara', order: 3 },
-    { id: 'tantuni', name: 'Tantuni', order: 4 },
-    { id: 'special', name: 'Special', order: 5 },
-    { id: 'beyaz-et', name: 'Beyaz Et', order: 6 },
-    { id: 'wraplar', name: 'Wraplar', order: 7 },
-    { id: 'makarnalar', name: 'Makarnalar', order: 8 },
-    { id: 'ara-sicaklar', name: 'Ara Sıcaklar', order: 9 },
-    { id: 'salatalar', name: 'Salatalar', order: 10 }
+    { id: 'ekmek-arasi-cesitleri', name: 'Ekmek Arası Çeşitleri', order: 1 },
+    { id: 'izgara', name: 'Izgara', order: 2 },
+    { id: 'tantuni', name: 'Tantuni', order: 3 },
+    { id: 'special', name: 'Special', order: 4 },
+    { id: 'beyaz-et', name: 'Beyaz Et', order: 5 },
+    { id: 'wraplar', name: 'Wraplar', order: 6 },
+    { id: 'makarnalar', name: 'Makarnalar', order: 7 },
+    { id: 'ara-sicaklar', name: 'Ara Sıcaklar', order: 8 },
+    { id: 'salatalar', name: 'Salatalar', order: 9 }
   ],
   kahveler: [
     { id: 'turk-kahveleri', name: 'Türk Kahveleri', order: 1 },
@@ -237,7 +236,7 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'yemek',
-    section: 'İzmir Kumru',
+    section: 'Ekmek Arası Çeşitleri',
     sectionOrder: 1,
     title: 'İzmir Kumru',
     src: '/images/menü/İzmir Kumru.png'
@@ -245,224 +244,224 @@ const menuImagesSeed: MenuImageSeed[] = [
   {
     category: 'yemek',
     section: 'Ekmek Arası Çeşitleri',
-    sectionOrder: 2,
+    sectionOrder: 1,
     title: 'Ekmek Arası Köfte',
     src: '/images/menü/Ekmek Arası Köfte.png'
   },
   {
     category: 'yemek',
     section: 'Ekmek Arası Çeşitleri',
-    sectionOrder: 2,
+    sectionOrder: 1,
     title: 'Ekmek Arası Kaşar-Salam',
     src: '/images/menü/Ekmek Arası Kaşar-Salam.png'
   },
   {
     category: 'yemek',
     section: 'Ekmek Arası Çeşitleri',
-    sectionOrder: 2,
+    sectionOrder: 1,
     title: 'Ekmek Arası Ton Balığı',
     src: '/images/menü/Ekmek Arası Ton Balığı.png'
   },
   {
     category: 'yemek',
     section: 'Izgara',
-    sectionOrder: 3,
+    sectionOrder: 2,
     title: 'Izgara Köfte Servis',
     src: '/images/menü/Izgara Köfte Servis.png'
   },
   {
     category: 'yemek',
     section: 'Tantuni',
-    sectionOrder: 4,
+    sectionOrder: 3,
     title: 'Somun Tantuni',
     src: '/images/menü/Somun Tantuni.png'
   },
   {
     category: 'yemek',
     section: 'Tantuni',
-    sectionOrder: 4,
+    sectionOrder: 3,
     title: 'Lavaş Tantuni',
     src: '/images/menü/Lavaş Tantuni.png'
   },
   {
     category: 'yemek',
     section: 'Special',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Chicken Mushroom',
     src: '/images/menü/Chicken Mushroom.png'
   },
   {
     category: 'yemek',
     section: 'Special',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Kiremitte Mantar',
     src: '/images/menü/Kiremitte Mantar.png'
   },
   {
     category: 'yemek',
     section: 'Special',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Yoğurtlu Akdeniz Kebabı',
     src: '/images/menü/Yoğurtlu Akdeniz Kebabı.png'
   },
   {
     category: 'yemek',
     section: 'Special',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Kayseri Mantısı',
     src: '/images/menü/Kayseri Mantısı.png'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Tavuk Sote',
     src: '/images/menü/Tavuk Sote.png'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Köri Soslu Piliç',
     src: '/images/menü/Köri Soslu Piliç.png'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Mexican Soslu Piliç',
     src: '/images/menü/Mexican Soslu Piliç.png'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Barbekü Soslu Piliç',
     src: '/images/menü/Barbekü Soslu Piliç.png'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Kekikli Kremalı Soslu Piliç',
     src: '/images/menü/Kekikli Kremalı Soslu Piliç.png'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Tavuk Çökertme',
     src: '/images/menü/Tavuk Çökertme.png'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
-    sectionOrder: 7,
+    sectionOrder: 6,
     title: 'Vegetarian Wrap',
     src: '/images/menü/Vejeteryan Wrap.png'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
-    sectionOrder: 7,
+    sectionOrder: 6,
     title: 'Tavuk Wrap',
     src: '/images/menü/Tavuk Wrap.png'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
-    sectionOrder: 7,
+    sectionOrder: 6,
     title: 'Sosisli Wrap',
     src: '/images/menü/Sosisli Wrap.png'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
-    sectionOrder: 8,
+    sectionOrder: 7,
     title: 'Penne Makarna',
     src: '/images/menü/Penne Makarna.png'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
-    sectionOrder: 8,
+    sectionOrder: 7,
     title: 'Anne Eli Makarna',
     src: '/images/menü/Anne Eli Makarna.png'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
-    sectionOrder: 8,
+    sectionOrder: 7,
     title: 'Pesto Soslu Penne',
     src: '/images/menü/Pesto Soslu Penne.png'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
-    sectionOrder: 8,
+    sectionOrder: 7,
     title: 'Köri Soslu Makarna',
     src: '/images/menü/Köri Soslu Makarna.png'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
-    sectionOrder: 8,
+    sectionOrder: 7,
     title: 'İtalyan Makarna',
     src: '/images/menü/İtalyan Makarna.png'
   },
   {
     category: 'yemek',
     section: 'Ara Sıcaklar',
-    sectionOrder: 9,
+    sectionOrder: 8,
     title: 'Patates Tava',
     src: '/images/menü/Patates Tava.png'
   },
   {
     category: 'yemek',
     section: 'Ara Sıcaklar',
-    sectionOrder: 9,
+    sectionOrder: 8,
     title: "Cheddar'lı Patates Kızartması",
     src: '/images/menü/Cheddarlı Patates Kızartması.png'
   },
   {
     category: 'yemek',
     section: 'Ara Sıcaklar',
-    sectionOrder: 9,
+    sectionOrder: 8,
     title: 'Mix Tabak',
     src: '/images/menü/Mix Tabak.png'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
-    sectionOrder: 10,
+    sectionOrder: 9,
     title: 'Akdeniz Salata',
     src: '/images/menü/Akdeniz Salata.png'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
-    sectionOrder: 10,
+    sectionOrder: 9,
     title: 'Ton Balıklı Salata',
     src: '/images/menü/Ton Balıklı Salata.png'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
-    sectionOrder: 10,
+    sectionOrder: 9,
     title: 'Şinitzel Salatası',
     src: '/images/menü/Şinitzel Salatası.png'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
-    sectionOrder: 10,
+    sectionOrder: 9,
     title: 'Sezar Salata',
     src: '/images/menü/Sezar Salata.png'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
-    sectionOrder: 10,
+    sectionOrder: 9,
     title: 'Tavuklu Şefin Salatası',
     src: '/images/menü/Tavuklu Şefin Salatası.png'
   },
