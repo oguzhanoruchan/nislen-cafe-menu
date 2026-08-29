@@ -13,6 +13,8 @@ export type MenuSection = {
 export type MenuImage = {
   id: string
   category: string
+  section: string
+  sectionOrder: number
   title: string
   src: string
   order: number
@@ -36,8 +38,9 @@ const mainCategoriesSeed = [
   { id: 'yemek', name: 'Yemek', order: 2 },
   { id: 'kahveler', name: 'Kahveler', order: 3 },
   { id: 'tatli', name: 'Tatlı', order: 4 },
-  { id: 'icecek', name: 'İçecek', order: 5 },
-  { id: 'nargile', name: 'Nargile', order: 6 }
+  { id: 'tatli-serin', name: 'Tatlı & Serin', order: 5 },
+  { id: 'icecek', name: 'İçecek', order: 6 },
+  { id: 'nargile', name: 'Nargile', order: 7 }
 ] as const
 
 export const categories: Category[] = mainCategoriesSeed.map((category) => ({
@@ -48,42 +51,43 @@ export const categories: Category[] = mainCategoriesSeed.map((category) => ({
 
 export const menuSections: Record<string, MenuSection[]> = {
   kahvalti: [
-    { id: 'gurme-kahvalti', name: 'Gurme Kahvaltı', order: 1 },
-    { id: 'huzur-kahvalti-tabagi', name: 'Huzur Kahvaltı Tabağı', order: 2 },
-    { id: 'kahvalti-tabagi', name: 'Kahvaltı Tabağı', order: 3 },
-    { id: 'omlet-cesitleri', name: 'Omlet Çeşitleri', order: 4 },
-    { id: 'menemen-cesitleri', name: 'Menemen Çeşitleri', order: 5 }
+    { id: 'kahvaltilar', name: 'Kahvaltılar', order: 1 },
+    { id: 'omlet-cesitleri', name: 'Omlet Çeşitleri', order: 2 },
+    { id: 'menemen-cesitleri', name: 'Menemen Çeşitleri', order: 3 },
+    { id: 'tost-cesitleri', name: 'Tost Çeşitleri', order: 4 },
+    { id: 'gozleme-cesitleri', name: 'Gözleme Çeşitleri', order: 5 }
   ],
   yemek: [
-    { id: 'tost-cesitleri', name: 'Tost Çeşitleri', order: 1 },
-    { id: 'gozleme-cesitleri', name: 'Gözleme Çeşitleri', order: 2 },
-    { id: 'aperatif-sicak', name: 'Aparatifler (Sıcak)', order: 3 },
-    { id: 'aperatif-soguk', name: 'Aparatifler (Soğuk)', order: 4 },
-    { id: 'tantuni', name: 'Tantuni', order: 5 },
-    { id: 'special', name: 'Special', order: 6 },
-    { id: 'beyaz-et', name: 'Beyaz Et', order: 7 },
-    { id: 'wraplar', name: 'Wraplar', order: 8 },
-    { id: 'makarnalar', name: 'Makarnalar', order: 9 },
-    { id: 'ara-sicaklar', name: 'Ara Sıcaklar', order: 10 },
-    { id: 'salatalar', name: 'Salatalar', order: 11 }
+    { id: 'izmir-kumru', name: 'İzmir Kumru', order: 1 },
+    { id: 'ekmek-arasi-cesitleri', name: 'Ekmek Arası Çeşitleri', order: 2 },
+    { id: 'izgara', name: 'Izgara', order: 3 },
+    { id: 'tantuni', name: 'Tantuni', order: 4 },
+    { id: 'special', name: 'Special', order: 5 },
+    { id: 'beyaz-et', name: 'Beyaz Et', order: 6 },
+    { id: 'wraplar', name: 'Wraplar', order: 7 },
+    { id: 'makarnalar', name: 'Makarnalar', order: 8 },
+    { id: 'ara-sicaklar', name: 'Ara Sıcaklar', order: 9 },
+    { id: 'salatalar', name: 'Salatalar', order: 10 }
   ],
   kahveler: [
     { id: 'turk-kahveleri', name: 'Türk Kahveleri', order: 1 },
-    { id: 'filtre-kahveler', name: 'Filtre kahveler', order: 2 },
+    { id: 'filtre-kahveler', name: 'Filtre Kahveler', order: 2 },
     {
       id: 'espresso-bazli-kahveler',
       name: 'Espresso Bazlı Kahveler',
       order: 3
     },
-    { id: 'soguk-icilen-kahveler', name: 'Soğuk İçilen Kahveler', order: 4 }
+    { id: 'soguk-kahveler', name: 'Soğuk Kahveler', order: 4 }
   ],
   tatli: [
     { id: 'tatlilar', name: 'Tatlılar', order: 1 },
     { id: 'esintili-tatlar', name: 'Esintili Tatlar', order: 2 }
   ],
+  'tatli-serin': [{ id: 'tatli-serin', name: 'Tatlı & Serin', order: 1 }],
   icecek: [
     { id: 'kutu-icecekler', name: 'Kutu İçecekler', order: 1 },
-    { id: 'kokteyller', name: 'Kokteyller', order: 2 }
+    { id: 'kokteyller', name: 'Kokteyller', order: 2 },
+    { id: 'ozel-icecekler', name: 'Özel İçecekler', order: 3 }
   ],
   nargile: [
     { id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 },
@@ -95,418 +99,820 @@ export const menuSections: Record<string, MenuSection[]> = {
   ]
 }
 
-const menuImagesSeed: MenuImage[] = [
+type MenuImageSeed = Omit<MenuImage, 'id' | 'order'>
+
+const menuImagesSeed: MenuImageSeed[] = [
   {
-    id: 'gurme-kahvalti',
     category: 'kahvalti',
+    section: 'Kahvaltılar',
+    sectionOrder: 1,
     title: 'Gurme Kahvaltı',
-    src: '/images/menü/Gurme Kahvaltı.png',
-    order: 1
+    src: '/images/menü/Gurme Kahvaltı.png'
   },
   {
-    id: 'huzur-kahvalti-tabagi',
     category: 'kahvalti',
+    section: 'Kahvaltılar',
+    sectionOrder: 1,
     title: 'Huzur Kahvaltı Tabağı',
-    src: '/images/menü/Huzur Kahvaltı Tabağı.png',
-    order: 2
+    src: '/images/menü/Huzur Kahvaltı Tabağı.png'
   },
   {
-    id: 'kahvalti-tabagi',
     category: 'kahvalti',
-    title: 'Kahvaltı Tabağı',
-    src: '/images/menü/Kahvaltı Tabağı.png',
-    order: 3
+    section: 'Kahvaltılar',
+    sectionOrder: 1,
+    title: 'Kampüs Kahvaltı',
+    src: '/images/menü/Kampüs Kahvaltı Tabağı.png'
   },
   {
-    id: 'omlet-cesitleri',
     category: 'kahvalti',
-    title: 'Omlet Çeşitleri',
-    src: '/images/menü/Omlet Çeşitleri.png',
-    order: 4
+    section: 'Omlet Çeşitleri',
+    sectionOrder: 2,
+    title: 'Kaşarlı Omlet',
+    src: '/images/menü/Kaşarlı Omlet.png'
   },
   {
-    id: 'menemen-cesitleri',
     category: 'kahvalti',
-    title: 'Menemen Çeşitleri',
-    src: '/images/menü/Menemen Çeşitleri.png',
-    order: 5
+    section: 'Omlet Çeşitleri',
+    sectionOrder: 2,
+    title: 'Sucuklu Omlet',
+    src: '/images/menü/Sucuklu Omlet.png'
   },
   {
-    id: 'tost-cesitleri',
+    category: 'kahvalti',
+    section: 'Omlet Çeşitleri',
+    sectionOrder: 2,
+    title: 'Pastırmalı Omlet',
+    src: '/images/menü/Pastırmalı Omlet.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Menemen Çeşitleri',
+    sectionOrder: 3,
+    title: 'Menemen',
+    src: '/images/menü/Menemen.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Menemen Çeşitleri',
+    sectionOrder: 3,
+    title: 'Kaşarlı Menemen',
+    src: '/images/menü/Kaşarlı Menemen.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Menemen Çeşitleri',
+    sectionOrder: 3,
+    title: 'Sucuklu Menemen',
+    src: '/images/menü/Sucuklu Menemen.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Tost Çeşitleri',
+    sectionOrder: 4,
+    title: 'Beyaz Peynirli Tost',
+    src: '/images/menü/Beyaz Peynirli Tost.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Tost Çeşitleri',
+    sectionOrder: 4,
+    title: 'Kaşarlı Tost',
+    src: '/images/menü/Kaşarlı Tost.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Tost Çeşitleri',
+    sectionOrder: 4,
+    title: 'Karışık Tost',
+    src: '/images/menü/Karışık Tost.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Tost Çeşitleri',
+    sectionOrder: 4,
+    title: 'Ayvalık Tost',
+    src: '/images/menü/Ayvalık Tost.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Gözleme Çeşitleri',
+    sectionOrder: 5,
+    title: 'Kaşarlı Gözleme',
+    src: '/images/menü/Kaşarlı Gözleme.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Gözleme Çeşitleri',
+    sectionOrder: 5,
+    title: 'Ispanaklı Gözleme',
+    src: '/images/menü/Ispanaklı Gözleme.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Gözleme Çeşitleri',
+    sectionOrder: 5,
+    title: 'Mantar-Kaşar Gözleme',
+    src: '/images/menü/Mantar-Kaşar Gözleme.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Gözleme Çeşitleri',
+    sectionOrder: 5,
+    title: 'Kaşar-Tulum Gözleme',
+    src: '/images/menü/Kaşar-Tulum Gözleme.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Gözleme Çeşitleri',
+    sectionOrder: 5,
+    title: 'Karışık Gözleme',
+    src: '/images/menü/Karışık Gözleme.png'
+  },
+  {
+    category: 'kahvalti',
+    section: 'Gözleme Çeşitleri',
+    sectionOrder: 5,
+    title: 'Patatesli Gözleme',
+    src: '/images/menü/Patatesli Gözleme.png'
+  },
+  {
     category: 'yemek',
-    title: 'Tost Çeşitleri',
-    src: '/images/menü/Tost Çeşitleri.png',
-    order: 6
+    section: 'İzmir Kumru',
+    sectionOrder: 1,
+    title: 'İzmir Kumru',
+    src: '/images/menü/İzmir Kumru.png'
   },
   {
-    id: 'gozleme-cesitleri',
     category: 'yemek',
-    title: 'Gözleme Çeşitleri',
-    src: '/images/menü/Gözleme Çeşitleri.png',
-    order: 7
+    section: 'Ekmek Arası Çeşitleri',
+    sectionOrder: 2,
+    title: 'Ekmek Arası Köfte',
+    src: '/images/menü/Ekmek Arası Köfte.png'
   },
   {
-    id: 'aparatif-sicak',
     category: 'yemek',
-    title: 'Aparatifler (Sıcak)',
-    src: '/images/menü/Aparatifler (Sıcak).png',
-    order: 8
+    section: 'Ekmek Arası Çeşitleri',
+    sectionOrder: 2,
+    title: 'Ekmek Arası Kaşar-Salam',
+    src: '/images/menü/Ekmek Arası Kaşar-Salam.png'
   },
   {
-    id: 'aparatif-soguk',
     category: 'yemek',
-    title: 'Aparatifler (Soğuk)',
-    src: '/images/menü/Aparatifler (Soğuk).png',
-    order: 9
+    section: 'Ekmek Arası Çeşitleri',
+    sectionOrder: 2,
+    title: 'Ekmek Arası Ton Balığı',
+    src: '/images/menü/Ekmek Arası Ton Balığı.png'
   },
   {
-    id: 'tantuni',
     category: 'yemek',
-    title: 'Tantuni',
-    src: '/images/menü/Tantuni.png',
-    order: 10
+    section: 'Izgara',
+    sectionOrder: 3,
+    title: 'Izgara Köfte Servis',
+    src: '/images/menü/Izgara Köfte Servis.png'
   },
   {
-    id: 'special',
     category: 'yemek',
-    title: 'Special',
-    src: '/images/menü/Special.png',
-    order: 11
+    section: 'Tantuni',
+    sectionOrder: 4,
+    title: 'Somun Tantuni',
+    src: '/images/menü/Somun Tantuni.png'
   },
   {
-    id: 'beyaz-et',
     category: 'yemek',
-    title: 'Beyaz Et',
-    src: '/images/menü/Beyaz Et.png',
-    order: 12
+    section: 'Tantuni',
+    sectionOrder: 4,
+    title: 'Lavaş Tantuni',
+    src: '/images/menü/Lavaş Tantuni.png'
   },
   {
-    id: 'wraplar',
     category: 'yemek',
-    title: 'Wraplar',
-    src: '/images/menü/Wraplar.png',
-    order: 13
+    section: 'Special',
+    sectionOrder: 5,
+    title: 'Chicken Mushroom',
+    src: '/images/menü/Chicken Mushroom.png'
   },
   {
-    id: 'makarnalar',
     category: 'yemek',
-    title: 'Makarnalar',
-    src: '/images/menü/Makarnalar.png',
-    order: 14
+    section: 'Special',
+    sectionOrder: 5,
+    title: 'Kiremitte Mantar',
+    src: '/images/menü/Kiremitte Mantar.png'
   },
   {
-    id: 'ara-sicaklar',
     category: 'yemek',
-    title: 'Ara Sıcaklar',
-    src: '/images/menü/Ara Sıcaklar.png',
-    order: 15
+    section: 'Special',
+    sectionOrder: 5,
+    title: 'Yoğurtlu Akdeniz Kebabı',
+    src: '/images/menü/Yoğurtlu Akdeniz Kebabı.png'
   },
   {
-    id: 'salatalar',
     category: 'yemek',
-    title: 'Salatalar',
-    src: '/images/menü/Salatalar.png',
-    order: 16
+    section: 'Special',
+    sectionOrder: 5,
+    title: 'Kayseri Mantısı',
+    src: '/images/menü/Kayseri Mantısı.png'
   },
   {
-    id: 'turk-kahveleri',
+    category: 'yemek',
+    section: 'Beyaz Et',
+    sectionOrder: 6,
+    title: 'Tavuk Sote',
+    src: '/images/menü/Tavuk Sote.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Beyaz Et',
+    sectionOrder: 6,
+    title: 'Köri Soslu Piliç',
+    src: '/images/menü/Köri Soslu Piliç.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Beyaz Et',
+    sectionOrder: 6,
+    title: 'Mexican Soslu Piliç',
+    src: '/images/menü/Mexican Soslu Piliç.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Beyaz Et',
+    sectionOrder: 6,
+    title: 'Barbekü Soslu Piliç',
+    src: '/images/menü/Barbekü Soslu Piliç.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Beyaz Et',
+    sectionOrder: 6,
+    title: 'Kekikli Kremalı Soslu Piliç',
+    src: '/images/menü/Kekikli Kremalı Soslu Piliç.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Beyaz Et',
+    sectionOrder: 6,
+    title: 'Tavuk Çökertme',
+    src: '/images/menü/Tavuk Çökertme.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Wraplar',
+    sectionOrder: 7,
+    title: 'Vegetarian Wrap',
+    src: '/images/menü/Vejeteryan Wrap.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Wraplar',
+    sectionOrder: 7,
+    title: 'Tavuk Wrap',
+    src: '/images/menü/Tavuk Wrap.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Wraplar',
+    sectionOrder: 7,
+    title: 'Sosisli Wrap',
+    src: '/images/menü/Sosisli Wrap.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Makarnalar',
+    sectionOrder: 8,
+    title: 'Penne Makarna',
+    src: '/images/menü/Penne Makarna.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Makarnalar',
+    sectionOrder: 8,
+    title: 'Anne Eli Makarna',
+    src: '/images/menü/Anne Eli Makarna.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Makarnalar',
+    sectionOrder: 8,
+    title: 'Pesto Soslu Penne',
+    src: '/images/menü/Pesto Soslu Penne.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Makarnalar',
+    sectionOrder: 8,
+    title: 'Köri Soslu Makarna',
+    src: '/images/menü/Köri Soslu Makarna.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Makarnalar',
+    sectionOrder: 8,
+    title: 'İtalyan Makarna',
+    src: '/images/menü/İtalyan Makarna.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Ara Sıcaklar',
+    sectionOrder: 9,
+    title: 'Patates Tava',
+    src: '/images/menü/Patates Tava.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Ara Sıcaklar',
+    sectionOrder: 9,
+    title: "Cheddar'lı Patates Kızartması",
+    src: '/images/menü/Cheddarlı Patates Kızartması.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Ara Sıcaklar',
+    sectionOrder: 9,
+    title: 'Mix Tabak',
+    src: '/images/menü/Mix Tabak.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Salatalar',
+    sectionOrder: 10,
+    title: 'Akdeniz Salata',
+    src: '/images/menü/Akdeniz Salata.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Salatalar',
+    sectionOrder: 10,
+    title: 'Ton Balıklı Salata',
+    src: '/images/menü/Ton Balıklı Salata.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Salatalar',
+    sectionOrder: 10,
+    title: 'Şinitzel Salatası',
+    src: '/images/menü/Şinitzel Salatası.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Salatalar',
+    sectionOrder: 10,
+    title: 'Sezar Salata',
+    src: '/images/menü/Sezar Salata.png'
+  },
+  {
+    category: 'yemek',
+    section: 'Salatalar',
+    sectionOrder: 10,
+    title: 'Tavuklu Şefin Salatası',
+    src: '/images/menü/Tavuklu Şefin Salatası.png'
+  },
+  {
     category: 'kahveler',
-    title: 'Türk Kahveleri',
-    src: '/images/menü/Türk Kahveleri.png',
-    order: 17
+    section: 'Türk Kahveleri',
+    sectionOrder: 1,
+    title: 'Türk Kahvesi',
+    src: '/images/menü/Türk Kahvesi.png'
   },
   {
-    id: 'filtre-kahveler',
     category: 'kahveler',
-    title: 'Filtre kahveler',
-    src: '/images/menü/Filtre kahveler.png',
-    order: 18
+    section: 'Türk Kahveleri',
+    sectionOrder: 1,
+    title: 'Damla Sakızlı Türk Kahvesi',
+    src: '/images/menü/Damla Sakızlı Türk Kahvesi.png'
   },
   {
-    id: 'espresso-bazli-kahveler',
     category: 'kahveler',
-    title: 'Espresso Bazlı Kahveler',
-    src: '/images/menü/Espresso Bazlı Kahveler.png',
-    order: 19
+    section: 'Türk Kahveleri',
+    sectionOrder: 1,
+    title: 'Dibek Kahvesi',
+    src: '/images/menü/Dibek Kahvesi.png'
   },
   {
-    id: 'soguk-icilen-kahveler',
     category: 'kahveler',
-    title: 'Soğuk İçilen Kahveler',
-    src: '/images/menü/Soğuk İçilen Kahveler.png',
-    order: 20
+    section: 'Türk Kahveleri',
+    sectionOrder: 1,
+    title: 'Menengiç Kahvesi',
+    src: '/images/menü/Menengiç Kahvesi.png'
   },
   {
-    id: 'tatlilar',
+    category: 'kahveler',
+    section: 'Türk Kahveleri',
+    sectionOrder: 1,
+    title: 'Sütlü Türk Kahvesi',
+    src: '/images/menü/Sütlü Türk Kahvesi.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Türk Kahveleri',
+    sectionOrder: 1,
+    title: 'Süvari',
+    src: '/images/menü/Süvari.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'Filtre Kahve',
+    src: '/images/menü/Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'Etiyopya Filtre Kahve',
+    src: '/images/menü/Etiyopya Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'Kolombiya Filtre Kahve',
+    src: '/images/menü/Kolombiya Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'Guatemala Filtre Kahve',
+    src: '/images/menü/Guatemala Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'Fransız Vanilyası Filtre Kahve',
+    src: '/images/menü/Fransız Vanilyası Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'İsveç Çikolatası Filtre Kahve',
+    src: '/images/menü/İsveç Çikolatası Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'İrlanda Kreması Filtre Kahve',
+    src: '/images/menü/İrlanda Kreması Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'Kenya Filtre Kahve',
+    src: '/images/menü/Kenya Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Filtre Kahveler',
+    sectionOrder: 2,
+    title: 'Brezilya Filtre Kahve',
+    src: '/images/menü/Brezilya Filtre Kahve.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Espresso Bazlı Kahveler',
+    sectionOrder: 3,
+    title: 'Espresso',
+    src: '/images/menü/Espresso.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Espresso Bazlı Kahveler',
+    sectionOrder: 3,
+    title: 'Nescafe',
+    src: '/images/menü/Nescafe.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Espresso Bazlı Kahveler',
+    sectionOrder: 3,
+    title: 'Cappucino',
+    src: '/images/menü/Cappucino.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Espresso Bazlı Kahveler',
+    sectionOrder: 3,
+    title: 'Latte',
+    src: '/images/menü/Latte.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Espresso Bazlı Kahveler',
+    sectionOrder: 3,
+    title: 'Mocha',
+    src: '/images/menü/Mocha.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Espresso Bazlı Kahveler',
+    sectionOrder: 3,
+    title: 'Macchiato',
+    src: '/images/menü/Macchiato.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Soğuk Kahveler',
+    sectionOrder: 4,
+    title: 'Ice Latte',
+    src: '/images/menü/Ice Latte.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Soğuk Kahveler',
+    sectionOrder: 4,
+    title: 'Ice Mocha',
+    src: '/images/menü/Ice Mocha.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Soğuk Kahveler',
+    sectionOrder: 4,
+    title: 'Ice Americano',
+    src: '/images/menü/Ice Americano.png'
+  },
+  {
+    category: 'kahveler',
+    section: 'Soğuk Kahveler',
+    sectionOrder: 4,
+    title: 'Strawberry Ice Latte',
+    src: '/images/menü/Strawberry Ice Latte.png'
+  },
+  {
     category: 'tatli',
-    title: 'Tatlılar',
-    src: '/images/menü/Tatlılar.png',
-    order: 21
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'Sütlaç',
+    src: '/images/menü/Sütlaç.png'
   },
   {
-    id: 'esintili-tatlar',
     category: 'tatli',
-    title: 'Esintili Tatlar',
-    src: '/images/menü/Esintili Tatlar.png',
-    order: 22
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'Fıstık Rüyası',
+    src: '/images/menü/Fıstık Rüyası.png'
   },
   {
-    id: 'kutu-icecekler',
+    category: 'tatli',
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'Tiramisu',
+    src: '/images/menü/Tiramisu.png'
+  },
+  {
+    category: 'tatli',
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'San Sebastian',
+    src: '/images/menü/San Sebastian.png'
+  },
+  {
+    category: 'tatli',
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'Fondü',
+    src: '/images/menü/Fondü.png'
+  },
+  {
+    category: 'tatli',
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'Meyveli Pastalar',
+    src: '/images/menü/Meyveli Pastalar.png'
+  },
+  {
+    category: 'tatli',
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'Magnolya',
+    src: '/images/menü/Magnolya.png'
+  },
+  {
+    category: 'tatli',
+    section: 'Tatlılar',
+    sectionOrder: 1,
+    title: 'Supangle',
+    src: '/images/menü/Supangle.png'
+  },
+  {
+    category: 'tatli-serin',
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
+    title: 'Frozen',
+    src: '/images/menü/Frozen.png'
+  },
+  {
+    category: 'tatli-serin',
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
+    title: 'Smoothie',
+    src: '/images/menü/Smoothie.png'
+  },
+  {
+    category: 'tatli-serin',
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
+    title: 'Frappe',
+    src: '/images/menü/Frappe.png'
+  },
+  {
+    category: 'tatli-serin',
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
+    title: 'Milkshake',
+    src: '/images/menü/Milkshake.png'
+  },
+  {
+    category: 'tatli-serin',
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
+    title: 'Muzlu Süt',
+    src: '/images/menü/Muzlu Süt.png'
+  },
+  {
     category: 'icecek',
-    title: 'Kutu İçecekler',
-    src: '/images/menü/Kutu İçecekler.png',
-    order: 23
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Su',
+    src: '/images/menü/Su.png'
   },
   {
-    id: 'kokteyller',
     category: 'icecek',
-    title: 'Kokteyller',
-    src: '/images/menü/Kokteyller.png',
-    order: 24
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Soda',
+    src: '/images/menü/Soda.png'
   },
   {
-    id: 'nargile-cesitleri',
-    category: 'nargile',
-    title: 'Nargile Çeşitleri',
-    src: '/images/menü/Nargile Çeşitleri.png',
-    order: 25
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Meyveli Soda',
+    src: '/images/menü/Meyveli Soda.png'
   },
   {
-    id: 'darleaf-nargile-cesitleri',
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Ice Tea',
+    src: '/images/menü/Ice Tea.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Coca Cola',
+    src: '/images/menü/Coca Cola.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Fanta',
+    src: '/images/menü/Fanta.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Sprite',
+    src: '/images/menü/Sprite.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Redbull',
+    src: '/images/menü/Redbull.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Meyve Suyu',
+    src: '/images/menü/Meyve Suyu.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Mojito',
+    src: '/images/menü/Mojito.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Blue Lagoon',
+    src: '/images/menü/Blue Lagoon.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Mürver Ice Tea',
+    src: '/images/menü/Mürve Ice Tea.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Berry Lemonade',
+    src: '/images/menü/Berry Lemonade.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Rainbow',
+    src: '/images/menü/Rainbow.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Pina Colada',
+    src: '/images/menü/Pina Colada.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Liçi Fizz',
+    src: '/images/menü/Liçi Fiz.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Cinderella',
+    src: '/images/menü/Cindirella.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Dragon Lemonade',
+    src: '/images/menü/Dragon Lemonade.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Nislen Mix',
+    src: '/images/menü/Nişlen Mix.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Kokteyller',
+    sectionOrder: 2,
+    title: 'Redbull Twist',
+    src: '/images/menü/Redbull Twist.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Özel İçecekler',
+    sectionOrder: 3,
+    title: 'Churchill',
+    src: '/images/menü/Churchill.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Özel İçecekler',
+    sectionOrder: 3,
+    title: 'Limonata',
+    src: '/images/menü/Limonata.png'
+  },
+  {
+    category: 'icecek',
+    section: 'Özel İçecekler',
+    sectionOrder: 3,
+    title: 'Portakal Suyu',
+    src: '/images/menü/Portakal Suyu.png'
+  },
+  {
     category: 'nargile',
-    title: 'Darleaf Nargile Çeşitleri',
-    src: '/images/menü/Darleaf Nargile Çeşitleri.png',
-    order: 26
+    section: 'Nargile Çeşitleri',
+    sectionOrder: 1,
+    title: 'Blonde Leaf',
+    src: '/images/menü/Blonde Leaf.png'
+  },
+  {
+    category: 'nargile',
+    section: 'Darleaf Nargile Çeşitleri',
+    sectionOrder: 2,
+    title: 'Dark Leaf',
+    src: '/images/menü/Dark Leaf.png'
   }
 ]
 
-export const menuImages = menuImagesSeed.sort((a, b) => a.order - b.order)
+export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => ({
+  ...image,
+  id: `${image.category}-${index + 1}`,
+  order: index + 1
+}))
 
-const sectionImageByTitle = Object.fromEntries(
-  menuImages.map((item) => [item.title, item.src])
-) as Record<string, string>
-
-type LegacyCategoryId =
-  | 'kahvalti'
-  | 'tostlar'
-  | 'gozlemeler'
-  | 'aperatif-sicak'
-  | 'aperatif-soguk'
-  | 'tantuni'
-  | 'special'
-  | 'beyaz-et'
-  | 'wraplar'
-  | 'makarnalar'
-  | 'ara-sicak'
-  | 'salatalar'
-  | 'limonatalar'
-  | 'milkshake'
-  | 'frozen'
-  | 'mojito'
-  | 'kutu-icecekler'
-  | 'nargile'
-
-const productsSeed = [
-  { name: 'Gurme Kahvaltı', price: 480, categoryId: 'kahvalti' },
-  { name: 'Huzur Kahvaltı Tabağı', price: 400, categoryId: 'kahvalti' },
-  { name: 'Kampüs Kahvaltısı', price: 320, categoryId: 'kahvalti' },
-  { name: 'Kaşarlı Omlet', price: 210, categoryId: 'kahvalti' },
-  { name: 'Sucuklu Omlet', price: 220, categoryId: 'kahvalti' },
-  { name: 'Pastırmalı Omlet', price: 230, categoryId: 'kahvalti' },
-  { name: 'Menemen', price: 220, categoryId: 'kahvalti' },
-  { name: 'Kaşarlı Menemen', price: 230, categoryId: 'kahvalti' },
-  { name: 'Sucuklu Menemen', price: 240, categoryId: 'kahvalti' },
-  { name: 'Beyaz Peynirli Tost', price: 230, categoryId: 'tostlar' },
-  { name: 'Kaşarlı Tost', price: 240, categoryId: 'tostlar' },
-  { name: 'Karışık Tost', price: 280, categoryId: 'tostlar' },
-  { name: 'Ayvalık Tost', price: 270, categoryId: 'tostlar' },
-  { name: '3 Peynirli Tost', price: 280, categoryId: 'tostlar' },
-  { name: 'Kaşarlı', price: 250, categoryId: 'gozlemeler' },
-  { name: 'Ispanaklı', price: 260, categoryId: 'gozlemeler' },
-  { name: 'Mantar Kaşar', price: 260, categoryId: 'gozlemeler' },
-  { name: 'Kaşar Tulum', price: 270, categoryId: 'gozlemeler' },
-  { name: 'Karışık', price: 280, categoryId: 'gozlemeler' },
-  { name: 'Patatesli', price: 270, categoryId: 'gozlemeler' },
-  { name: 'İzmir Kumru', price: 300, categoryId: 'aperatif-sicak' },
-  { name: 'Ekmek Arası Köfte', price: 450, categoryId: 'aperatif-sicak' },
-  { name: 'Izgara Köfte Servis', price: 500, categoryId: 'aperatif-sicak' },
-  { name: 'Ekmek Arası Kaşar Salam', price: 250, categoryId: 'aperatif-soguk' },
-  { name: 'Ekmek Arası Ton Balığı', price: 280, categoryId: 'aperatif-soguk' },
-  { name: 'Tantuni Somun', price: 340, categoryId: 'tantuni' },
-  { name: 'Tantuni Lavaş', price: 350, categoryId: 'tantuni' },
-  { name: 'Chicken Mushroom', price: 380, categoryId: 'special' },
-  { name: 'Yoğurtlu Akdeniz Kebabı', price: 400, categoryId: 'special' },
-  { name: 'Kayseri Mantısı', price: 320, categoryId: 'special' },
-  { name: 'Kiremitte Mantar', price: 240, categoryId: 'special' },
-  { name: 'Tavuk Sote', price: 400, categoryId: 'beyaz-et' },
-  { name: 'Köri Soslu Piliç', price: 425, categoryId: 'beyaz-et' },
-  { name: 'Mexican Soslu Piliç', price: 425, categoryId: 'beyaz-et' },
-  { name: 'Barbekü Soslu Piliç', price: 425, categoryId: 'beyaz-et' },
-  { name: 'Tavuk Çökertme', price: 450, categoryId: 'beyaz-et' },
-  { name: 'Vejetaryen Wrap', price: 280, categoryId: 'wraplar' },
-  { name: 'Tavuk Wrap', price: 340, categoryId: 'wraplar' },
-  { name: 'Sosisli Wrap', price: 300, categoryId: 'wraplar' },
-  { name: 'Penne Makarna', price: 290, categoryId: 'makarnalar' },
-  { name: 'Anne Eli Makarna', price: 300, categoryId: 'makarnalar' },
-  { name: 'Pesto Soslu Penne', price: 310, categoryId: 'makarnalar' },
-  { name: 'Köri Soslu Makarna', price: 320, categoryId: 'makarnalar' },
-  { name: 'İtalyan Makarna', price: 320, categoryId: 'makarnalar' },
-  { name: 'Patates Tava', price: 230, categoryId: 'ara-sicak' },
-  { name: 'Cheddarlı Patates Kızartması', price: 280, categoryId: 'ara-sicak' },
-  { name: 'Mix Tabak', price: 300, categoryId: 'ara-sicak' },
-  { name: 'Akdeniz Salata', price: 280, categoryId: 'salatalar' },
-  { name: 'Ton Balıklı Salata', price: 290, categoryId: 'salatalar' },
-  { name: 'Şinitzel Salatası', price: 300, categoryId: 'salatalar' },
-  { name: 'Sezar Salata', price: 310, categoryId: 'salatalar' },
-  { name: 'Tavuklu Şefin Salatası', price: 320, categoryId: 'salatalar' },
-  { name: 'Klasik Limonata', price: 150, categoryId: 'limonatalar' },
-  { name: 'Çilekli Limonata', price: 160, categoryId: 'limonatalar' },
-  { name: 'Naneli Limonata', price: 160, categoryId: 'limonatalar' },
-  { name: 'Karpuzlu Limonata', price: 165, categoryId: 'limonatalar' },
-  { name: 'Çikolata', price: 180, categoryId: 'milkshake' },
-  { name: 'Çilek', price: 180, categoryId: 'milkshake' },
-  { name: 'Muz', price: 180, categoryId: 'milkshake' },
-  { name: 'Karamel', price: 185, categoryId: 'milkshake' },
-  { name: 'Oreo', price: 190, categoryId: 'milkshake' },
-  { name: 'Çilek', price: 170, categoryId: 'frozen' },
-  { name: 'Mango', price: 170, categoryId: 'frozen' },
-  { name: 'Karpuz', price: 170, categoryId: 'frozen' },
-  { name: 'Yeşil Elma', price: 170, categoryId: 'frozen' },
-  { name: 'Classic Mojito', price: 180, categoryId: 'mojito' },
-  { name: 'Strawberry Mojito', price: 190, categoryId: 'mojito' },
-  { name: 'Green Apple Mojito', price: 190, categoryId: 'mojito' },
-  { name: 'Passion Mojito', price: 190, categoryId: 'mojito' },
-  { name: 'Coca Cola', price: 90, categoryId: 'kutu-icecekler' },
-  { name: 'Coca Cola Zero', price: 90, categoryId: 'kutu-icecekler' },
-  { name: 'Fanta', price: 90, categoryId: 'kutu-icecekler' },
-  { name: 'Sprite', price: 90, categoryId: 'kutu-icecekler' },
-  { name: 'Fuse Tea', price: 90, categoryId: 'kutu-icecekler' },
-  { name: 'Ayran', price: 70, categoryId: 'kutu-icecekler' },
-  { name: 'Şalgam', price: 80, categoryId: 'kutu-icecekler' },
-  { name: 'Meyve Suyu', price: 80, categoryId: 'kutu-icecekler' },
-  { name: 'Soda', price: 45, categoryId: 'kutu-icecekler' },
-  { name: 'Maden Suyu', price: 45, categoryId: 'kutu-icecekler' },
-  { name: 'Su (0.5L)', price: 20, categoryId: 'kutu-icecekler' },
-  { name: 'Tek Elma', price: 400, categoryId: 'nargile' },
-  { name: 'Çift Elma', price: 400, categoryId: 'nargile' },
-  { name: 'Lady Killer', price: 400, categoryId: 'nargile' },
-  { name: 'Love 66', price: 400, categoryId: 'nargile' },
-  { name: 'Blue Mist', price: 400, categoryId: 'nargile' },
-  { name: 'Hawaii', price: 400, categoryId: 'nargile' },
-  { name: 'Frozen', price: 400, categoryId: 'nargile' },
-  { name: 'Özel Karışım', price: 450, categoryId: 'nargile' }
-] as const
-
-const mainCategoryOrder = Object.fromEntries(
-  mainCategoriesSeed.map((category) => [category.id, category.order])
-) as Record<string, number>
-
-const legacyCategoryMappings: Record<
-  LegacyCategoryId,
-  { mainCategory: string; section: string; sectionOrder: number }
-> = {
-  kahvalti: {
-    mainCategory: 'kahvalti',
-    section: 'Kahvaltı Tabağı',
-    sectionOrder: 3
-  },
-  tostlar: {
-    mainCategory: 'yemek',
-    section: 'Tost Çeşitleri',
-    sectionOrder: 1
-  },
-  gozlemeler: {
-    mainCategory: 'yemek',
-    section: 'Gözleme Çeşitleri',
-    sectionOrder: 2
-  },
-  'aperatif-sicak': {
-    mainCategory: 'yemek',
-    section: 'Aparatifler (Sıcak)',
-    sectionOrder: 3
-  },
-  'aperatif-soguk': {
-    mainCategory: 'yemek',
-    section: 'Aparatifler (Soğuk)',
-    sectionOrder: 4
-  },
-  tantuni: { mainCategory: 'yemek', section: 'Tantuni', sectionOrder: 5 },
-  special: { mainCategory: 'yemek', section: 'Special', sectionOrder: 6 },
-  'beyaz-et': { mainCategory: 'yemek', section: 'Beyaz Et', sectionOrder: 7 },
-  wraplar: { mainCategory: 'yemek', section: 'Wraplar', sectionOrder: 8 },
-  makarnalar: { mainCategory: 'yemek', section: 'Makarnalar', sectionOrder: 9 },
-  'ara-sicak': {
-    mainCategory: 'yemek',
-    section: 'Ara Sıcaklar',
-    sectionOrder: 10
-  },
-  salatalar: { mainCategory: 'yemek', section: 'Salatalar', sectionOrder: 11 },
-  limonatalar: {
-    mainCategory: 'icecek',
-    section: 'Kokteyller',
-    sectionOrder: 2
-  },
-  milkshake: { mainCategory: 'icecek', section: 'Kokteyller', sectionOrder: 2 },
-  frozen: { mainCategory: 'icecek', section: 'Kokteyller', sectionOrder: 2 },
-  mojito: { mainCategory: 'icecek', section: 'Kokteyller', sectionOrder: 2 },
-  'kutu-icecekler': {
-    mainCategory: 'icecek',
-    section: 'Kutu İçecekler',
-    sectionOrder: 1
-  },
-  nargile: {
-    mainCategory: 'nargile',
-    section: 'Nargile Çeşitleri',
-    sectionOrder: 1
-  }
-}
-
-const resolveBreakfastSection = (productName: string) => {
-  if (productName === 'Gurme Kahvaltı') {
-    return { section: 'Gurme Kahvaltı', sectionOrder: 1 }
-  }
-
-  if (productName === 'Huzur Kahvaltı Tabağı') {
-    return { section: 'Huzur Kahvaltı Tabağı', sectionOrder: 2 }
-  }
-
-  if (productName.includes('Omlet')) {
-    return { section: 'Omlet Çeşitleri', sectionOrder: 4 }
-  }
-
-  if (productName.includes('Menemen')) {
-    return { section: 'Menemen Çeşitleri', sectionOrder: 5 }
-  }
-
-  return { section: 'Kahvaltı Tabağı', sectionOrder: 3 }
-}
-
-export const products: Product[] = productsSeed.map((product, index) => {
-  const mapping = legacyCategoryMappings[product.categoryId]
-
-  if (product.categoryId === 'kahvalti') {
-    const breakfastSection = resolveBreakfastSection(product.name)
-
-    return {
-      id: `${product.categoryId}-${index + 1}`,
-      category: 'kahvalti',
-      categoryOrder: mainCategoryOrder.kahvalti,
-      section: breakfastSection.section,
-      sectionOrder: breakfastSection.sectionOrder,
-      name: product.name,
-      price: product.price,
-      image: sectionImageByTitle[breakfastSection.section]
-    }
-  }
-
-  return {
-    id: `${product.categoryId}-${index + 1}`,
-    category: mapping.mainCategory,
-    categoryOrder: mainCategoryOrder[mapping.mainCategory],
-    section: mapping.section,
-    sectionOrder: mapping.sectionOrder,
-    name: product.name,
-    price: product.price,
-    image: sectionImageByTitle[mapping.section]
-  }
-})
+export const products: Product[] = []

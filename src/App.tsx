@@ -95,6 +95,24 @@ export default function App() {
     })
   }, [activeCategory, search])
 
+  const sectionedMenuImages = useMemo(() => {
+    const groups = new Map<string, { title: string; images: MenuImage[] }>()
+
+    filteredMenuImages.forEach((image) => {
+      const key = `${image.category}-${image.sectionOrder}`
+      const group = groups.get(key)
+
+      if (group) {
+        group.images.push(image)
+        return
+      }
+
+      groups.set(key, { title: image.section, images: [image] })
+    })
+
+    return [...groups.values()]
+  }, [filteredMenuImages])
+
   const handleToggleTheme = () => {
     setThemePreference((current) => {
       if (current === 'dark') {
@@ -138,26 +156,31 @@ export default function App() {
             allLabel={TEXTS.allCategories}
           />
 
-          <section className="menu-image-grid" aria-label="Menü görselleri">
-            {filteredMenuImages.map((menuImage) => (
-              <button
-                key={menuImage.id}
-                className="menu-image-card"
-                onClick={() => setSelectedMenuImage(menuImage)}
-                aria-label={`${menuImage.title} menü görselini aç`}
-              >
-                <span className="menu-image-thumb-wrap" aria-hidden="true">
-                  <img
-                    src={menuImage.src}
-                    alt=""
-                    className="menu-image"
-                    loading="lazy"
-                  />
-                </span>
-                <span className="menu-image-title">{menuImage.title}</span>
-              </button>
-            ))}
-          </section>
+          {sectionedMenuImages.map((section) => (
+            <section key={section.title} aria-label={section.title}>
+              <h2 className="menu-image-title">{section.title}</h2>
+              <div className="menu-image-grid">
+                {section.images.map((menuImage) => (
+                  <button
+                    key={menuImage.id}
+                    className="menu-image-card"
+                    onClick={() => setSelectedMenuImage(menuImage)}
+                    aria-label={`${menuImage.title} menü görselini aç`}
+                  >
+                    <span className="menu-image-thumb-wrap" aria-hidden="true">
+                      <img
+                        src={menuImage.src}
+                        alt=""
+                        className="menu-image"
+                        loading="lazy"
+                      />
+                    </span>
+                    <span className="menu-image-title">{menuImage.title}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+          ))}
         </main>
       </section>
 
