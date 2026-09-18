@@ -153,6 +153,20 @@ export default function App() {
     })
   }
 
+  const selectAdjacentMenuImage = (direction: -1 | 1) => {
+    if (!selectedMenuImage) {
+      return
+    }
+
+    const currentIndex = menuImages.findIndex(
+      (image) => image.id === selectedMenuImage.id
+    )
+    const nextIndex =
+      (currentIndex + direction + menuImages.length) % menuImages.length
+
+    setSelectedMenuImage(menuImages[nextIndex] ?? null)
+  }
+
   return (
     <>
       <section className="mural-stage" aria-label="Nislen mural duvarı">
@@ -237,20 +251,42 @@ export default function App() {
           }}
         >
           <div className="product-modal-card menu-image-modal-card">
-            <div className="modal-head">
+            <button
+              className="modal-close"
+              onClick={() => setSelectedMenuImage(null)}
+              aria-label="Kapat"
+            >
+              ×
+            </button>
+            <div className="menu-image-modal-stage">
+              <span
+                className="menu-image-modal-decoration is-left"
+                aria-hidden="true"
+              />
               <button
-                className="modal-close"
-                onClick={() => setSelectedMenuImage(null)}
-                aria-label="Kapat"
+                className="menu-image-modal-nav is-previous"
+                onClick={() => selectAdjacentMenuImage(-1)}
+                aria-label="Önceki menü görseli"
               >
-                ×
+                ‹
               </button>
+              <img
+                src={selectedMenuImage.src}
+                alt={selectedMenuImage.title}
+                className="product-modal-image"
+              />
+              <button
+                className="menu-image-modal-nav is-next"
+                onClick={() => selectAdjacentMenuImage(1)}
+                aria-label="Sonraki menü görseli"
+              >
+                ›
+              </button>
+              <span
+                className="menu-image-modal-decoration is-right"
+                aria-hidden="true"
+              />
             </div>
-            <img
-              src={selectedMenuImage.src}
-              alt={selectedMenuImage.title}
-              className="product-modal-image"
-            />
           </div>
         </div>
       ) : null}
