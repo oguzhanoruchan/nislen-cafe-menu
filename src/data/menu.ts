@@ -904,9 +904,7 @@ const menuImagesSeed: MenuImageSeed[] = [
 
 export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => ({
   ...image,
-  previewSrc: image.src
-    .replace('/images/menü/', '/images/menü/previews/')
-    .replace(/\.png$/, '.webp'),
+  previewSrc: image.src,
   id: `${image.category}-${index + 1}`,
   order: index + 1
 }))
