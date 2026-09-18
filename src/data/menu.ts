@@ -100,805 +100,805 @@ const menuImagesSeed: MenuImageSeed[] = [
     section: 'Kahvaltılar',
     sectionOrder: 1,
     title: 'Gurme Kahvaltı',
-    src: '/images/menü/Gurme Kahvaltı.png'
+    src: '/images/menü/Gurme Kahvaltı Tabağı.webp'
   },
   {
     category: 'kahvalti',
     section: 'Kahvaltılar',
     sectionOrder: 1,
     title: 'Huzur Kahvaltı Tabağı',
-    src: '/images/menü/Huzur Kahvaltı Tabağı.png'
+    src: '/images/menü/Huzur Kahvaltı Tabağı.webp'
   },
   {
     category: 'kahvalti',
     section: 'Kahvaltılar',
     sectionOrder: 1,
     title: 'Kampüs Kahvaltı',
-    src: '/images/menü/Kampüs Kahvaltı Tabağı.png'
+    src: '/images/menü/Kampüs Kahvaltı Tabağı.webp'
   },
   {
     category: 'kahvalti',
     section: 'Omlet Çeşitleri',
     sectionOrder: 2,
     title: 'Kaşarlı Omlet',
-    src: '/images/menü/Kaşarlı Omlet.png'
+    src: '/images/menü/Kaşarlı Omlet.webp'
   },
   {
     category: 'kahvalti',
     section: 'Omlet Çeşitleri',
     sectionOrder: 2,
     title: 'Sucuklu Omlet',
-    src: '/images/menü/Sucuklu Omlet.png'
+    src: '/images/menü/Sucuklu Omlet.webp'
   },
   {
     category: 'kahvalti',
     section: 'Omlet Çeşitleri',
     sectionOrder: 2,
     title: 'Pastırmalı Omlet',
-    src: '/images/menü/Pastırmalı Omlet.png'
+    src: '/images/menü/Pastırmalı Omlet.webp'
   },
   {
     category: 'kahvalti',
     section: 'Menemen Çeşitleri',
     sectionOrder: 3,
     title: 'Menemen',
-    src: '/images/menü/Menemen.png'
+    src: '/images/menü/Menemen.webp'
   },
   {
     category: 'kahvalti',
     section: 'Menemen Çeşitleri',
     sectionOrder: 3,
     title: 'Kaşarlı Menemen',
-    src: '/images/menü/Kaşarlı Menemen.png'
+    src: '/images/menü/Kaşarlı Menemen.webp'
   },
   {
     category: 'kahvalti',
     section: 'Menemen Çeşitleri',
     sectionOrder: 3,
     title: 'Sucuklu Menemen',
-    src: '/images/menü/Sucuklu Menemen.png'
+    src: '/images/menü/Sucuklu Menemen.webp'
   },
   {
     category: 'kahvalti',
     section: 'Tost Çeşitleri',
     sectionOrder: 4,
     title: 'Beyaz Peynirli Tost',
-    src: '/images/menü/Beyaz Peynirli Tost.png'
+    src: '/images/menü/Beyaz Peynirli Tost.webp'
   },
   {
     category: 'kahvalti',
     section: 'Tost Çeşitleri',
     sectionOrder: 4,
     title: 'Kaşarlı Tost',
-    src: '/images/menü/Kaşarlı Tost.png'
+    src: '/images/menü/Kaşarlı Tost.webp'
   },
   {
     category: 'kahvalti',
     section: 'Tost Çeşitleri',
     sectionOrder: 4,
     title: 'Karışık Tost',
-    src: '/images/menü/Karışık Tost.png'
+    src: '/images/menü/Karışık Tost.webp'
   },
   {
     category: 'kahvalti',
     section: 'Tost Çeşitleri',
     sectionOrder: 4,
     title: 'Ayvalık Tost',
-    src: '/images/menü/Ayvalık Tost.png'
+    src: '/images/menü/Ayvalık Tost.webp'
   },
   {
     category: 'kahvalti',
     section: 'Gözleme Çeşitleri',
     sectionOrder: 5,
     title: 'Kaşarlı Gözleme',
-    src: '/images/menü/Kaşarlı Gözleme.png'
+    src: '/images/menü/Kaşarlı Gözleme.webp'
   },
   {
     category: 'kahvalti',
     section: 'Gözleme Çeşitleri',
     sectionOrder: 5,
     title: 'Ispanaklı Gözleme',
-    src: '/images/menü/Ispanaklı Gözleme.png'
+    src: '/images/menü/Ispanaklı Gözleme.webp'
   },
   {
     category: 'kahvalti',
     section: 'Gözleme Çeşitleri',
     sectionOrder: 5,
     title: 'Mantar-Kaşar Gözleme',
-    src: '/images/menü/Mantar-Kaşar Gözleme.png'
+    src: '/images/menü/Mantar-Kaşar Gözleme.webp'
   },
   {
     category: 'kahvalti',
     section: 'Gözleme Çeşitleri',
     sectionOrder: 5,
     title: 'Kaşar-Tulum Gözleme',
-    src: '/images/menü/Kaşar-Tulum Gözleme.png'
+    src: '/images/menü/Kaşar-Tulum Gözleme.webp'
   },
   {
     category: 'kahvalti',
     section: 'Gözleme Çeşitleri',
     sectionOrder: 5,
     title: 'Karışık Gözleme',
-    src: '/images/menü/Karışık Gözleme.png'
+    src: '/images/menü/Karışık Gözleme.webp'
   },
   {
     category: 'kahvalti',
     section: 'Gözleme Çeşitleri',
     sectionOrder: 5,
     title: 'Patatesli Gözleme',
-    src: '/images/menü/Patatesli Gözleme.png'
+    src: '/images/menü/Patatesli Gözleme.webp'
   },
   {
     category: 'yemek',
     section: 'Ekmek Arası Çeşitleri',
     sectionOrder: 1,
     title: 'İzmir Kumru',
-    src: '/images/menü/İzmir Kumru.png'
+    src: '/images/menü/İzmir Kumru.webp'
   },
   {
     category: 'yemek',
     section: 'Ekmek Arası Çeşitleri',
     sectionOrder: 1,
     title: 'Ekmek Arası Köfte',
-    src: '/images/menü/Ekmek Arası Köfte.png'
+    src: '/images/menü/Ekmek Arası Köfte.webp'
   },
   {
     category: 'yemek',
     section: 'Ekmek Arası Çeşitleri',
     sectionOrder: 1,
     title: 'Ekmek Arası Kaşar-Salam',
-    src: '/images/menü/Ekmek Arası Kaşar-Salam.png'
+    src: '/images/menü/Ekmek Arası Kaşar-Salam.webp'
   },
   {
     category: 'yemek',
     section: 'Ekmek Arası Çeşitleri',
     sectionOrder: 1,
     title: 'Ekmek Arası Ton Balığı',
-    src: '/images/menü/Ekmek Arası Ton Balığı.png'
+    src: '/images/menü/Ekmek Arası Ton Balığı.webp'
   },
   {
     category: 'yemek',
     section: 'Izgara',
     sectionOrder: 2,
     title: 'Izgara Köfte Servis',
-    src: '/images/menü/Izgara Köfte Servis.png'
+    src: '/images/menü/Izgara Köfte Servis.webp'
   },
   {
     category: 'yemek',
     section: 'Tantuni',
     sectionOrder: 3,
     title: 'Somun Tantuni',
-    src: '/images/menü/Somun Tantuni.png'
+    src: '/images/menü/Somun Tantuni.webp'
   },
   {
     category: 'yemek',
     section: 'Tantuni',
     sectionOrder: 3,
     title: 'Lavaş Tantuni',
-    src: '/images/menü/Lavaş Tantuni.png'
+    src: '/images/menü/Lavaş Tantuni.webp'
   },
   {
     category: 'yemek',
     section: 'Special',
     sectionOrder: 4,
     title: 'Chicken Mushroom',
-    src: '/images/menü/Chicken Mushroom.png'
+    src: '/images/menü/Chicken Mushroom.webp'
   },
   {
     category: 'yemek',
     section: 'Special',
     sectionOrder: 4,
     title: 'Kiremitte Mantar',
-    src: '/images/menü/Kiremitte Mantar.png'
+    src: '/images/menü/Kiremitte Mantar.webp'
   },
   {
     category: 'yemek',
     section: 'Special',
     sectionOrder: 4,
     title: 'Yoğurtlu Akdeniz Kebabı',
-    src: '/images/menü/Yoğurtlu Akdeniz Kebabı.png'
+    src: '/images/menü/Yoğurtu Akdeniz Kebabı.webp'
   },
   {
     category: 'yemek',
     section: 'Special',
     sectionOrder: 4,
     title: 'Kayseri Mantısı',
-    src: '/images/menü/Kayseri Mantısı.png'
+    src: '/images/menü/Kayseri Mantısı.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
     sectionOrder: 5,
     title: 'Tavuk Sote',
-    src: '/images/menü/Tavuk Sote.png'
+    src: '/images/menü/Tavuk Sote.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
     sectionOrder: 5,
     title: 'Köri Soslu Piliç',
-    src: '/images/menü/Köri Soslu Piliç.png'
+    src: '/images/menü/Köri Soslu Piliç.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
     sectionOrder: 5,
     title: 'Mexican Soslu Piliç',
-    src: '/images/menü/Mexican Soslu Piliç.png'
+    src: '/images/menü/Mexican Soslu Piliç.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
     sectionOrder: 5,
     title: 'Barbekü Soslu Piliç',
-    src: '/images/menü/Barbekü Soslu Piliç.png'
+    src: '/images/menü/Barbekü Soslu Piliç.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
     sectionOrder: 5,
     title: 'Kekikli Kremalı Soslu Piliç',
-    src: '/images/menü/Kekikli Kremalı Soslu Piliç.png'
+    src: '/images/menü/Kekikli Kremalı Soslu Piliç.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
     sectionOrder: 5,
     title: 'Tavuk Çökertme',
-    src: '/images/menü/Tavuk Çökertme.png'
+    src: '/images/menü/Tavuk Çökertme.webp'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
     sectionOrder: 6,
     title: 'Vegetarian Wrap',
-    src: '/images/menü/Vejeteryan Wrap.png'
+    src: '/images/menü/Vejeteryan Wrap.webp'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
     sectionOrder: 6,
     title: 'Tavuk Wrap',
-    src: '/images/menü/Tavuk Wrap.png'
+    src: '/images/menü/Tavuk Wrap.webp'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
     sectionOrder: 6,
     title: 'Sosisli Wrap',
-    src: '/images/menü/Sosisli Wrap.png'
+    src: '/images/menü/Sosisli Wrap.webp'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
     sectionOrder: 7,
     title: 'Penne Makarna',
-    src: '/images/menü/Penne Makarna.png'
+    src: '/images/menü/Penne Makarna.webp'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
     sectionOrder: 7,
     title: 'Anne Eli Makarna',
-    src: '/images/menü/Anne Eli Makarna.png'
+    src: '/images/menü/Anne Eli Makarna.webp'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
     sectionOrder: 7,
     title: 'Pesto Soslu Penne',
-    src: '/images/menü/Pesto Soslu Penne.png'
+    src: '/images/menü/Pesto Soslu Penne.webp'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
     sectionOrder: 7,
     title: 'Köri Soslu Makarna',
-    src: '/images/menü/Köri Soslu Makarna.png'
+    src: '/images/menü/Köri Soslu Makarna.webp'
   },
   {
     category: 'yemek',
     section: 'Makarnalar',
     sectionOrder: 7,
     title: 'İtalyan Makarna',
-    src: '/images/menü/İtalyan Makarna.png'
+    src: '/images/menü/İtalyan Makarna.webp'
   },
   {
     category: 'yemek',
     section: 'Ara Sıcaklar',
     sectionOrder: 8,
     title: 'Patates Tava',
-    src: '/images/menü/Patates Tava.png'
+    src: '/images/menü/Patates Tava.webp'
   },
   {
     category: 'yemek',
     section: 'Ara Sıcaklar',
     sectionOrder: 8,
     title: "Cheddar'lı Patates Kızartması",
-    src: '/images/menü/Cheddarlı Patates Kızartması.png'
+    src: '/images/menü/Cheddarlı Patates Kızartması.webp'
   },
   {
     category: 'yemek',
     section: 'Ara Sıcaklar',
     sectionOrder: 8,
     title: 'Mix Tabak',
-    src: '/images/menü/Mix Tabak.png'
+    src: '/images/menü/Mix Tabak.webp'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
     sectionOrder: 9,
     title: 'Akdeniz Salata',
-    src: '/images/menü/Akdeniz Salata.png'
+    src: '/images/menü/Akdeniz Salata.webp'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
     sectionOrder: 9,
     title: 'Ton Balıklı Salata',
-    src: '/images/menü/Ton Balıklı Salata.png'
+    src: '/images/menü/Ton Balıklı Salata.webp'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
     sectionOrder: 9,
     title: 'Şinitzel Salatası',
-    src: '/images/menü/Şinitzel Salatası.png'
+    src: '/images/menü/Şinitsel Salatası.webp'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
     sectionOrder: 9,
     title: 'Sezar Salata',
-    src: '/images/menü/Sezar Salata.png'
+    src: '/images/menü/Sezar Salata.webp'
   },
   {
     category: 'yemek',
     section: 'Salatalar',
     sectionOrder: 9,
     title: 'Tavuklu Şefin Salatası',
-    src: '/images/menü/Tavuklu Şefin Salatası.png'
+    src: '/images/menü/Tavuklu Şefin Salatası.webp'
   },
   {
     category: 'kahveler',
     section: 'Türk Kahveleri',
     sectionOrder: 1,
     title: 'Türk Kahvesi',
-    src: '/images/menü/Türk Kahvesi.png'
+    src: '/images/menü/Türk Kahvesi.webp'
   },
   {
     category: 'kahveler',
     section: 'Türk Kahveleri',
     sectionOrder: 1,
     title: 'Damla Sakızlı Türk Kahvesi',
-    src: '/images/menü/Damla Sakızlı Türk Kahvesi.png'
+    src: '/images/menü/Damla Sakızlı Türk Kahvesi.webp'
   },
   {
     category: 'kahveler',
     section: 'Türk Kahveleri',
     sectionOrder: 1,
     title: 'Dibek Kahvesi',
-    src: '/images/menü/Dibek Kahvesi.png'
+    src: '/images/menü/Dibek Kahvesi.webp'
   },
   {
     category: 'kahveler',
     section: 'Türk Kahveleri',
     sectionOrder: 1,
     title: 'Menengiç Kahvesi',
-    src: '/images/menü/Menengiç Kahvesi.png'
+    src: '/images/menü/Menengiç Kahvesi.webp'
   },
   {
     category: 'kahveler',
     section: 'Türk Kahveleri',
     sectionOrder: 1,
     title: 'Sütlü Türk Kahvesi',
-    src: '/images/menü/Sütlü Türk Kahvesi.png'
+    src: '/images/menü/Sütlü Türk Kahvesi.webp'
   },
   {
     category: 'kahveler',
     section: 'Türk Kahveleri',
     sectionOrder: 1,
     title: 'Süvari',
-    src: '/images/menü/Süvari.png'
+    src: '/images/menü/Süvari.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'Filtre Kahve',
-    src: '/images/menü/Filtre Kahve.png'
+    src: '/images/menü/Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'Etiyopya Filtre Kahve',
-    src: '/images/menü/Etiyopya Filtre Kahve.png'
+    src: '/images/menü/Etiyopya Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'Kolombiya Filtre Kahve',
-    src: '/images/menü/Kolombiya Filtre Kahve.png'
+    src: '/images/menü/Kolombiya Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'Guatemala Filtre Kahve',
-    src: '/images/menü/Guatemala Filtre Kahve.png'
+    src: '/images/menü/Guatemala Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'Fransız Vanilyası Filtre Kahve',
-    src: '/images/menü/Fransız Vanilyası Filtre Kahve.png'
+    src: '/images/menü/Fransız Vanilyası Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'İsveç Çikolatası Filtre Kahve',
-    src: '/images/menü/İsveç Çikolatası Filtre Kahve.png'
+    src: '/images/menü/İsveç Çikolatası Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'İrlanda Kreması Filtre Kahve',
-    src: '/images/menü/İrlanda Kreması Filtre Kahve.png'
+    src: '/images/menü/İrlanda Kreması Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'Kenya Filtre Kahve',
-    src: '/images/menü/Kenya Filtre Kahve.png'
+    src: '/images/menü/Kenya Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Filtre Kahveler',
     sectionOrder: 2,
     title: 'Brezilya Filtre Kahve',
-    src: '/images/menü/Brezilya Filtre Kahve.png'
+    src: '/images/menü/Brezilya Filtre Kahve.webp'
   },
   {
     category: 'kahveler',
     section: 'Espresso Bazlı Kahveler',
     sectionOrder: 3,
     title: 'Espresso',
-    src: '/images/menü/Espresso.png'
+    src: '/images/menü/Espresso.webp'
   },
   {
     category: 'kahveler',
     section: 'Espresso Bazlı Kahveler',
     sectionOrder: 3,
     title: 'Nescafe',
-    src: '/images/menü/Nescafe.png'
+    src: '/images/menü/Nescafe.webp'
   },
   {
     category: 'kahveler',
     section: 'Espresso Bazlı Kahveler',
     sectionOrder: 3,
     title: 'Cappucino',
-    src: '/images/menü/Cappucino.png'
+    src: '/images/menü/Cappucino.webp'
   },
   {
     category: 'kahveler',
     section: 'Espresso Bazlı Kahveler',
     sectionOrder: 3,
     title: 'Latte',
-    src: '/images/menü/Latte.png'
+    src: '/images/menü/Latte.webp'
   },
   {
     category: 'kahveler',
     section: 'Espresso Bazlı Kahveler',
     sectionOrder: 3,
     title: 'Mocha',
-    src: '/images/menü/Mocha.png'
+    src: '/images/menü/Mocha.webp'
   },
   {
     category: 'kahveler',
     section: 'Espresso Bazlı Kahveler',
     sectionOrder: 3,
     title: 'Macchiato',
-    src: '/images/menü/Macchiato.png'
+    src: '/images/menü/Macchiato.webp'
   },
   {
     category: 'kahveler',
     section: 'Soğuk Kahveler',
     sectionOrder: 4,
     title: 'Ice Latte',
-    src: '/images/menü/Ice Latte.png'
+    src: '/images/menü/Ice Latte.webp'
   },
   {
     category: 'kahveler',
     section: 'Soğuk Kahveler',
     sectionOrder: 4,
     title: 'Ice Mocha',
-    src: '/images/menü/Ice Mocha.png'
+    src: '/images/menü/Ice Mocha.webp'
   },
   {
     category: 'kahveler',
     section: 'Soğuk Kahveler',
     sectionOrder: 4,
     title: 'Ice Americano',
-    src: '/images/menü/Ice Americano.png'
+    src: '/images/menü/Ice Americano.webp'
   },
   {
     category: 'kahveler',
     section: 'Soğuk Kahveler',
     sectionOrder: 4,
     title: 'Strawberry Ice Latte',
-    src: '/images/menü/Strawberry Ice Latte.png'
+    src: '/images/menü/Strawberry Ice Latte.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'Sütlaç',
-    src: '/images/menü/Sütlaç.png'
+    src: '/images/menü/Sütlaç.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'Fıstık Rüyası',
-    src: '/images/menü/Fıstık Rüyası.png'
+    src: '/images/menü/Fıstık Rüyası.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'Tiramisu',
-    src: '/images/menü/Tiramisu.png'
+    src: '/images/menü/Tiramisu.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'San Sebastian',
-    src: '/images/menü/San Sebastian.png'
+    src: '/images/menü/San Sebastian.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'Fondü',
-    src: '/images/menü/Fondü.png'
+    src: '/images/menü/Fondü.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'Meyveli Pastalar',
-    src: '/images/menü/Meyveli Pastalar.png'
+    src: '/images/menü/Meyveli Pastalar.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'Magnolya',
-    src: '/images/menü/Magnolya.png'
+    src: '/images/menü/Magnolya.webp'
   },
   {
     category: 'tatli',
     section: 'Tatlılar',
     sectionOrder: 1,
     title: 'Supangle',
-    src: '/images/menü/Supangle.png'
+    src: '/images/menü/Supangle.webp'
   },
   {
     category: 'tatli-serin',
     section: 'Tatlı & Serin',
     sectionOrder: 1,
     title: 'Frozen',
-    src: '/images/menü/Frozen.png'
+    src: '/images/menü/Frozen.webp'
   },
   {
     category: 'tatli-serin',
     section: 'Tatlı & Serin',
     sectionOrder: 1,
     title: 'Smoothie',
-    src: '/images/menü/Smoothie.png'
+    src: '/images/menü/Smoothie.webp'
   },
   {
     category: 'tatli-serin',
     section: 'Tatlı & Serin',
     sectionOrder: 1,
     title: 'Frappe',
-    src: '/images/menü/Frappe.png'
+    src: '/images/menü/Frappe.webp'
   },
   {
     category: 'tatli-serin',
     section: 'Tatlı & Serin',
     sectionOrder: 1,
     title: 'Milkshake',
-    src: '/images/menü/Milkshake.png'
+    src: '/images/menü/Milkshake.webp'
   },
   {
     category: 'tatli-serin',
     section: 'Tatlı & Serin',
     sectionOrder: 1,
     title: 'Muzlu Süt',
-    src: '/images/menü/Muzlu Süt.png'
+    src: '/images/menü/Muzlu Süt.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Su',
-    src: '/images/menü/Su.png'
+    src: '/images/menü/Su.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Soda',
-    src: '/images/menü/Soda.png'
+    src: '/images/menü/Soda.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Meyveli Soda',
-    src: '/images/menü/Meyveli Soda.png'
+    src: '/images/menü/Meyveli Soda.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Ice Tea',
-    src: '/images/menü/Ice Tea.png'
+    src: '/images/menü/Ice Tea.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Coca Cola',
-    src: '/images/menü/Coca Cola.png'
+    src: '/images/menü/Coca Cola.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Fanta',
-    src: '/images/menü/Fanta.png'
+    src: '/images/menü/Fanta.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Sprite',
-    src: '/images/menü/Sprite.png'
+    src: '/images/menü/Sprite.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Redbull',
-    src: '/images/menü/Redbull.png'
+    src: '/images/menü/Redbull.webp'
   },
   {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
     title: 'Meyve Suyu',
-    src: '/images/menü/Meyve Suyu.png'
+    src: '/images/menü/Meyve Suları.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Mojito',
-    src: '/images/menü/Mojito.png'
+    src: '/images/menü/Mojito.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Blue Lagoon',
-    src: '/images/menü/Blue Lagoon.png'
+    src: '/images/menü/Blue Lagoon.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Mürver Ice Tea',
-    src: '/images/menü/Mürve Ice Tea.png'
+    src: '/images/menü/Mürve Ice Tea.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Berry Lemonade',
-    src: '/images/menü/Berry Lemonade.png'
+    src: '/images/menü/Berry Lemonade.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Rainbow',
-    src: '/images/menü/Rainbow.png'
+    src: '/images/menü/Rainbow.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Pina Colada',
-    src: '/images/menü/Pina Colada.png'
+    src: '/images/menü/Pına Colada.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Liçi Fizz',
-    src: '/images/menü/Liçi Fiz.png'
+    src: '/images/menü/Liçi Fiz.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Cinderella',
-    src: '/images/menü/Cindirella.png'
+    src: '/images/menü/Cindirella.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Dragon Lemonade',
-    src: '/images/menü/Dragon Lemonade.png'
+    src: '/images/menü/Dragon Lemonade.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Nislen Mix',
-    src: '/images/menü/Nişlen Mix.png'
+    src: '/images/menü/Nişlen Mix.webp'
   },
   {
     category: 'icecek',
     section: 'Kokteyller',
     sectionOrder: 2,
     title: 'Redbull Twist',
-    src: '/images/menü/Redbull Twist.png'
+    src: '/images/menü/Redbull Twist.webp'
   },
   {
     category: 'icecek',
     section: 'Özel İçecekler',
     sectionOrder: 3,
     title: 'Churchill',
-    src: '/images/menü/Churchill.png'
+    src: '/images/menü/Churchill.webp'
   },
   {
     category: 'icecek',
     section: 'Özel İçecekler',
     sectionOrder: 3,
     title: 'Limonata',
-    src: '/images/menü/Limonata.png'
+    src: '/images/menü/Limonata.webp'
   },
   {
     category: 'icecek',
     section: 'Özel İçecekler',
     sectionOrder: 3,
     title: 'Portakal Suyu',
-    src: '/images/menü/Portakal Suyu.png'
+    src: '/images/menü/Portakal Suyu.webp'
   },
   {
     category: 'nargile',
     section: 'Nargile Çeşitleri',
     sectionOrder: 1,
     title: 'Blonde Leaf',
-    src: '/images/menü/Blonde Leaf.png'
+    src: '/images/menü/Blonde Leaf.webp'
   },
   {
     category: 'nargile',
     section: 'Nargile Çeşitleri',
     sectionOrder: 1,
     title: 'Dark Leaf',
-    src: '/images/menü/Dark Leaf.png'
+    src: '/images/menü/Dark Leaf.webp'
   }
 ]
 
