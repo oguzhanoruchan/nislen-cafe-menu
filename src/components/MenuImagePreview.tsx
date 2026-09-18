@@ -2,14 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 
 type MenuImagePreviewProps = {
   alt: string
-  previewSrc: string
   src: string
   priority?: boolean
 }
 
 export function MenuImagePreview({
   alt,
-  previewSrc,
   src,
   priority = false
 }: MenuImagePreviewProps) {
@@ -45,17 +43,13 @@ export function MenuImagePreview({
   }, [priority])
 
   return (
-    <picture className="menu-image-picture">
-      <source type="image/webp" srcSet={shouldLoad ? previewSrc : undefined} />
-      <img
-        ref={imageRef}
-        src={shouldLoad ? src : undefined}
-        alt={alt}
-        className="menu-image"
-        loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
-        fetchPriority={priority ? 'high' : 'low'}
-      />
-    </picture>
+    <img
+      ref={imageRef}
+      src={shouldLoad ? src : undefined}
+      alt={alt}
+      className="menu-image"
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+    />
   )
 }

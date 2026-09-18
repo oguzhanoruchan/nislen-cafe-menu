@@ -48,8 +48,9 @@ body {
 }
 
 .top-shell {
-  background: var(--page-bg);
+  background: var(--surface);
   border-bottom: 1px solid rgba(88, 100, 90, 0.08);
+  box-shadow: 0 4px 14px rgba(60, 48, 33, 0.06);
 }
 
 .header {
@@ -57,12 +58,12 @@ body {
 }
 
 .header-inner {
-  min-height: 92px;
+  min-height: 78px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
   align-items: center;
-  padding: 10px 0 8px;
+  padding: 10px 0;
 }
 
 .header-search {
@@ -99,7 +100,7 @@ body {
 
 .mural-image {
   width: 100%;
-  height: clamp(250px, 38vw, 520px);
+  height: clamp(180px, 23vw, 330px);
   object-fit: cover;
   object-position: center;
   display: block;
@@ -618,9 +619,14 @@ body {
   }
 
   .header-inner {
-    min-height: 76px;
+    min-height: 70px;
     gap: 9px;
     padding-top: 8px;
+  }
+
+  .mural-image {
+    height: clamp(180px, 52vw, 260px);
+    object-position: center;
   }
 
   .theme-toggle {

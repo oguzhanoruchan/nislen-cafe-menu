@@ -155,6 +155,14 @@ export default function App() {
 
   return (
     <>
+      <section className="mural-stage" aria-label="Nislen mural duvarı">
+        <img
+          className="mural-image"
+          src="/images/nislen-mural-wall.webp"
+          alt="Nislen Cafe mural duvarı"
+        />
+      </section>
+
       <section className="top-shell">
         <Header darkMode={darkMode} onToggleTheme={handleToggleTheme}>
           <SearchBar
@@ -163,14 +171,6 @@ export default function App() {
             placeholder={TEXTS.searchPlaceholder}
           />
         </Header>
-      </section>
-
-      <section className="mural-stage" aria-label="Nislen mural duvarı">
-        <img
-          className="mural-image"
-          src="/images/nislen-mural-wall.webp"
-          alt="Nislen Cafe mural duvarı"
-        />
       </section>
 
       <section className="menu-surface">
@@ -205,7 +205,6 @@ export default function App() {
                         >
                           <MenuImagePreview
                             src={menuImage.src}
-                            previewSrc={menuImage.previewSrc}
                             alt=""
                             priority={priorityMenuImageIds.has(menuImage.id)}
                           />
