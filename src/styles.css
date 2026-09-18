@@ -235,6 +235,8 @@ body {
   gap: 11px;
   text-align: left;
   color: var(--text-main);
+  position: relative;
+  overflow: hidden;
 }
 
 .menu-image-card:hover {
@@ -273,6 +275,7 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  padding-right: 18px;
 }
 
 .menu-image-arrow {
@@ -281,6 +284,19 @@ body {
   font-weight: 400;
   line-height: 1;
   padding: 0 5px 0 1px;
+}
+
+.menu-image-card::after {
+  content: '';
+  position: absolute;
+  right: 42px;
+  bottom: 7px;
+  width: 16px;
+  height: 16px;
+  border-right: 1px solid rgba(137, 97, 56, 0.24);
+  border-bottom: 1px solid rgba(137, 97, 56, 0.24);
+  border-radius: 0 0 9px 0;
+  pointer-events: none;
 }
 
 .product-card {
@@ -384,10 +400,10 @@ body {
 }
 
 .menu-image-modal-card {
-  width: min(1040px, 100%);
+  width: min(980px, 100%);
   max-height: calc(100dvh - 32px);
   position: relative;
-  padding: 18px 22px 22px;
+  padding: 14px 16px 16px;
   border-color: rgba(201, 178, 143, 0.7);
   background: linear-gradient(145deg, #fffaf0, #f3e7d2);
 }
@@ -419,9 +435,9 @@ body {
 }
 
 .menu-image-modal-stage {
-  min-height: min(720px, calc(100dvh - 72px));
+  min-height: min(700px, calc(100dvh - 64px));
   display: grid;
-  grid-template-columns: minmax(82px, 1fr) minmax(0, 640px) minmax(82px, 1fr);
+  grid-template-columns: minmax(48px, 1fr) minmax(0, 660px) minmax(48px, 1fr);
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -440,29 +456,29 @@ body {
 .menu-image-modal-decoration::after {
   content: '';
   position: absolute;
-  width: clamp(42px, 6vw, 78px);
-  height: clamp(42px, 6vw, 78px);
-  border: 1px solid rgba(134, 93, 52, 0.5);
+  width: clamp(30px, 4vw, 48px);
+  height: clamp(30px, 4vw, 48px);
+  border: 1px solid rgba(134, 93, 52, 0.38);
   border-radius: 70% 0 70% 0;
 }
 
 .menu-image-modal-decoration::before {
-  top: 12%;
+  top: 20%;
 }
 
 .menu-image-modal-decoration::after {
-  bottom: 12%;
+  bottom: 20%;
 }
 
 .menu-image-modal-decoration.is-left::before,
 .menu-image-modal-decoration.is-left::after {
-  left: 22%;
+  left: 12%;
   transform: rotate(28deg);
 }
 
 .menu-image-modal-decoration.is-right::before,
 .menu-image-modal-decoration.is-right::after {
-  right: 22%;
+  right: 12%;
   transform: rotate(-28deg);
 }
 
@@ -486,18 +502,18 @@ body {
 }
 
 .menu-image-modal-nav.is-previous {
-  left: max(14px, calc(50% - 348px));
+  left: max(12px, calc(50% - 338px));
 }
 
 .menu-image-modal-nav.is-next {
-  right: max(14px, calc(50% - 348px));
+  right: max(12px, calc(50% - 338px));
 }
 
 .product-modal-image {
   grid-column: 2;
   width: 100%;
-  height: min(720px, calc(100dvh - 72px));
-  max-height: calc(100dvh - 72px);
+  height: min(700px, calc(100dvh - 64px));
+  max-height: calc(100dvh - 64px);
   object-fit: contain;
   border-radius: 8px;
   background: rgba(245, 239, 228, 0.45);
@@ -565,6 +581,7 @@ body {
     grid-column: 1;
     grid-row: 2;
     padding: 11px 8px 12px 13px;
+    padding-right: 24px;
     font-size: 16px;
     -webkit-line-clamp: 1;
   }
@@ -574,6 +591,11 @@ body {
     grid-row: 2;
     padding: 0 13px 0 8px;
     font-size: 28px;
+  }
+
+  .menu-image-card::after {
+    right: 46px;
+    bottom: 9px;
   }
 }
 
@@ -756,30 +778,30 @@ body {
   }
 
   .product-modal-image {
-    height: min(640px, calc(100dvh - 58px));
-    max-height: calc(100dvh - 58px);
+    height: min(660px, calc(100dvh - 54px));
+    max-height: calc(100dvh - 54px);
   }
 
   .menu-image-modal-stage {
-    min-height: min(640px, calc(100dvh - 58px));
-    grid-template-columns: 24px minmax(0, 1fr) 24px;
+    min-height: min(660px, calc(100dvh - 54px));
+    grid-template-columns: 18px minmax(0, 1fr) 18px;
     border-radius: 11px;
   }
 
   .menu-image-modal-decoration::before,
   .menu-image-modal-decoration::after {
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
   }
 
   .menu-image-modal-decoration.is-left::before,
   .menu-image-modal-decoration.is-left::after {
-    left: -7px;
+    left: -4px;
   }
 
   .menu-image-modal-decoration.is-right::before,
   .menu-image-modal-decoration.is-right::after {
-    right: -7px;
+    right: -4px;
   }
 
   .menu-image-modal-nav {
@@ -789,11 +811,11 @@ body {
   }
 
   .menu-image-modal-nav.is-previous {
-    left: 8px;
+    left: 5px;
   }
 
   .menu-image-modal-nav.is-next {
-    right: 8px;
+    right: 5px;
   }
 
   body {
