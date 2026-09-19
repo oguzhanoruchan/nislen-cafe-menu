@@ -79,10 +79,7 @@ export const menuSections: Record<string, MenuSection[]> = {
     },
     { id: 'soguk-kahveler', name: 'Soğuk Kahveler', order: 4 }
   ],
-  tatli: [
-    { id: 'tatlilar', name: 'Tatlılar', order: 1 },
-    { id: 'esintili-tatlar', name: 'Esintili Tatlar', order: 2 }
-  ],
+  tatli: [{ id: 'tatlilar', name: 'Tatlılar', order: 1 }],
   'tatli-serin': [{ id: 'tatli-serin', name: 'Tatlı & Serin', order: 1 }],
   icecek: [
     { id: 'kutu-icecekler', name: 'Kutu İçecekler', order: 1 },
