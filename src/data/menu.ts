@@ -83,11 +83,17 @@ export const menuSections: Record<string, MenuSection[]> = {
     { id: 'tatlilar', name: 'Tatlılar', order: 1 },
     { id: 'esintili-tatlar', name: 'Esintili Tatlar', order: 2 }
   ],
-  'tatli-serin': [{ id: 'tatli-serin', name: 'Tatlı & Serin', order: 1 }],
+  'tatli-serin': [
+    { id: 'frozen', name: 'Frozen', order: 1 },
+    { id: 'smoothie', name: 'Smoothie', order: 2 },
+    { id: 'frappe', name: 'Frappe', order: 3 },
+    { id: 'milkshake', name: 'Milkshake', order: 4 },
+    { id: 'muzlu-sut', name: 'Muzlu Süt', order: 5 }
+  ],
   icecek: [
     { id: 'kutu-icecekler', name: 'Kutu İçecekler', order: 1 },
     { id: 'kokteyller', name: 'Kokteyller', order: 2 },
-    { id: 'ozel-icecekler', name: 'Özel İçecekler', order: 3 }
+    { id: 'ozel-icecekler', name: 'Özel/İmza İçecekler', order: 3 }
   ],
   nargile: [{ id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 }]
 }
@@ -692,36 +698,36 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'tatli-serin',
-    section: 'Tatlı & Serin',
+    section: 'Frozen',
     sectionOrder: 1,
     title: 'Frozen',
     src: '/images/menü/Frozen.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Tatlı & Serin',
-    sectionOrder: 1,
+    section: 'Smoothie',
+    sectionOrder: 2,
     title: 'Smoothie',
     src: '/images/menü/Smoothie.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Tatlı & Serin',
-    sectionOrder: 1,
+    section: 'Frappe',
+    sectionOrder: 3,
     title: 'Frappe',
     src: '/images/menü/Frappe.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Tatlı & Serin',
-    sectionOrder: 1,
+    section: 'Milkshake',
+    sectionOrder: 4,
     title: 'Milkshake',
     src: '/images/menü/Milkshake.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Tatlı & Serin',
-    sectionOrder: 1,
+    section: 'Muzlu Süt',
+    sectionOrder: 5,
     title: 'Muzlu Süt',
     src: '/images/menü/Muzlu Süt.webp'
   },
@@ -867,21 +873,21 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'icecek',
-    section: 'Özel İçecekler',
+    section: 'Özel/İmza İçecekler',
     sectionOrder: 3,
     title: 'Churchill',
     src: '/images/menü/Churchill.webp'
   },
   {
     category: 'icecek',
-    section: 'Özel İçecekler',
+    section: 'Özel/İmza İçecekler',
     sectionOrder: 3,
     title: 'Limonata',
     src: '/images/menü/Limonata.webp'
   },
   {
     category: 'icecek',
-    section: 'Özel İçecekler',
+    section: 'Özel/İmza İçecekler',
     sectionOrder: 3,
     title: 'Portakal Suyu',
     src: '/images/menü/Portakal Suyu.webp'

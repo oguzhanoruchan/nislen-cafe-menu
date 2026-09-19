@@ -259,10 +259,6 @@ export default function App() {
               ×
             </button>
             <div className="menu-image-modal-stage">
-              <span
-                className="menu-image-modal-decoration is-left"
-                aria-hidden="true"
-              />
               <button
                 className="menu-image-modal-nav is-previous"
                 onClick={() => selectAdjacentMenuImage(-1)}
@@ -282,10 +278,6 @@ export default function App() {
               >
                 ›
               </button>
-              <span
-                className="menu-image-modal-decoration is-right"
-                aria-hidden="true"
-              />
             </div>
           </div>
         </div>
