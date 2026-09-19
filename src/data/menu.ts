@@ -83,13 +83,7 @@ export const menuSections: Record<string, MenuSection[]> = {
     { id: 'tatlilar', name: 'Tatlılar', order: 1 },
     { id: 'esintili-tatlar', name: 'Esintili Tatlar', order: 2 }
   ],
-  'tatli-serin': [
-    { id: 'frozen', name: 'Frozen', order: 1 },
-    { id: 'smoothie', name: 'Smoothie', order: 2 },
-    { id: 'frappe', name: 'Frappe', order: 3 },
-    { id: 'milkshake', name: 'Milkshake', order: 4 },
-    { id: 'muzlu-sut', name: 'Muzlu Süt', order: 5 }
-  ],
+  'tatli-serin': [{ id: 'tatli-serin', name: 'Tatlı & Serin', order: 1 }],
   icecek: [
     { id: 'kutu-icecekler', name: 'Kutu İçecekler', order: 1 },
     { id: 'kokteyller', name: 'Kokteyller', order: 2 },
@@ -698,36 +692,36 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'tatli-serin',
-    section: 'Frozen',
+    section: 'Tatlı & Serin',
     sectionOrder: 1,
     title: 'Frozen',
     src: '/images/menü/Frozen.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Smoothie',
-    sectionOrder: 2,
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
     title: 'Smoothie',
     src: '/images/menü/Smoothie.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Frappe',
-    sectionOrder: 3,
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
     title: 'Frappe',
     src: '/images/menü/Frappe.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Milkshake',
-    sectionOrder: 4,
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
     title: 'Milkshake',
     src: '/images/menü/Milkshake.webp'
   },
   {
     category: 'tatli-serin',
-    section: 'Muzlu Süt',
-    sectionOrder: 5,
+    section: 'Tatlı & Serin',
+    sectionOrder: 1,
     title: 'Muzlu Süt',
     src: '/images/menü/Muzlu Süt.webp'
   },
