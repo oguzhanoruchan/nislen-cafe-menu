@@ -266,6 +266,12 @@ body {
   height: 100%;
 }
 
+.menu-image-copy {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
 .menu-image-title {
   margin: 0;
   font-size: 15px;
@@ -276,6 +282,12 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   padding-right: 0;
+}
+
+.menu-image-price {
+  color: var(--nislen-green);
+  font-size: 14px;
+  line-height: 1.2;
 }
 
 .menu-image-arrow {
@@ -529,11 +541,14 @@ body {
     );
   }
 
-  .menu-image-title {
+  .menu-image-copy {
     grid-column: 1;
     grid-row: 2;
     padding: 11px 8px 12px 13px;
     padding-right: 12px;
+  }
+
+  .menu-image-title {
     font-size: 16px;
     -webkit-line-clamp: 1;
   }

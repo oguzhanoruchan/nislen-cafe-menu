@@ -16,6 +16,7 @@ export type MenuImage = {
   section: string
   sectionOrder: number
   title: string
+  price: number
   src: string
   previewSrc: string
   order: number
@@ -89,7 +90,7 @@ export const menuSections: Record<string, MenuSection[]> = {
   nargile: [{ id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 }]
 }
 
-type MenuImageSeed = Omit<MenuImage, 'id' | 'order' | 'previewSrc'>
+type MenuImageSeed = Omit<MenuImage, 'id' | 'order' | 'previewSrc' | 'price'>
 
 const menuImagesSeed: MenuImageSeed[] = [
   {
@@ -899,11 +900,139 @@ const menuImagesSeed: MenuImageSeed[] = [
   }
 ]
 
-export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => ({
-  ...image,
-  previewSrc: image.src,
-  id: `${image.category}-${index + 1}`,
-  order: index + 1
-}))
+const menuPrices: Record<string, number> = {
+  'Gurme Kahvaltı': 520,
+  'Huzur Kahvaltı Tabağı': 430,
+  'Kampüs Kahvaltı': 350,
+  'Kaşarlı Omlet': 240,
+  'Sucuklu Omlet': 250,
+  'Pastırmalı Omlet': 260,
+  Menemen: 250,
+  'Kaşarlı Menemen': 260,
+  'Sucuklu Menemen': 270,
+  'Beyaz Peynirli Tost': 260,
+  'Kaşarlı Tost': 270,
+  'Karışık Tost': 310,
+  'Ayvalık Tost': 300,
+  'Kaşarlı Gözleme': 280,
+  'Ispanaklı Gözleme': 290,
+  'Mantar-Kaşar Gözleme': 290,
+  'Kaşar-Tulum Gözleme': 300,
+  'Karışık Gözleme': 310,
+  'Patatesli Gözleme': 300,
+  'İzmir Kumru': 330,
+  'Ekmek Arası Köfte': 480,
+  'Ekmek Arası Kaşar-Salam': 280,
+  'Ekmek Arası Ton Balığı': 310,
+  'Izgara Köfte Servis': 550,
+  'Somun Tantuni': 370,
+  'Lavaş Tantuni': 380,
+  'Chicken Mushroom': 410,
+  'Kiremitte Mantar': 270,
+  'Yoğurtlu Akdeniz Kebabı': 430,
+  'Kayseri Mantısı': 350,
+  'Tavuk Sote': 430,
+  'Köri Soslu Piliç': 460,
+  'Mexican Soslu Piliç': 460,
+  'Barbekü Soslu Piliç': 460,
+  'Kekikli Kremalı Soslu Piliç': 460,
+  'Tavuk Çökertme': 480,
+  'Vegetarian Wrap': 310,
+  'Tavuk Wrap': 370,
+  'Sosisli Wrap': 330,
+  'Penne Makarna': 320,
+  'Anne Eli Makarna': 330,
+  'Pesto Soslu Penne': 340,
+  'Köri Soslu Makarna': 350,
+  'İtalyan Makarna': 350,
+  'Patates Tava': 250,
+  "Cheddar'lı Patates Kızartması": 310,
+  'Mix Tabak': 330,
+  'Akdeniz Salata': 310,
+  'Ton Balıklı Salata': 320,
+  'Şinitzel Salatası': 330,
+  'Sezar Salata': 340,
+  'Tavuklu Şefin Salatası': 350,
+  'Türk Kahvesi': 150,
+  'Damla Sakızlı Türk Kahvesi': 160,
+  'Dibek Kahvesi': 160,
+  'Menengiç Kahvesi': 165,
+  'Sütlü Türk Kahvesi': 160,
+  Süvari: 180,
+  'Filtre Kahve': 180,
+  'Etiyopya Filtre Kahve': 180,
+  'Kolombiya Filtre Kahve': 180,
+  'Guatemala Filtre Kahve': 180,
+  'Fransız Vanilyası Filtre Kahve': 180,
+  'İsveç Çikolatası Filtre Kahve': 180,
+  'İrlanda Kreması Filtre Kahve': 180,
+  'Kenya Filtre Kahve': 180,
+  'Brezilya Filtre Kahve': 180,
+  Espresso: 150,
+  Nescafe: 180,
+  Cappucino: 190,
+  Americano: 170,
+  Latte: 180,
+  Mocha: 190,
+  Macchiato: 180,
+  'Ice Latte': 210,
+  'Ice Mocha': 220,
+  'Ice Americano': 190,
+  'Strawberry Ice Latte': 220,
+  Sütlaç: 220,
+  'Fıstık Rüyası': 240,
+  Tiramisu: 230,
+  'San Sebastian': 280,
+  Fondü: 300,
+  'Meyveli Pastalar': 270,
+  Magnolya: 250,
+  Supangle: 250,
+  Frozen: 220,
+  Smoothie: 220,
+  Frappe: 220,
+  Milkshake: 220,
+  'Muzlu Süt': 230,
+  Su: 45,
+  Soda: 80,
+  'Meyveli Soda': 90,
+  'Ice Tea': 120,
+  'Coca Cola': 120,
+  Fanta: 120,
+  Sprite: 120,
+  Redbull: 180,
+  'Meyve Suyu': 120,
+  Mojito: 220,
+  'Blue Lagoon': 220,
+  'Mürver Ice Tea': 220,
+  'Berry Lemonade': 230,
+  Rainbow: 240,
+  'Pina Colada': 240,
+  'Liçi Fizz': 240,
+  Cinderella: 240,
+  'Dragon Lemonade': 240,
+  'Nislen Mix': 250,
+  'Redbull Twist': 260,
+  Churchill: 140,
+  Limonata: 170,
+  'Portakal Suyu': 220,
+  'Blonde Leaf': 520,
+  'Dark Leaf': 700
+}
+
+export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => {
+  const price = menuPrices[image.title]
+
+  if (price === undefined) {
+    throw new Error(`Missing price for menu item: ${image.title}`)
+  }
+
+  return {
+    ...image,
+    price,
+    previewSrc: image.src,
+    id: `${image.category}-${index + 1}`,
+    order: index + 1
+  }
+})
 
 export const products: Product[] = []

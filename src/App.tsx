@@ -15,6 +15,14 @@ const THEME_KEY = 'nislen-theme'
 
 type ThemePreference = 'light' | 'dark' | 'system'
 
+function formatPrice(value: number) {
+  return new Intl.NumberFormat('tr-TR', {
+    style: 'currency',
+    currency: 'TRY',
+    maximumFractionDigits: 0
+  }).format(value)
+}
+
 export default function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
@@ -223,8 +231,13 @@ export default function App() {
                             priority={priorityMenuImageIds.has(menuImage.id)}
                           />
                         </span>
-                        <span className="menu-image-title">
-                          {menuImage.title}
+                        <span className="menu-image-copy">
+                          <span className="menu-image-title">
+                            {menuImage.title}
+                          </span>
+                          <strong className="menu-image-price">
+                            {formatPrice(menuImage.price)}
+                          </strong>
                         </span>
                         <span className="menu-image-arrow" aria-hidden="true">
                           ›
