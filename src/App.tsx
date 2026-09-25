@@ -232,12 +232,24 @@ export default function App() {
                           />
                         </span>
                         <span className="menu-image-copy">
-                          <span className="menu-image-title">
-                            {menuImage.title}
+                          <span className="menu-image-price-row">
+                            <span className="menu-image-title">
+                              {menuImage.title}
+                            </span>
+                            <strong className="menu-image-price">
+                              {formatPrice(menuImage.price)}
+                            </strong>
                           </span>
-                          <strong className="menu-image-price">
-                            {formatPrice(menuImage.price)}
-                          </strong>
+                          {menuImage.doublePrice !== undefined ? (
+                            <span className="menu-image-price-row">
+                              <span className="menu-image-title">
+                                Double {menuImage.title}
+                              </span>
+                              <strong className="menu-image-price">
+                                {formatPrice(menuImage.doublePrice)}
+                              </strong>
+                            </span>
+                          ) : null}
                         </span>
                         <span className="menu-image-arrow" aria-hidden="true">
                           ›

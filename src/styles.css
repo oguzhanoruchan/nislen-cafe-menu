@@ -268,6 +268,12 @@ body {
 
 .menu-image-copy {
   min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.menu-image-price-row {
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 14px;

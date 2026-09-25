@@ -17,6 +17,7 @@ export type MenuImage = {
   sectionOrder: number
   title: string
   price: number
+  doublePrice?: number
   src: string
   previewSrc: string
   order: number
@@ -90,7 +91,10 @@ export const menuSections: Record<string, MenuSection[]> = {
   nargile: [{ id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 }]
 }
 
-type MenuImageSeed = Omit<MenuImage, 'id' | 'order' | 'previewSrc' | 'price'>
+type MenuImageSeed = Omit<
+  MenuImage,
+  'id' | 'order' | 'previewSrc' | 'price' | 'doublePrice'
+>
 
 const menuImagesSeed: MenuImageSeed[] = [
   {
@@ -1019,6 +1023,16 @@ const menuPrices: Record<string, number> = {
   'Dark Leaf': 700
 }
 
+const doubleCoffeePrices: Record<string, number> = {
+  'Türk Kahvesi': 190,
+  'Damla Sakızlı Türk Kahvesi': 200,
+  'Dibek Kahvesi': 200,
+  'Menengiç Kahvesi': 205,
+  'Sütlü Türk Kahvesi': 200,
+  Süvari: 220,
+  Espresso: 190
+}
+
 export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => {
   const price = menuPrices[image.title]
 
@@ -1029,6 +1043,7 @@ export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => {
   return {
     ...image,
     price,
+    doublePrice: doubleCoffeePrices[image.title],
     previewSrc: image.src,
     id: `${image.category}-${index + 1}`,
     order: index + 1
