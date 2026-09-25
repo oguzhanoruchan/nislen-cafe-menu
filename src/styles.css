@@ -297,11 +297,6 @@ body {
   padding-right: 0;
 }
 
-.menu-image-double-title {
-  font-size: 13px;
-  font-weight: 700;
-}
-
 .menu-image-price {
   color: var(--nislen-green);
   font-size: 15px;
@@ -572,10 +567,6 @@ body {
     font-size: 16px;
   }
 
-  .menu-image-double-title {
-    font-size: 14px;
-  }
-
 }
 
 @media (min-width: 900px) {
@@ -830,10 +821,6 @@ body {
 
   .menu-image-title {
     font-size: 15px;
-  }
-
-  .menu-image-double-title {
-    font-size: 12px;
   }
 
   .menu-image-row-arrow {
