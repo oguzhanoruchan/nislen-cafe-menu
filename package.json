@@ -14,6 +14,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "playwright": "^1.63.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -36,5 +37,18 @@
   "overrides": {
     "js-yaml": "^4.3.2",
     "nanoid": "^3.3.18"
-  }
+  },
+  "description": "Bu proje, Nislen Café'nin müşteri odaklı QR menüsünü React + Vite + TypeScript ile sade bir yapıda sunar.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oguzhanoruchan/nislen-cafe-menu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oguzhanoruchan/nislen-cafe-menu/issues"
+  },
+  "homepage": "https://github.com/oguzhanoruchan/nislen-cafe-menu#readme"
 }

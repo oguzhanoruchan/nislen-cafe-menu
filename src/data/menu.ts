@@ -322,7 +322,7 @@ const menuImagesSeed: MenuImageSeed[] = [
     section: 'Beyaz Et',
     sectionOrder: 5,
     title: 'Tavuk Sote',
-    src: '/images/menü/Tavuk Sote.webp'
+    src: '/images/menü/Tavuk Sote2.webp'
   },
   {
     category: 'yemek',
