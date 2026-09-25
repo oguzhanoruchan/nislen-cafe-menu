@@ -239,20 +239,29 @@ export default function App() {
                             <strong className="menu-image-price">
                               {formatPrice(menuImage.price)}
                             </strong>
+                            <span
+                              className="menu-image-row-arrow"
+                              aria-hidden="true"
+                            >
+                              ›
+                            </span>
                           </span>
                           {menuImage.doublePrice !== undefined ? (
                             <span className="menu-image-price-row">
-                              <span className="menu-image-title">
+                              <span className="menu-image-title menu-image-double-title">
                                 Double {menuImage.title}
                               </span>
                               <strong className="menu-image-price">
                                 {formatPrice(menuImage.doublePrice)}
                               </strong>
+                              <span
+                                className="menu-image-row-arrow"
+                                aria-hidden="true"
+                              >
+                                ›
+                              </span>
                             </span>
                           ) : null}
-                        </span>
-                        <span className="menu-image-arrow" aria-hidden="true">
-                          ›
                         </span>
                       </button>
                     ))}
