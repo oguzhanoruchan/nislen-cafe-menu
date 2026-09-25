@@ -42,8 +42,9 @@ const mainCategoriesSeed = [
   { id: 'kahveler', name: 'Kahveler', order: 3 },
   { id: 'tatli', name: 'Tatlı', order: 4 },
   { id: 'tatli-serin', name: 'Tatlı & Serin', order: 5 },
-  { id: 'icecek', name: 'İçecek', order: 6 },
-  { id: 'nargile', name: 'Nargile', order: 7 }
+  { id: 'sicak-icecekler', name: 'Sıcak İçecekler', order: 6 },
+  { id: 'icecek', name: 'Soğuk İçecekler', order: 7 },
+  { id: 'nargile', name: 'Nargile', order: 8 }
 ] as const
 
 export const categories: Category[] = mainCategoriesSeed.map((category) => ({
@@ -83,6 +84,15 @@ export const menuSections: Record<string, MenuSection[]> = {
   ],
   tatli: [{ id: 'tatlilar', name: 'Tatlılar', order: 1 }],
   'tatli-serin': [{ id: 'tatli-serin', name: 'Tatlı & Serin', order: 1 }],
+  'sicak-icecekler': [
+    {
+      id: 'cay-sicak-icecekler',
+      name: 'Çay & Sıcak İçecekler',
+      order: 1
+    },
+    { id: 'meyve-caylari', name: 'Meyve Çayları', order: 2 },
+    { id: 'bitki-caylari', name: 'Bitki Çayları', order: 3 }
+  ],
   icecek: [
     { id: 'kutu-icecekler', name: 'Kutu İçecekler', order: 1 },
     { id: 'kokteyller', name: 'Kokteyller', order: 2 },
@@ -501,7 +511,7 @@ const menuImagesSeed: MenuImageSeed[] = [
     section: 'Türk Kahveleri',
     sectionOrder: 1,
     title: 'Süvari',
-    src: '/images/menü/Süvari.webp'
+    src: '/images/menü/Süvari2.webp'
   },
   {
     category: 'kahveler',
@@ -728,6 +738,139 @@ const menuImagesSeed: MenuImageSeed[] = [
     src: '/images/menü/Muzlu Süt.webp'
   },
   {
+    category: 'sicak-icecekler',
+    section: 'Çay & Sıcak İçecekler',
+    sectionOrder: 1,
+    title: 'Çay',
+    src: '/images/menü/Çay.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Çay & Sıcak İçecekler',
+    sectionOrder: 1,
+    title: 'Fincan Çay',
+    src: '/images/menü/Fincan Çay.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Çay & Sıcak İçecekler',
+    sectionOrder: 1,
+    title: 'Oralet',
+    src: '/images/menü/Oraletler.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Çay & Sıcak İçecekler',
+    sectionOrder: 1,
+    title: 'Ballı Süt',
+    src: '/images/menü/Ballı Süt.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Çay & Sıcak İçecekler',
+    sectionOrder: 1,
+    title: 'Salep',
+    src: '/images/menü/Salep.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Çay & Sıcak İçecekler',
+    sectionOrder: 1,
+    title: 'Sıcak Çikolata',
+    src: '/images/menü/Sıcak Çikolata.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Meyve Çayları',
+    sectionOrder: 2,
+    title: 'Nar Çayı',
+    src: '/images/menü/Nar Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Meyve Çayları',
+    sectionOrder: 2,
+    title: 'Kuşburnu Çayı',
+    src: '/images/menü/Kuşburnu Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Meyve Çayları',
+    sectionOrder: 2,
+    title: 'Elma Çayı',
+    src: '/images/menü/Elma Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Meyve Çayları',
+    sectionOrder: 2,
+    title: 'Tropikal Meyve Çayı',
+    src: '/images/menü/Tropikal Meyve Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Meyve Çayları',
+    sectionOrder: 2,
+    title: 'Elma - Tarçın Çayı',
+    src: '/images/menü/Elma-Tarçın Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Meyve Çayları',
+    sectionOrder: 2,
+    title: 'Rezene Çayı',
+    src: '/images/menü/Rezene Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Bitki Çayları',
+    sectionOrder: 3,
+    title: 'Ada Çayı',
+    src: '/images/menü/Ada Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Bitki Çayları',
+    sectionOrder: 3,
+    title: 'Papatya Çayı',
+    src: '/images/menü/Papatya Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Bitki Çayları',
+    sectionOrder: 3,
+    title: 'Yeşil Çay',
+    src: '/images/menü/Yeşil Çay.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Bitki Çayları',
+    sectionOrder: 3,
+    title: 'Nane Limon',
+    src: '/images/menü/Nane Limon.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Bitki Çayları',
+    sectionOrder: 3,
+    title: 'Kış Çayı',
+    src: '/images/menü/Kış Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Bitki Çayları',
+    sectionOrder: 3,
+    title: 'Melisa Çayı',
+    src: '/images/menü/Melisa Çayı.webp'
+  },
+  {
+    category: 'sicak-icecekler',
+    section: 'Bitki Çayları',
+    sectionOrder: 3,
+    title: 'Ihlamur',
+    src: '/images/menü/Ihlamur Çayı.webp'
+  },
+  {
     category: 'icecek',
     section: 'Kutu İçecekler',
     sectionOrder: 1,
@@ -747,6 +890,13 @@ const menuImagesSeed: MenuImageSeed[] = [
     sectionOrder: 1,
     title: 'Meyveli Soda',
     src: '/images/menü/Meyveli Soda.webp'
+  },
+  {
+    category: 'icecek',
+    section: 'Kutu İçecekler',
+    sectionOrder: 1,
+    title: 'Ayran',
+    src: '/images/menü/Ayran.webp'
   },
   {
     category: 'icecek',
@@ -996,9 +1146,29 @@ const menuPrices: Record<string, number> = {
   Frappe: 220,
   Milkshake: 220,
   'Muzlu Süt': 230,
+  Çay: 55,
+  'Fincan Çay': 70,
+  Oralet: 60,
+  'Ballı Süt': 160,
+  Salep: 170,
+  'Sıcak Çikolata': 170,
+  'Nar Çayı': 170,
+  'Kuşburnu Çayı': 170,
+  'Elma Çayı': 170,
+  'Tropikal Meyve Çayı': 170,
+  'Elma - Tarçın Çayı': 170,
+  'Rezene Çayı': 170,
+  'Ada Çayı': 180,
+  'Papatya Çayı': 180,
+  'Yeşil Çay': 180,
+  'Nane Limon': 180,
+  'Kış Çayı': 180,
+  'Melisa Çayı': 180,
+  Ihlamur: 180,
   Su: 45,
   Soda: 80,
   'Meyveli Soda': 90,
+  Ayran: 60,
   'Ice Tea': 120,
   'Coca Cola': 120,
   Fanta: 120,
