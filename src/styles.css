@@ -290,7 +290,8 @@ body {
   min-width: 0;
   margin: 0;
   font-size: 15px;
-  line-height: 1.3;
+  line-height: 26px;
+  align-self: center;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
@@ -302,7 +303,8 @@ body {
   color: var(--nislen-green);
   font-size: 15px;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 26px;
+  align-self: center;
   white-space: nowrap;
   text-align: right;
 }
@@ -311,7 +313,8 @@ body {
   color: var(--nislen-green);
   font-size: 26px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 26px;
+  align-self: center;
   text-align: center;
 }
 
@@ -884,5 +887,11 @@ body {
 
   .menu-image-row-arrow {
     font-size: 24px;
+    line-height: 24px;
+  }
+
+  .menu-image-title,
+  .menu-image-price {
+    line-height: 24px;
   }
 }
