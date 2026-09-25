@@ -131,7 +131,7 @@ export function FooterLinks() {
             </div>
             <div className="wifi-modal-row">
               <span className="wifi-modal-label">Ağ Adı</span>
-              <span className="wifi-modal-value">NISLEN-MUSTERİ</span>
+              <span className="wifi-modal-value">NISLEN MUSTERI3</span>
             </div>
             <div className="wifi-modal-row">
               <span className="wifi-modal-label">Şifre</span>
