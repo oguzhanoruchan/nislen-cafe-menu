@@ -1,4 +1,4 @@
-import { useRef, type WheelEvent } from 'react'
+import { useEffect, useRef, useState, type WheelEvent } from 'react'
 import type { Category } from '../data/menu'
 
 type CategoryFilterProps = {
@@ -15,6 +15,25 @@ export function CategoryFilter({
   allLabel
 }: CategoryFilterProps) {
   const navRef = useRef<HTMLElement | null>(null)
+  const [isStuck, setIsStuck] = useState(false)
+
+  useEffect(() => {
+    const updateStickyState = () => {
+      const nav = navRef.current
+      if (!nav) return
+
+      setIsStuck(nav.getBoundingClientRect().top <= 0)
+    }
+
+    updateStickyState()
+    window.addEventListener('scroll', updateStickyState, { passive: true })
+    window.addEventListener('resize', updateStickyState)
+
+    return () => {
+      window.removeEventListener('scroll', updateStickyState)
+      window.removeEventListener('resize', updateStickyState)
+    }
+  }, [])
 
   const handleWheel = (event: WheelEvent<HTMLElement>) => {
     const target = navRef.current
@@ -29,7 +48,7 @@ export function CategoryFilter({
   return (
     <nav
       ref={navRef}
-      className="category-filter"
+      className={`category-filter${isStuck ? ' is-stuck' : ''}`}
       aria-label="Kategoriler"
       onWheel={handleWheel}
     >

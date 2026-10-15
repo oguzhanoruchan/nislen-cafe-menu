@@ -63,11 +63,11 @@ export const menuSections: Record<string, MenuSection[]> = {
   ],
   yemek: [
     { id: 'ekmek-arasi-cesitleri', name: 'Ekmek Arası Çeşitleri', order: 1 },
-    { id: 'izgara', name: 'Izgara', order: 2 },
-    { id: 'special', name: 'Special', order: 3 },
-    { id: 'beyaz-et', name: 'Beyaz Et', order: 4 },
-    { id: 'wraplar', name: 'Wraplar', order: 5 },
-    { id: 'burgerler', name: 'Burgerler', order: 6 },
+    { id: 'burgerler', name: 'Burgerler', order: 2 },
+    { id: 'wraplar', name: 'Wraplar', order: 3 },
+    { id: 'izgara', name: 'Izgara', order: 4 },
+    { id: 'special', name: 'Special', order: 5 },
+    { id: 'beyaz-et', name: 'Beyaz Et', order: 6 },
     { id: 'makarnalar', name: 'Makarnalar', order: 7 },
     { id: 'ara-sicaklar', name: 'Ara Sıcaklar', order: 8 },
     { id: 'salatalar', name: 'Salatalar', order: 9 }
@@ -90,13 +90,13 @@ export const menuSections: Record<string, MenuSection[]> = {
       name: 'Çay & Sıcak İçecekler',
       order: 1
     },
-    { id: 'meyve-caylari', name: 'Meyve Çayları', order: 2 },
-    { id: 'bitki-caylari', name: 'Bitki Çayları', order: 3 }
+    { id: 'bitki-caylari', name: 'Bitki Çayları', order: 2 },
+    { id: 'meyve-caylari', name: 'Meyve Çayları', order: 3 }
   ],
   icecek: [
     { id: 'kutu-icecekler', name: 'Kutu İçecekler', order: 1 },
-    { id: 'kokteyller', name: 'Kokteyller', order: 2 },
-    { id: 'ozel-icecekler', name: 'Özel/İmza İçecekler', order: 3 }
+    { id: 'ozel-icecekler', name: 'Özel/İmza İçecekler', order: 2 },
+    { id: 'kokteyller', name: 'Kokteyller', order: 3 }
   ],
   nargile: [{ id: 'nargile-cesitleri', name: 'Nargile Çeşitleri', order: 1 }]
 }
@@ -277,8 +277,8 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'yemek',
-    section: 'Special',
-    sectionOrder: 3,
+    section: 'Beyaz Et',
+    sectionOrder: 6,
     title: 'Chicken Mushroom',
     src: '/images/menü/Chicken Mushroom.webp'
   },
@@ -1134,21 +1134,21 @@ const menuPrices: Record<string, number> = {
   'Ekmek Arası Köfte': 480,
   'Ekmek Arası Kaşar-Salam': 280,
   'Ekmek Arası Ton Balığı': 310,
-  'Izgara Köfte Servis': 550,
+  'Izgara Köfte Servis': 520,
   'Chicken Mushroom': 410,
   'Kiremitte Mantar': 270,
-  'Et Çökertme': 490,
+  'Et Çökertme': 520,
   'Tavuk Sote': 430,
   'Köri Soslu Piliç': 460,
   'Mexican Soslu Piliç': 460,
   'Barbekü Soslu Piliç': 460,
   'Kekikli Kremalı Soslu Piliç': 460,
-  'Tavuk Çökertme': 480,
+  'Tavuk Çökertme': 470,
   'Vegetarian Wrap': 310,
-  'Tavuk Wrap': 370,
-  'Et Wrap': 480,
-  'Et Quesadilla': 485,
-  'Tavuk Quesadilla': 380,
+  'Tavuk Wrap': 420,
+  'Et Wrap': 490,
+  'Et Quesadilla': 490,
+  'Tavuk Quesadilla': 420,
   'Mushroom Burger': 460,
   'İtalyan Burger': 450,
   Cheeseburger: 450,
@@ -1267,21 +1267,226 @@ const doubleCoffeePrices: Record<string, number> = {
   Espresso: 190
 }
 
-export const menuImages: MenuImage[] = menuImagesSeed.map((image, index) => {
-  const price = menuPrices[image.title]
+const productOrder: Record<string, string[]> = {
+  Kahvaltılar: ['Kampüs Kahvaltı', 'Huzur Kahvaltı Tabağı', 'Gurme Kahvaltı'],
+  'Omlet Çeşitleri': ['Kaşarlı Omlet', 'Sucuklu Omlet', 'Pastırmalı Omlet'],
+  'Menemen Çeşitleri': ['Menemen', 'Kaşarlı Menemen', 'Sucuklu Menemen'],
+  'Tost Çeşitleri': [
+    'Beyaz Peynirli Tost',
+    'Kaşarlı Tost',
+    'Ayvalık Tost',
+    'Karışık Tost'
+  ],
+  'Gözleme Çeşitleri': [
+    'Kaşarlı Gözleme',
+    'Ispanaklı Gözleme',
+    'Patatesli Gözleme',
+    'Mantar-Kaşar Gözleme',
+    'Kaşar-Tulum Gözleme',
+    'Karışık Gözleme'
+  ],
+  'Ekmek Arası Çeşitleri': [
+    'Ekmek Arası Kaşar-Salam',
+    'Ekmek Arası Ton Balığı',
+    'İzmir Kumru',
+    'Ekmek Arası Köfte'
+  ],
+  Burgerler: [
+    'Klasik Burger',
+    'Cheeseburger',
+    'Mushroom Burger',
+    'İtalyan Burger',
+    'Chicken Burger',
+    'Chicken Cheese Barbekü',
+    'Chicken Sweet Chili'
+  ],
+  Wraplar: [
+    'Vegetarian Wrap',
+    'Tavuk Wrap',
+    'Et Wrap',
+    'Tavuk Quesadilla',
+    'Et Quesadilla'
+  ],
+  Izgara: ['Izgara Köfte Servis'],
+  Special: ['Kiremitte Mantar', 'Tavuk Çökertme', 'Et Çökertme'],
+  'Beyaz Et': [
+    'Tavuk Sote',
+    'Chicken Mushroom',
+    'Köri Soslu Piliç',
+    'Kekikli Kremalı Soslu Piliç',
+    'Barbekü Soslu Piliç',
+    'Mexican Soslu Piliç'
+  ],
+  Makarnalar: [
+    'Penne Makarna',
+    'Anne Eli Makarna',
+    'Pesto Soslu Penne',
+    'Köri Soslu Makarna',
+    'Barbeküs Makarna',
+    'İtalyan Makarna',
+    'Fettuccine Alfredo'
+  ],
+  'Ara Sıcaklar': [
+    'Patates Tava',
+    "Cheddar'lı Patates Kızartması",
+    'Mix Tabak'
+  ],
+  Salatalar: [
+    'Akdeniz Salata',
+    'Ton Balıklı Salata',
+    'Sezar Salata',
+    'Şinitzel Salatası',
+    'Tavuklu Şefin Salatası'
+  ],
+  'Türk Kahveleri': [
+    'Türk Kahvesi',
+    'Sütlü Türk Kahvesi',
+    'Damla Sakızlı Türk Kahvesi',
+    'Dibek Kahvesi',
+    'Menengiç Kahvesi',
+    'Süvari'
+  ],
+  'Filtre Kahveler': [
+    'Filtre Kahve',
+    'Brezilya Filtre Kahve',
+    'Kolombiya Filtre Kahve',
+    'Guatemala Filtre Kahve',
+    'Etiyopya Filtre Kahve',
+    'Kenya Filtre Kahve',
+    'Fransız Vanilyası Filtre Kahve',
+    'İsveç Çikolatası Filtre Kahve',
+    'İrlanda Kreması Filtre Kahve'
+  ],
+  'Espresso Bazlı Kahveler': [
+    'Espresso',
+    'Americano',
+    'Nescafe',
+    'Cappucino',
+    'Latte',
+    'Macchiato',
+    'Mocha'
+  ],
+  'Soğuk Kahveler': [
+    'Ice Americano',
+    'Ice Latte',
+    'Ice Mocha',
+    'Strawberry Ice Latte'
+  ],
+  Tatlılar: [
+    'Sütlaç',
+    'Supangle',
+    'Magnolya',
+    'Tiramisu',
+    'Meyveli Pastalar',
+    'San Sebastian',
+    'Fıstık Rüyası',
+    'Fondü'
+  ],
+  'Tatlı & Serin': ['Smoothie', 'Frozen', 'Muzlu Süt', 'Frappe', 'Milkshake'],
+  'Çay & Sıcak İçecekler': [
+    'Çay',
+    'Fincan Çay',
+    'Oralet',
+    'Ballı Süt',
+    'Salep',
+    'Sıcak Çikolata'
+  ],
+  'Bitki Çayları': [
+    'Yeşil Çay',
+    'Ada Çayı',
+    'Ihlamur',
+    'Nane Limon',
+    'Papatya Çayı',
+    'Melisa Çayı',
+    'Kış Çayı'
+  ],
+  'Meyve Çayları': [
+    'Elma Çayı',
+    'Kuşburnu Çayı',
+    'Nar Çayı',
+    'Elma - Tarçın Çayı',
+    'Tropikal Meyve Çayı',
+    'Rezene Çayı'
+  ],
+  'Kutu İçecekler': [
+    'Su',
+    'Soda',
+    'Meyveli Soda',
+    'Ayran',
+    'Meyve Suyu',
+    'Ice Tea',
+    'Coca Cola',
+    'Fanta',
+    'Sprite',
+    'Redbull'
+  ],
+  'Özel/İmza İçecekler': ['Churchill', 'Limonata', 'Portakal Suyu'],
+  Kokteyller: [
+    'Mojito',
+    'Blue Lagoon',
+    'Mürver Ice Tea',
+    'Berry Lemonade',
+    'Dragon Lemonade',
+    'Liçi Fizz',
+    'Cinderella',
+    'Rainbow',
+    'Pina Colada',
+    'Nislen Mix',
+    'Redbull Twist'
+  ],
+  'Nargile Çeşitleri': ['Blonde Leaf', 'Dark Leaf']
+}
 
-  if (price === undefined) {
-    throw new Error(`Missing price for menu item: ${image.title}`)
-  }
+const sectionOrders = Object.fromEntries(
+  Object.entries(menuSections).map(([category, sections]) => [
+    category,
+    Object.fromEntries(sections.map((section) => [section.name, section.order]))
+  ])
+)
 
-  return {
+const categoryOrders = Object.fromEntries(
+  categories.map((category) => [category.id, category.order])
+)
+
+const orderedMenuImagesSeed = menuImagesSeed
+  .map((image, index) => ({
     ...image,
-    price,
-    doublePrice: doubleCoffeePrices[image.title],
-    previewSrc: image.src,
-    id: `${image.category}-${index + 1}`,
-    order: index + 1
+    sectionOrder:
+      sectionOrders[image.category]?.[image.section] ?? image.sectionOrder,
+    sourceOrder: index
+  }))
+  .sort((left, right) => {
+    const categoryOrder =
+      categoryOrders[left.category] - categoryOrders[right.category]
+    if (categoryOrder !== 0) return categoryOrder
+
+    const sectionOrder = left.sectionOrder - right.sectionOrder
+    if (sectionOrder !== 0) return sectionOrder
+
+    const leftOrder = productOrder[left.section]?.indexOf(left.title) ?? -1
+    const rightOrder = productOrder[right.section]?.indexOf(right.title) ?? -1
+    if (leftOrder !== rightOrder) return leftOrder - rightOrder
+
+    return left.sourceOrder - right.sourceOrder
+  })
+
+export const menuImages: MenuImage[] = orderedMenuImagesSeed.map(
+  (image, index) => {
+    const price = menuPrices[image.title]
+
+    if (price === undefined) {
+      throw new Error(`Missing price for menu item: ${image.title}`)
+    }
+
+    return {
+      ...image,
+      price,
+      doublePrice: doubleCoffeePrices[image.title],
+      previewSrc: image.src,
+      id: `${image.category}-${index + 1}`,
+      order: index + 1
+    }
   }
-})
+)
 
 export const products: Product[] = []
