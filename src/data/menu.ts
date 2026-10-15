@@ -64,10 +64,10 @@ export const menuSections: Record<string, MenuSection[]> = {
   yemek: [
     { id: 'ekmek-arasi-cesitleri', name: 'Ekmek Arası Çeşitleri', order: 1 },
     { id: 'izgara', name: 'Izgara', order: 2 },
-    { id: 'tantuni', name: 'Tantuni', order: 3 },
-    { id: 'special', name: 'Special', order: 4 },
-    { id: 'beyaz-et', name: 'Beyaz Et', order: 5 },
-    { id: 'wraplar', name: 'Wraplar', order: 6 },
+    { id: 'special', name: 'Special', order: 3 },
+    { id: 'beyaz-et', name: 'Beyaz Et', order: 4 },
+    { id: 'wraplar', name: 'Wraplar', order: 5 },
+    { id: 'burgerler', name: 'Burgerler', order: 6 },
     { id: 'makarnalar', name: 'Makarnalar', order: 7 },
     { id: 'ara-sicaklar', name: 'Ara Sıcaklar', order: 8 },
     { id: 'salatalar', name: 'Salatalar', order: 9 }
@@ -277,108 +277,150 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'yemek',
-    section: 'Tantuni',
-    sectionOrder: 3,
-    title: 'Somun Tantuni',
-    src: '/images/menü/Somun Tantuni.webp'
-  },
-  {
-    category: 'yemek',
-    section: 'Tantuni',
-    sectionOrder: 3,
-    title: 'Lavaş Tantuni',
-    src: '/images/menü/Lavaş Tantuni.webp'
-  },
-  {
-    category: 'yemek',
     section: 'Special',
-    sectionOrder: 4,
+    sectionOrder: 3,
     title: 'Chicken Mushroom',
     src: '/images/menü/Chicken Mushroom.webp'
   },
   {
     category: 'yemek',
     section: 'Special',
-    sectionOrder: 4,
+    sectionOrder: 3,
     title: 'Kiremitte Mantar',
     src: '/images/menü/Kiremitte Mantar.webp'
   },
   {
     category: 'yemek',
     section: 'Special',
-    sectionOrder: 4,
-    title: 'Yoğurtlu Akdeniz Kebabı',
-    src: '/images/menü/Yoğurtu Akdeniz Kebabı.webp'
+    sectionOrder: 3,
+    title: 'Et Çökertme',
+    src: '/images/menü/Et Çökertme.webp'
   },
   {
     category: 'yemek',
     section: 'Special',
-    sectionOrder: 4,
-    title: 'Kayseri Mantısı',
-    src: '/images/menü/Kayseri Mantısı.webp'
+    sectionOrder: 3,
+    title: 'Tavuk Çökertme',
+    src: '/images/menü/Tavuk Çökertme.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Tavuk Sote',
     src: '/images/menü/Tavuk Sote2.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Köri Soslu Piliç',
     src: '/images/menü/Köri Soslu Piliç.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Mexican Soslu Piliç',
     src: '/images/menü/Mexican Soslu Piliç.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Barbekü Soslu Piliç',
     src: '/images/menü/Barbekü Soslu Piliç.webp'
   },
   {
     category: 'yemek',
     section: 'Beyaz Et',
-    sectionOrder: 5,
+    sectionOrder: 4,
     title: 'Kekikli Kremalı Soslu Piliç',
     src: '/images/menü/Kekikli Kremalı Soslu Piliç.webp'
   },
   {
     category: 'yemek',
-    section: 'Beyaz Et',
-    sectionOrder: 5,
-    title: 'Tavuk Çökertme',
-    src: '/images/menü/Tavuk Çökertme.webp'
-  },
-  {
-    category: 'yemek',
     section: 'Wraplar',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Vegetarian Wrap',
     src: '/images/menü/Vejeteryan Wrap.webp'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
-    sectionOrder: 6,
+    sectionOrder: 5,
     title: 'Tavuk Wrap',
     src: '/images/menü/Tavuk Wrap.webp'
   },
   {
     category: 'yemek',
     section: 'Wraplar',
+    sectionOrder: 5,
+    title: 'Et Wrap',
+    src: '/images/menü/Et Wrap.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Wraplar',
+    sectionOrder: 5,
+    title: 'Et Quesadilla',
+    src: '/images/menü/Et Quesadilla.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Wraplar',
+    sectionOrder: 5,
+    title: 'Tavuk Quesadilla',
+    src: '/images/menü/Tavuk Quesadilla.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Burgerler',
     sectionOrder: 6,
-    title: 'Sosisli Wrap',
-    src: '/images/menü/Sosisli Wrap.webp'
+    title: 'Mushroom Burger',
+    src: '/images/menü/Mushroom Burger.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Burgerler',
+    sectionOrder: 6,
+    title: 'İtalyan Burger',
+    src: '/images/menü/İtalyan Burger.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Burgerler',
+    sectionOrder: 6,
+    title: 'Cheeseburger',
+    src: '/images/menü/Cheeseburger.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Burgerler',
+    sectionOrder: 6,
+    title: 'Klasik Burger',
+    src: '/images/menü/Klasik Burger.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Burgerler',
+    sectionOrder: 6,
+    title: 'Chicken Cheese Barbekü',
+    src: '/images/menü/Chicken Chess Barbekü.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Burgerler',
+    sectionOrder: 6,
+    title: 'Chicken Sweet Chili',
+    src: '/images/menü/Chicken Sweet Chili.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Burgerler',
+    sectionOrder: 6,
+    title: 'Chicken Burger',
+    src: '/images/menü/Chicken Burger.webp'
   },
   {
     category: 'yemek',
@@ -414,6 +456,20 @@ const menuImagesSeed: MenuImageSeed[] = [
     sectionOrder: 7,
     title: 'İtalyan Makarna',
     src: '/images/menü/İtalyan Makarna.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Makarnalar',
+    sectionOrder: 7,
+    title: 'Barbeküs Makarna',
+    src: '/images/menü/Barbeküs Makarna.webp'
+  },
+  {
+    category: 'yemek',
+    section: 'Makarnalar',
+    sectionOrder: 7,
+    title: 'Fettuccine Alfredo',
+    src: '/images/menü/Fettuccine Alfredo.webp'
   },
   {
     category: 'yemek',
@@ -1079,12 +1135,9 @@ const menuPrices: Record<string, number> = {
   'Ekmek Arası Kaşar-Salam': 280,
   'Ekmek Arası Ton Balığı': 310,
   'Izgara Köfte Servis': 550,
-  'Somun Tantuni': 370,
-  'Lavaş Tantuni': 380,
   'Chicken Mushroom': 410,
   'Kiremitte Mantar': 270,
-  'Yoğurtlu Akdeniz Kebabı': 430,
-  'Kayseri Mantısı': 350,
+  'Et Çökertme': 490,
   'Tavuk Sote': 430,
   'Köri Soslu Piliç': 460,
   'Mexican Soslu Piliç': 460,
@@ -1093,12 +1146,23 @@ const menuPrices: Record<string, number> = {
   'Tavuk Çökertme': 480,
   'Vegetarian Wrap': 310,
   'Tavuk Wrap': 370,
-  'Sosisli Wrap': 330,
+  'Et Wrap': 480,
+  'Et Quesadilla': 485,
+  'Tavuk Quesadilla': 380,
+  'Mushroom Burger': 460,
+  'İtalyan Burger': 450,
+  Cheeseburger: 450,
+  'Klasik Burger': 450,
+  'Chicken Cheese Barbekü': 350,
+  'Chicken Sweet Chili': 350,
+  'Chicken Burger': 350,
   'Penne Makarna': 320,
   'Anne Eli Makarna': 330,
   'Pesto Soslu Penne': 340,
   'Köri Soslu Makarna': 350,
   'İtalyan Makarna': 350,
+  'Barbeküs Makarna': 350,
+  'Fettuccine Alfredo': 360,
   'Patates Tava': 250,
   "Cheddar'lı Patates Kızartması": 310,
   'Mix Tabak': 330,
