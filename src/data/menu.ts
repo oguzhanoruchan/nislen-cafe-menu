@@ -277,8 +277,8 @@ const menuImagesSeed: MenuImageSeed[] = [
   },
   {
     category: 'yemek',
-    section: 'Beyaz Et',
-    sectionOrder: 6,
+    section: 'Special',
+    sectionOrder: 5,
     title: 'Chicken Mushroom',
     src: '/images/menü/Chicken Mushroom.webp'
   },
@@ -1308,10 +1308,14 @@ const productOrder: Record<string, string[]> = {
     'Et Quesadilla'
   ],
   Izgara: ['Izgara Köfte Servis'],
-  Special: ['Kiremitte Mantar', 'Tavuk Çökertme', 'Et Çökertme'],
+  Special: [
+    'Kiremitte Mantar',
+    'Chicken Mushroom',
+    'Tavuk Çökertme',
+    'Et Çökertme'
+  ],
   'Beyaz Et': [
     'Tavuk Sote',
-    'Chicken Mushroom',
     'Köri Soslu Piliç',
     'Kekikli Kremalı Soslu Piliç',
     'Barbekü Soslu Piliç',
@@ -1448,6 +1452,15 @@ const categoryOrders = Object.fromEntries(
   categories.map((category) => [category.id, category.order])
 )
 
+// Keep existing identifiers stable when Chicken Mushroom moves earlier in the
+// rendered menu sequence. These values are part of the menu record identity.
+const stableMenuMetadata: Record<string, Pick<MenuImage, 'id' | 'order'>> = {
+  'yemek:Chicken Mushroom': { id: 'yemek-41', order: 41 },
+  'yemek:Tavuk Çökertme': { id: 'yemek-38', order: 38 },
+  'yemek:Et Çökertme': { id: 'yemek-39', order: 39 },
+  'yemek:Tavuk Sote': { id: 'yemek-40', order: 40 }
+}
+
 const orderedMenuImagesSeed = menuImagesSeed
   .map((image, index) => ({
     ...image,
@@ -1473,6 +1486,7 @@ const orderedMenuImagesSeed = menuImagesSeed
 export const menuImages: MenuImage[] = orderedMenuImagesSeed.map(
   (image, index) => {
     const price = menuPrices[image.title]
+    const stableMetadata = stableMenuMetadata[`${image.category}:${image.title}`]
 
     if (price === undefined) {
       throw new Error(`Missing price for menu item: ${image.title}`)
@@ -1483,8 +1497,8 @@ export const menuImages: MenuImage[] = orderedMenuImagesSeed.map(
       price,
       doublePrice: doubleCoffeePrices[image.title],
       previewSrc: image.src,
-      id: `${image.category}-${index + 1}`,
-      order: index + 1
+      id: stableMetadata?.id ?? `${image.category}-${index + 1}`,
+      order: stableMetadata?.order ?? index + 1
     }
   }
 )
