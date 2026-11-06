@@ -50,6 +50,7 @@ export function MenuImagePreview({
       className="menu-image"
       loading={priority ? 'eager' : 'lazy'}
       decoding="async"
+      fetchPriority={priority ? 'high' : 'auto'}
     />
   )
 }

@@ -15,6 +15,35 @@ const THEME_KEY = 'nislen-theme'
 
 type ThemePreference = 'light' | 'dark' | 'system'
 
+function readThemePreference(): ThemePreference {
+  try {
+    const storedTheme = window.localStorage.getItem(THEME_KEY)
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      return storedTheme
+    }
+  } catch (error) {
+    console.warn(
+      'Theme preference could not be read from local storage.',
+      error
+    )
+  }
+
+  return 'system'
+}
+
+function saveThemePreference(themePreference: ThemePreference) {
+  try {
+    if (themePreference === 'system') {
+      window.localStorage.removeItem(THEME_KEY)
+      return
+    }
+
+    window.localStorage.setItem(THEME_KEY, themePreference)
+  } catch (error) {
+    console.warn('Theme preference could not be saved to local storage.', error)
+  }
+}
+
 function formatPrice(value: number) {
   return new Intl.NumberFormat('tr-TR', {
     style: 'currency',
@@ -34,12 +63,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem(THEME_KEY)
-    if (storedTheme === 'light' || storedTheme === 'dark') {
-      setThemePreference(storedTheme)
-    } else {
-      setThemePreference('system')
-    }
+    setThemePreference(readThemePreference())
   }, [])
 
   useEffect(() => {
@@ -60,8 +84,13 @@ export default function App() {
       return
     }
 
-    media.addEventListener('change', applyTheme)
-    return () => media.removeEventListener('change', applyTheme)
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', applyTheme)
+      return () => media.removeEventListener('change', applyTheme)
+    }
+
+    media.addListener(applyTheme)
+    return () => media.removeListener(applyTheme)
   }, [themePreference])
 
   useEffect(() => {
@@ -69,12 +98,7 @@ export default function App() {
   }, [darkMode])
 
   useEffect(() => {
-    if (themePreference === 'system') {
-      window.localStorage.removeItem(THEME_KEY)
-      return
-    }
-
-    window.localStorage.setItem(THEME_KEY, themePreference)
+    saveThemePreference(themePreference)
   }, [themePreference])
 
   useEffect(() => {
@@ -180,8 +204,11 @@ export default function App() {
       <section className="mural-stage" aria-label="Nislen mural duvarı">
         <img
           className="mural-image"
-          src="/images/nislen-mural-wall.webp"
+          src="/images/nislen-mural-wall-optimized.webp"
           alt="Nislen Cafe mural duvarı"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
       </section>
 
@@ -226,7 +253,7 @@ export default function App() {
                           aria-hidden="true"
                         >
                           <MenuImagePreview
-                            src={menuImage.src}
+                            src={menuImage.previewSrc}
                             alt=""
                             priority={priorityMenuImageIds.has(menuImage.id)}
                           />

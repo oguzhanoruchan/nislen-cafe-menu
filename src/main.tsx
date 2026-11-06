@@ -9,6 +9,7 @@ const REFRESH_ATTEMPT_KEY = 'nislen-build-refresh-attempt'
 const LAST_CHECK_AT_KEY = 'nislen-build-last-check-at'
 const CHECK_INTERVAL_MS = 30_000
 const ATTEMPT_TTL_MS = 60_000
+const VERSION_CHECK_TIMEOUT_MS = 5_000
 
 type RefreshAttempt = {
   remoteBuildId: string
@@ -16,19 +17,70 @@ type RefreshAttempt = {
   attemptedAt: number
 }
 
+function readSessionValue(key: string) {
+  try {
+    return window.sessionStorage.getItem(key)
+  } catch (error) {
+    console.warn(
+      'Session storage is unavailable; build-check persistence is disabled.',
+      error
+    )
+    return null
+  }
+}
+
+function writeSessionValue(key: string, value: string) {
+  try {
+    window.sessionStorage.setItem(key, value)
+  } catch (error) {
+    console.warn(
+      'Session storage is unavailable; build-check persistence is disabled.',
+      error
+    )
+  }
+}
+
+function removeSessionValue(key: string) {
+  try {
+    window.sessionStorage.removeItem(key)
+  } catch (error) {
+    console.warn(
+      'Session storage is unavailable; build-check persistence is disabled.',
+      error
+    )
+  }
+}
+
+function isRefreshAttempt(value: unknown): value is RefreshAttempt {
+  if (typeof value !== 'object' || value === null) {
+    return false
+  }
+
+  return (
+    'remoteBuildId' in value &&
+    typeof value.remoteBuildId === 'string' &&
+    'previousBuildId' in value &&
+    typeof value.previousBuildId === 'string' &&
+    'attemptedAt' in value &&
+    typeof value.attemptedAt === 'number' &&
+    Number.isFinite(value.attemptedAt)
+  )
+}
+
 function readAttempt(): RefreshAttempt | null {
-  const raw = sessionStorage.getItem(REFRESH_ATTEMPT_KEY)
+  const raw = readSessionValue(REFRESH_ATTEMPT_KEY)
   if (!raw) return null
 
   try {
-    return JSON.parse(raw) as RefreshAttempt
+    const parsed: unknown = JSON.parse(raw)
+    return isRefreshAttempt(parsed) ? parsed : null
   } catch {
     return null
   }
 }
 
 function clearAttempt() {
-  sessionStorage.removeItem(REFRESH_ATTEMPT_KEY)
+  removeSessionValue(REFRESH_ATTEMPT_KEY)
 }
 
 function shouldThrottleAttempt(remoteBuildId: string) {
@@ -52,21 +104,22 @@ function recordAttempt(remoteBuildId: string) {
     attemptedAt: Date.now()
   }
 
-  sessionStorage.setItem(REFRESH_ATTEMPT_KEY, JSON.stringify(payload))
+  writeSessionValue(REFRESH_ATTEMPT_KEY, JSON.stringify(payload))
 }
 
 function shouldSkipCheck() {
-  const raw = sessionStorage.getItem(LAST_CHECK_AT_KEY)
+  const raw = readSessionValue(LAST_CHECK_AT_KEY)
   if (!raw) return false
 
   const timestamp = Number(raw)
-  if (Number.isNaN(timestamp)) return false
+  if (!Number.isFinite(timestamp)) return false
 
-  return Date.now() - timestamp < CHECK_INTERVAL_MS
+  const elapsed = Date.now() - timestamp
+  return elapsed >= 0 && elapsed < CHECK_INTERVAL_MS
 }
 
 function markCheckTime() {
-  sessionStorage.setItem(LAST_CHECK_AT_KEY, String(Date.now()))
+  writeSessionValue(LAST_CHECK_AT_KEY, String(Date.now()))
 }
 
 async function fetchLatestBuildId(forceNetwork = false) {
@@ -74,19 +127,40 @@ async function fetchLatestBuildId(forceNetwork = false) {
     ? `${VERSION_ENDPOINT}?t=${Date.now()}`
     : VERSION_ENDPOINT
 
-  const response = await fetch(endpoint, {
-    cache: forceNetwork ? 'reload' : 'no-store',
-    headers: {
-      'Cache-Control': 'no-cache'
+  const controller = new AbortController()
+  const timeoutId = window.setTimeout(
+    () => controller.abort(),
+    VERSION_CHECK_TIMEOUT_MS
+  )
+
+  try {
+    const response = await fetch(endpoint, {
+      cache: forceNetwork ? 'reload' : 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache'
+      },
+      signal: controller.signal
+    })
+
+    if (!response.ok) {
+      throw new Error(`Version check failed with HTTP ${response.status}.`)
     }
-  })
 
-  if (!response.ok) {
-    return null
+    const payload: unknown = await response.json()
+    if (
+      typeof payload !== 'object' ||
+      payload === null ||
+      !('buildId' in payload) ||
+      typeof payload.buildId !== 'string' ||
+      payload.buildId.length === 0
+    ) {
+      throw new Error('Version check returned an invalid build ID.')
+    }
+
+    return payload.buildId
+  } finally {
+    window.clearTimeout(timeoutId)
   }
-
-  const payload = (await response.json()) as { buildId?: string }
-  return payload.buildId ?? null
 }
 
 async function ensureFreshBuild(forceNetwork = false) {
@@ -114,17 +188,19 @@ async function ensureFreshBuild(forceNetwork = false) {
       return true
     }
 
-    recordAttempt(remoteBuildId)
-
-    if (url.searchParams.get(CACHE_BUST_PARAM) !== remoteBuildId) {
-      url.searchParams.set(CACHE_BUST_PARAM, remoteBuildId)
-      window.location.replace(url.toString())
-      return false
+    if (url.searchParams.get(CACHE_BUST_PARAM) === remoteBuildId) {
+      return true
     }
 
-    window.location.reload()
+    recordAttempt(remoteBuildId)
+    url.searchParams.set(CACHE_BUST_PARAM, remoteBuildId)
+    window.location.replace(url.toString())
     return false
-  } catch {
+  } catch (error) {
+    console.warn(
+      'Version check failed; continuing with the currently loaded menu.',
+      error
+    )
     return true
   }
 }
@@ -138,21 +214,6 @@ function renderApp() {
 }
 
 let hasRendered = false
-
-function runFreshnessCheck(forceNetwork = false) {
-  ensureFreshBuild(forceNetwork).then((isFresh) => {
-    if (!isFresh) {
-      return
-    }
-
-    if (hasRendered) {
-      return
-    }
-
-    hasRendered = true
-    renderApp()
-  })
-}
 
 window.addEventListener('pageshow', (event) => {
   if (!hasRendered) {
@@ -172,4 +233,6 @@ document.addEventListener('visibilitychange', () => {
   void ensureFreshBuild(false)
 })
 
-runFreshnessCheck(true)
+hasRendered = true
+renderApp()
+void ensureFreshBuild(true)

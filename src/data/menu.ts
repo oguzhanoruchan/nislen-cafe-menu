@@ -1496,7 +1496,7 @@ export const menuImages: MenuImage[] = orderedMenuImagesSeed.map(
       ...image,
       price,
       doublePrice: doubleCoffeePrices[image.title],
-      previewSrc: image.src,
+      previewSrc: image.src.replace('/images/menü/', '/images/menü/previews/'),
       id: stableMetadata?.id ?? `${image.category}-${index + 1}`,
       order: stableMetadata?.order ?? index + 1
     }
