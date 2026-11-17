@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 import { CategoryFilter } from './components/CategoryFilter'
 import { FooterLinks } from './components/FooterLinks'
 import { Header } from './components/Header'
+import { MenuImagePreview } from './components/MenuImagePreview'
 import { SearchBar } from './components/SearchBar'
 import { categories, menuImages, type MenuImage } from './data/menu'
 
@@ -10,12 +11,95 @@ const TEXTS = {
   searchPlaceholder: 'Menü bölümü ara'
 }
 
+const THEME_KEY = 'nislen-theme'
+
+type ThemePreference = 'light' | 'dark' | 'system'
+
+function readThemePreference(): ThemePreference {
+  try {
+    const storedTheme = window.localStorage.getItem(THEME_KEY)
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      return storedTheme
+    }
+  } catch (error) {
+    console.warn(
+      'Theme preference could not be read from local storage.',
+      error
+    )
+  }
+
+  return 'system'
+}
+
+function saveThemePreference(themePreference: ThemePreference) {
+  try {
+    if (themePreference === 'system') {
+      window.localStorage.removeItem(THEME_KEY)
+      return
+    }
+
+    window.localStorage.setItem(THEME_KEY, themePreference)
+  } catch (error) {
+    console.warn('Theme preference could not be saved to local storage.', error)
+  }
+}
+
+function formatPrice(value: number) {
+  return new Intl.NumberFormat('tr-TR', {
+    style: 'currency',
+    currency: 'TRY',
+    maximumFractionDigits: 0
+  }).format(value)
+}
+
 export default function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
   const [selectedMenuImage, setSelectedMenuImage] = useState<MenuImage | null>(
     null
   )
+  const [themePreference, setThemePreference] =
+    useState<ThemePreference>('system')
+  const [darkMode, setDarkMode] = useState(false)
+
+  useEffect(() => {
+    setThemePreference(readThemePreference())
+  }, [])
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+    const applyTheme = () => {
+      if (themePreference === 'system') {
+        setDarkMode(media.matches)
+        return
+      }
+
+      setDarkMode(themePreference === 'dark')
+    }
+
+    applyTheme()
+
+    if (themePreference !== 'system') {
+      return
+    }
+
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', applyTheme)
+      return () => media.removeEventListener('change', applyTheme)
+    }
+
+    media.addListener(applyTheme)
+    return () => media.removeListener(applyTheme)
+  }, [themePreference])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode)
+  }, [darkMode])
+
+  useEffect(() => {
+    saveThemePreference(themePreference)
+  }, [themePreference])
 
   useEffect(() => {
     if (!selectedMenuImage) {
@@ -44,24 +128,98 @@ export default function App() {
     })
   }, [activeCategory, search])
 
+  const sectionedMenuImages = useMemo(() => {
+    const groups = new Map<
+      string,
+      { category: string; title: string; images: MenuImage[] }
+    >()
+
+    filteredMenuImages.forEach((image) => {
+      const key = `${image.category}-${image.sectionOrder}`
+      const group = groups.get(key)
+
+      if (group) {
+        group.images.push(image)
+        return
+      }
+
+      groups.set(key, {
+        category: image.category,
+        title: image.section,
+        images: [image]
+      })
+    })
+
+    return [...groups.values()]
+  }, [filteredMenuImages])
+
+  const categoryMenuGroups = useMemo(
+    () =>
+      categories
+        .map((category) => ({
+          ...category,
+          sections: sectionedMenuImages.filter(
+            (section) => section.category === category.id
+          )
+        }))
+        .filter((category) => category.sections.length > 0),
+    [sectionedMenuImages]
+  )
+
+  const priorityMenuImageIds = useMemo(
+    () => new Set(filteredMenuImages.slice(0, 3).map((image) => image.id)),
+    [filteredMenuImages]
+  )
+
+  const handleToggleTheme = () => {
+    setThemePreference((current) => {
+      if (current === 'dark') {
+        return 'light'
+      }
+
+      if (current === 'light') {
+        return 'dark'
+      }
+
+      return darkMode ? 'light' : 'dark'
+    })
+  }
+
+  const selectAdjacentMenuImage = (direction: -1 | 1) => {
+    if (!selectedMenuImage) {
+      return
+    }
+
+    const currentIndex = menuImages.findIndex(
+      (image) => image.id === selectedMenuImage.id
+    )
+    const nextIndex =
+      (currentIndex + direction + menuImages.length) % menuImages.length
+
+    setSelectedMenuImage(menuImages[nextIndex] ?? null)
+  }
+
   return (
     <>
+      <section className="mural-stage" aria-label="Nislen mural duvarı">
+        <img
+          className="mural-image"
+          src="/images/nislen-mural-wall-optimized.webp"
+          alt="Nislen Cafe mural duvarı"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </section>
+
       <section className="top-shell">
-        <Header>
+        <Header darkMode={darkMode} onToggleTheme={handleToggleTheme}>
           <SearchBar
             value={search}
             onChange={setSearch}
             placeholder={TEXTS.searchPlaceholder}
           />
         </Header>
-      </section>
-
-      <section className="mural-stage" aria-label="Nislen mural duvarı">
-        <img
-          className="mural-image"
-          src="/images/nislen-mural-wall.webp"
-          alt="Nislen Cafe mural duvarı"
-        />
       </section>
 
       <section className="menu-surface">
@@ -73,22 +231,72 @@ export default function App() {
             allLabel={TEXTS.allCategories}
           />
 
-          <section className="menu-image-grid" aria-label="Menü görselleri">
-            {filteredMenuImages.map((menuImage) => (
-              <button
-                key={menuImage.id}
-                className="menu-image-card"
-                onClick={() => setSelectedMenuImage(menuImage)}
-              >
-                <img
-                  src={menuImage.src}
-                  alt={menuImage.title}
-                  className="menu-image"
-                  loading="lazy"
-                />
-              </button>
-            ))}
-          </section>
+          {categoryMenuGroups.map((category) => (
+            <Fragment key={category.id}>
+              {category.sections.map((section) => (
+                <section
+                  key={`${category.id}-${section.title}`}
+                  className="menu-section"
+                  aria-label={section.title}
+                >
+                  <h3 className="menu-section-title">{section.title}</h3>
+                  <div className="menu-image-grid">
+                    {section.images.map((menuImage) => (
+                      <button
+                        key={menuImage.id}
+                        className="menu-image-card"
+                        onClick={() => setSelectedMenuImage(menuImage)}
+                        aria-label={`${menuImage.title} menü görselini aç`}
+                      >
+                        <span
+                          className="menu-image-thumb-wrap"
+                          aria-hidden="true"
+                        >
+                          <MenuImagePreview
+                            src={menuImage.previewSrc}
+                            alt=""
+                            priority={priorityMenuImageIds.has(menuImage.id)}
+                          />
+                        </span>
+                        <span className="menu-image-copy">
+                          <span className="menu-image-price-row">
+                            <span className="menu-image-title">
+                              {menuImage.title}
+                            </span>
+                            <strong className="menu-image-price">
+                              {formatPrice(menuImage.price)}
+                            </strong>
+                            <span
+                              className="menu-image-row-arrow"
+                              aria-hidden="true"
+                            >
+                              ›
+                            </span>
+                          </span>
+                          {menuImage.doublePrice !== undefined ? (
+                            <span className="menu-image-price-row">
+                              <span className="menu-image-title menu-image-double-title">
+                                Double {menuImage.title}
+                              </span>
+                              <strong className="menu-image-price">
+                                {formatPrice(menuImage.doublePrice)}
+                              </strong>
+                              <span
+                                className="menu-image-row-arrow"
+                                aria-hidden="true"
+                              >
+                                ›
+                              </span>
+                            </span>
+                          ) : null}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </Fragment>
+          ))}
         </main>
       </section>
 
@@ -104,20 +312,34 @@ export default function App() {
           }}
         >
           <div className="product-modal-card menu-image-modal-card">
-            <div className="modal-head">
+            <button
+              className="modal-close"
+              onClick={() => setSelectedMenuImage(null)}
+              aria-label="Kapat"
+            >
+              ×
+            </button>
+            <div className="menu-image-modal-stage">
               <button
-                className="modal-close"
-                onClick={() => setSelectedMenuImage(null)}
-                aria-label="Kapat"
+                className="menu-image-modal-nav is-previous"
+                onClick={() => selectAdjacentMenuImage(-1)}
+                aria-label="Önceki menü görseli"
               >
-                ×
+                ‹
+              </button>
+              <img
+                src={selectedMenuImage.src}
+                alt={selectedMenuImage.title}
+                className="product-modal-image"
+              />
+              <button
+                className="menu-image-modal-nav is-next"
+                onClick={() => selectAdjacentMenuImage(1)}
+                aria-label="Sonraki menü görseli"
+              >
+                ›
               </button>
             </div>
-            <img
-              src={selectedMenuImage.src}
-              alt={selectedMenuImage.title}
-              className="product-modal-image"
-            />
           </div>
         </div>
       ) : null}
