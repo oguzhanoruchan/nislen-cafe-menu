@@ -11,10 +11,6 @@ const TEXTS = {
   searchPlaceholder: 'Menü bölümü ara'
 }
 
-const THEME_KEY = 'nislen-theme'
-
-type ThemePreference = 'light' | 'dark' | 'system'
-
 function formatPrice(value: number) {
   return new Intl.NumberFormat('tr-TR', {
     style: 'currency',
@@ -29,54 +25,6 @@ export default function App() {
   const [selectedMenuImage, setSelectedMenuImage] = useState<MenuImage | null>(
     null
   )
-  const [themePreference, setThemePreference] =
-    useState<ThemePreference>('system')
-  const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem(THEME_KEY)
-    if (storedTheme === 'light' || storedTheme === 'dark') {
-      setThemePreference(storedTheme)
-    } else {
-      setThemePreference('system')
-    }
-  }, [])
-
-  useEffect(() => {
-    const media = window.matchMedia('(prefers-color-scheme: dark)')
-
-    const applyTheme = () => {
-      if (themePreference === 'system') {
-        setDarkMode(media.matches)
-        return
-      }
-
-      setDarkMode(themePreference === 'dark')
-    }
-
-    applyTheme()
-
-    if (themePreference !== 'system') {
-      return
-    }
-
-    media.addEventListener('change', applyTheme)
-    return () => media.removeEventListener('change', applyTheme)
-  }, [themePreference])
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode)
-  }, [darkMode])
-
-  useEffect(() => {
-    if (themePreference === 'system') {
-      window.localStorage.removeItem(THEME_KEY)
-      return
-    }
-
-    window.localStorage.setItem(THEME_KEY, themePreference)
-  }, [themePreference])
-
   useEffect(() => {
     if (!selectedMenuImage) {
       return
@@ -147,20 +95,6 @@ export default function App() {
     [filteredMenuImages]
   )
 
-  const handleToggleTheme = () => {
-    setThemePreference((current) => {
-      if (current === 'dark') {
-        return 'light'
-      }
-
-      if (current === 'light') {
-        return 'dark'
-      }
-
-      return darkMode ? 'light' : 'dark'
-    })
-  }
-
   const selectAdjacentMenuImage = (direction: -1 | 1) => {
     if (!selectedMenuImage) {
       return
@@ -186,7 +120,7 @@ export default function App() {
       </section>
 
       <section className="top-shell">
-        <Header darkMode={darkMode} onToggleTheme={handleToggleTheme}>
+        <Header>
           <SearchBar
             value={search}
             onChange={setSearch}
