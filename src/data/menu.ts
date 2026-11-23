@@ -1253,7 +1253,7 @@ const menuPrices: Record<string, number> = {
   Churchill: 140,
   Limonata: 170,
   'Portakal Suyu': 220,
-  'Blonde Leaf': 520,
+  'Blonde Leaf': 570,
   'Dark Leaf': 700
 }
 
